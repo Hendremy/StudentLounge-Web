@@ -1,8 +1,12 @@
 import { Router } from "react-router-dom";
+import { AppHeader } from "./components/organisms/AppHeader"
 
 export default function App() {
   return (
-    <Router/>
+    <>
+      <AppHeader appName="Student Lounge" />
+      <Router />
+    </>
   );
 }
 
