@@ -1,5 +1,7 @@
+import { Toolbar } from "@mui/material"
+
 export default function Menu(){
     return (
-        <ToolBar></ToolBar>
+        <Toolbar></Toolbar>
     )
 }
