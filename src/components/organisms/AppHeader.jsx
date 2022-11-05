@@ -1,6 +1,8 @@
-import { AppBar } from "@mui/material";
+import NavMenu from '../molecules/NavMenu'
+import Title from '../atoms/Title'
+import { AppBar, Container } from "@mui/material";
 
-export default function NavBar(appName){
+export default function AppHeader(appName){
 
   return (
       <AppBar position="static">
