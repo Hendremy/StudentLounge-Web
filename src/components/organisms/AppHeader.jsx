@@ -1,15 +1,17 @@
 import NavMenu from '../molecules/NavMenu'
-import Title from '../atoms/Title'
-import { AppBar, Container } from "@mui/material";
+import { AppBar, Toolbar } from "@mui/material";
+import Title from '../atoms/Title';
+import Profile from '../molecules/Profile';
 
-export default function AppHeader(appName){
+export default function AppHeader({appName}){
 
   return (
-      <AppBar position="static" color="secondary">
-        <Container maxwidth="x1">
-          
-          <NavMenu></NavMenu>
-        </Container>
+      <AppBar position="static" color="primary">
+        <Toolbar maxwidth="x1">
+          <Title text={appName} />
+          <NavMenu/>
+          <Profile/>
+        </Toolbar>
       </AppBar>
   )
 }

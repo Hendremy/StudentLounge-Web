@@ -1,11 +1,12 @@
+import { Icon } from '@mui/material';
 import { NavLink } from 'react-router-dom';
 
 const activeStyle = {}
 
-export function MenuIcon({path, icon: Icon}){
+export function MenuLink({path, text}){
     return (
         <NavLink to={path} style={({ isActive }) => isActive ? activeStyle : undefined}>
-            <Icon/>
+            <LinkText text={text}/>
         </NavLink>
     );
 }
