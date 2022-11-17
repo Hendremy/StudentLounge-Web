@@ -20,3 +20,11 @@ header{
 main{
     font-family: 'Exo2'
 }
+
+a{
+    color: #FFFFFF;
+}
+
+a:hover{
+    color: #68FFF6;
+}

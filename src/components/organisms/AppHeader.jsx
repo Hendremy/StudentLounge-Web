@@ -1,7 +1,7 @@
-import NavMenu from '../molecules/NavMenu'
+import MenuNav from '../molecules/MenuNav'
 import { AppBar, Box, Toolbar } from "@mui/material";
 import Title from '../atoms/Title';
-import Profile from '../molecules/Profile';
+import AuthNav from '../molecules/AuthNav';
 
 export default function AppHeader({appName}){
 
@@ -19,8 +19,8 @@ export default function AppHeader({appName}){
         <Toolbar maxwidth="x1">
           <Box sx={style}>
             <Title text={appName} />
-            <NavMenu/>
-            <Profile/>
+            <MenuNav/>
+            <AuthNav/>
           </Box>
         </Toolbar>
       </AppBar>

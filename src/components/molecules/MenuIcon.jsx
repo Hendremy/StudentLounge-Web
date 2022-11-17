@@ -1,15 +1,14 @@
 import { IconButton } from '@mui/material';
 import { NavLink } from 'react-router-dom';
 
-const activeStyle = {}
+const activeStyle = {color: "green"}
 
-//style={({ isActive }) => isActive ? activeStyle : undefined}
 
 export function MenuIcon({path, icon:Icon}){
     return (
-        <NavLink to={path}>
-            <IconButton>
-                <Icon color="primary" fontSize="large"/>
+        <NavLink to={path} style={({ isActive }) => isActive ? activeStyle : undefined}>
+            <IconButton sx={{"&:hover": {color: "green"}}}>
+                <Icon color="primary" sx={{fontSize: 50}}/>
             </IconButton>
         </NavLink>
     );
