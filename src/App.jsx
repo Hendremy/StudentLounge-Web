@@ -6,6 +6,15 @@ export default function App() {
   const appName = "Student Lounge";
 
   const theme = createTheme({
+    overrides: {
+      MuiIconButton: {
+        root: {
+          '&:hover': {
+            backgroundColor: "green"
+          }
+        }
+      }
+    },
     palette: {
       primary: {
         main: "#FFFFFF",
