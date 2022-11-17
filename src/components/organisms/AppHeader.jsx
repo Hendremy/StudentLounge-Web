@@ -5,9 +5,9 @@ import { AppBar, Container } from "@mui/material";
 export default function AppHeader(appName){
 
   return (
-      <AppBar position="static">
+      <AppBar position="static" color="secondary">
         <Container maxwidth="x1">
-          <Title text={appName}/>
+          
           <NavMenu></NavMenu>
         </Container>
       </AppBar>
