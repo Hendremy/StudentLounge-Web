@@ -1,4 +1,4 @@
-import { Icon } from '@mui/material';
+import LinkText from '../atoms/LinkText'
 import { NavLink } from 'react-router-dom';
 
 const activeStyle = {}

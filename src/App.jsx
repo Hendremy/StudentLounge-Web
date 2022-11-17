@@ -1,5 +1,5 @@
 import AppHeader from './components/organisms/AppHeader'
-import AppMain from './components/organisms/AppMain'
+import AppRouter from './AppRouter.jsx';
 import {createTheme, ThemeProvider} from '@mui/material'
 
 export default function App() {
@@ -8,10 +8,11 @@ export default function App() {
   const theme = createTheme({
     palette: {
       primary: {
-        main: "#5842DE"
+        main: "#FFFFFF",
+        dark: "#241292"
       },
       secondary: {
-        main: "#24119A"
+        main: "#5842DE"
       }
     },
     typography: {
@@ -23,10 +24,11 @@ export default function App() {
 
   return (
       <>
-      <ThemeProvider theme={theme}>
-        <AppHeader appName={appName} />
-        <AppMain />
-      </ThemeProvider>
+        <AppRouter>
+          <ThemeProvider theme={theme}>
+            <AppHeader appName={appName} />
+          </ThemeProvider>
+        </AppRouter>
       </>
   );
 }

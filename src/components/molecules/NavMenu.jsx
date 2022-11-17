@@ -1,22 +1,14 @@
 import { MenuIcon } from "./MenuIcon";
-import HomeIcon from '@mui/icons-material/Home'
-
+import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined';
+import HelpOutlineIcon from '@mui/icons-material/HelpOutline';
+import { homePath, contactPath } from "../../AppRouter.jsx";
+import { Box } from "@mui/system";
 export default function Menu(){
-    let menu = [];
-    
-    let links = [
-        {path: '/', icon: HomeIcon}
-    ];
-
-    links.forEach(link => {
-        menu.push(
-            <MenuIcon path={link.path} icon={link.icon}/>
-        );
-    });
-
+    const style = {display: 'flex', justifyContent: 'space-around', alignSelf:'stretch'}
     return (
-        <div>
-            {menu}
-        </div>
+        <Box bgcolor="primary.dark" sx={style}>
+            <MenuIcon path={homePath} icon={HomeOutlinedIcon}/>
+            <MenuIcon path={contactPath} icon={HelpOutlineIcon}/>
+        </Box>
     );
 };
