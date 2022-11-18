@@ -15,7 +15,7 @@ export default function AppHeader({appName}){
 
 
   return (
-      <AppBar position="static" color="secondary">
+      <AppBar position="static" color="primary">
         <Toolbar maxwidth="x1">
           <Box sx={style}>
             <Title text={appName} />
