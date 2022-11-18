@@ -13,7 +13,6 @@ export default function AppHeader({appName}){
     justifyContent:"space-between",
   };
 
-
   return (
       <AppBar position="static" color="primary">
         <Toolbar maxwidth="x1">
