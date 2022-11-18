@@ -23,8 +23,5 @@ main{
 
 a{
     color: #FFFFFF;
-}
-
-a:hover{
-    color: #68FFF6;
+    text-decoration: none;
 }

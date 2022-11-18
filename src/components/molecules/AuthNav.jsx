@@ -3,7 +3,12 @@ import MenuLink from '../molecules/MenuLink';
 import {loginPath, registerPath} from '../../AppRouter';
 
 export default function AuthNav(){
-    const style = {display: 'flex', justifyContent: 'space-between', alignItems:'center'}
+    const style = {
+        display: 'flex', 
+        justifyContent: 'space-between', 
+        alignItems:'center',
+        width: 1/8
+    }
     return (
         <Box sx={style}>
             <MenuLink path={loginPath} text="Se connecter"/>
