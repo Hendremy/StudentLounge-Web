@@ -2,8 +2,8 @@ import {createTheme} from '@mui/material'
 
 const primary = "#5842DE";
 const secondary = "#241292";
-const iconActive = "#8349FF";
-const linkActive = "#68FFF6";
+const iconActive = "#FFB5FC";
+const linkActive = iconActive;
 
 const theme = createTheme({
     palette: {

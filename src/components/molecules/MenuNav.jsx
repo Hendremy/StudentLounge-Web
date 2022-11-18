@@ -8,7 +8,8 @@ export default function MenuNav(){
     const style = {
         display: 'flex',
         justifyContent: 'space-around',
-        alignSelf:'stretch'
+        alignSelf:'stretch',
+        width:1/8
     }
     return (
         <Box bgcolor="primary.dark" sx={style}>
