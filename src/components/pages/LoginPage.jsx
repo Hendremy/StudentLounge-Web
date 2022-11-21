@@ -1,4 +1,5 @@
-import {Button} from "@mui/material";
-
 export default function LoginPage(){
+    return (
+        <span>login</span>
+    );
 }
