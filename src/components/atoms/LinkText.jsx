@@ -1,7 +1,7 @@
 import { Typography } from "@mui/material";
 
-export default function LinkText({text}){
+export default function LinkText({text, event}){
     return (
-        <Typography variant="body1" component="span">{text}</Typography>
+        <Typography variant="body1" component="span" onClick={event}>{text}</Typography>
     );
 }

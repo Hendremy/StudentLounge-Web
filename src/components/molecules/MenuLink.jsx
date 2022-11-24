@@ -7,10 +7,10 @@ const activeStyle = {
     borderBottom: `2px solid ${linkActive}`
 }
 
-export default function MenuLink({path, text}){
+export default function MenuLink({path, text, event}){
     return (
         <NavLink to={path} style={({ isActive }) => isActive ? activeStyle : undefined}>
-            <LinkText text={text}/>
+            <LinkText text={text} event={event}/>
         </NavLink>
     );
 }
