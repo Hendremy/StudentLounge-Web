@@ -1,5 +1,5 @@
+import Register from "../organisms/Register";
+
 export default function RegisterPage(){
-    return (
-        <span>register</span>
-    );
+    return (<Register/>);
 }

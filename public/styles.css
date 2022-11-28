@@ -8,17 +8,29 @@
     src: url(./fonts/Exo2-Regular.otf);
 }
 
+html{
+    height: 100%;
+}
 
 body{
     margin: 0;
+    height: 100%;
+    background-image: url("images/background-home.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 header{
-    font-family: 'Gugi';
+    font-family: 'Gugi', serif;
+}
+
+#root{
+    height: 100%;
 }
 
 main{
-    font-family: 'Exo2'
+    font-family: 'Exo2', serif;
+    height: 100%;
 }
 
 a{
@@ -27,6 +39,9 @@ a{
 }
 
 a:hover{
-    color: #FFB5FC;
-    border-bottom: 2px solid #FFB5FC;
+    color: #8aeaff;
+}
+
+input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 30px #FFFFFF inset;
 }

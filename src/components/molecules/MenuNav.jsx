@@ -1,20 +1,36 @@
-import { MenuIcon } from "./MenuIcon";
-import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined';
-import HelpOutlineIcon from '@mui/icons-material/HelpOutline';
-import { homePath, contactPath } from "../../AppRouter.jsx";
+import LessonIcon from '@mui/icons-material/ImportContactsRounded';
+import ChatIcon from '@mui/icons-material/ChatRounded';
+import CalendarIcon from '@mui/icons-material/CalendarMonthRounded';
+import HelpIcon from '@mui/icons-material/LiveHelpRounded';
+import {calendarPath, contactPath, lessonPath, messagesPath} from "../../AppRouter.jsx";
 import { Box } from "@mui/system";
+import {useAtom} from "jotai";
+import {connectedUser} from "../../AccountStore";
+import {MenuIcon} from "./MenuIcon";
 
 export default function MenuNav(){
+    const [state, setState] = useAtom(connectedUser);
     const style = {
         display: 'flex',
         justifyContent: 'space-around',
-        alignSelf:'stretch',
-        width:1/8
+        alignItems:'center',
+        width:1/5
     }
-    return (
-        <Box bgcolor="primary.dark" sx={style}>
-            <MenuIcon path={homePath} icon={HomeOutlinedIcon}/>
-            <MenuIcon path={contactPath} icon={HelpOutlineIcon}/>
-        </Box>
-    );
+
+    if(state !== null) {
+        return (
+            <Box sx={style}>
+                <MenuIcon path={messagesPath} icon={ChatIcon}/>
+                <MenuIcon path={lessonPath} icon={LessonIcon}/>
+                <MenuIcon path={calendarPath} icon={CalendarIcon}/>
+                <MenuIcon path={contactPath} icon={HelpIcon}/>
+            </Box>
+        );
+    }else{
+        return (
+            <Box sx={style}>
+                <MenuIcon path={contactPath} icon={HelpIcon}/>
+            </Box>
+        );
+    }
 };

@@ -9,9 +9,12 @@
     "@mui/icons-material": "^5.10.9",
     "@mui/material": "^5.10.12",
     "@mui/system": "^5.10.14",
+    "gapi-script": "^1.2.0",
     "jotai": "^1.10.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-google-button": "^0.7.2",
+    "react-google-login": "^5.2.2",
     "react-scripts": "5.0.1",
     "web-vitals": "^2.1.4"
   },

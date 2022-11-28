@@ -1,9 +1,10 @@
 import MenuNav from '../molecules/MenuNav'
-import { AppBar, Box, Toolbar } from "@mui/material";
-import Title from '../atoms/Title';
+import {AppBar, Box, Toolbar} from "@mui/material";
 import AuthNav from '../molecules/AuthNav';
+import {homePath} from "../../AppRouter";
+import {NavLink} from "react-router-dom";
 
-export default function AppHeader({appName}){
+export default function AppHeader(){
 
   const style = {
     display: "flex",
@@ -14,10 +15,10 @@ export default function AppHeader({appName}){
   };
 
   return (
-      <AppBar position="static" color="primary">
-        <Toolbar maxwidth="x1">
+      <AppBar position="fixed" color="primary">
+        <Toolbar variant={"dense"}>
           <Box sx={style}>
-            <Title text={appName} />
+            <NavLink to={homePath} component="div" style={{fontSize:30}}>Student Lounge</NavLink>
             <MenuNav/>
             <AuthNav/>
           </Box>

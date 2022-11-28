@@ -9,16 +9,17 @@ export default function CustomCard({IconCard, TitleCard, TextCard}) {
     let icon;
 
     if(IconCard === "users")
-        icon = <SupervisedUserCircleIcon sx={{fontSize: 255}}/>;
+        icon = <SupervisedUserCircleIcon sx={{fontSize: 200, marginBottom:3}}/>;
     else
-        icon = <FileCopyIcon sx={{fontSize: 255}}/>;
+        icon = <FileCopyIcon sx={{fontSize: 200, marginBottom:3}}/>;
 
     return (
         <Card
-            style={{backgroundColor : primary, margin:"auto"}}
-            sx={{ maxWidth: 400, minHeight: 500, borderRadius:10}}>
+            elevation = {10}
+            style={{backgroundColor : primary, margin:"100px"}}
+            sx={{ maxWidth: 350, minHeight: 400, borderRadius:10}}>
             <CardContent style={{color:"white"}}>
-                <Box display={"flex"} flexDirection={"column"} alignItems={"center"}>
+                <Box display={"flex"} flexDirection={"column"} alignItems={"center"} textAlign={"center"} margin={5}>
                     {icon}
                     <Title text={TitleCard}/>
                     <Typography  component="div" align={"center"}>{TextCard}</Typography>

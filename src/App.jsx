@@ -4,13 +4,11 @@ import {ThemeProvider} from '@mui/material';
 import {theme} from './AppTheme'
 
 export default function App() {
-  const appName = "Student Lounge";
-
   return (
       <>
         <AppRouter>
           <ThemeProvider theme={theme}>
-            <AppHeader appName={appName} />
+            <AppHeader/>
           </ThemeProvider>
         </AppRouter>
       </>

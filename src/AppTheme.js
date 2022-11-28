@@ -2,7 +2,7 @@ import {createTheme} from '@mui/material'
 
 const primary = "#5842DE";
 const secondary = "#241292";
-const iconActive = "#FFB5FC";
+const iconActive = "#8aeaff";
 const linkActive = iconActive;
 
 const theme = createTheme({
