@@ -1,11 +1,13 @@
 @font-face {
     font-family: Gugi;
     src: url(./fonts/Gugi-Regular.ttf);
+    font-display: block;
 }
 
 @font-face {
     font-family: Exo2;
     src: url(./fonts/Exo2-Regular.otf);
+    font-display: block;
 }
 
 html{

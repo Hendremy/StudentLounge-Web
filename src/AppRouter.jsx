@@ -3,7 +3,6 @@ import HomePage from "./components/pages/HomePage";
 import LoginPage from './components/pages/LoginPage';
 import RegisterPage from "./components/pages/RegisterPage";
 import ContactPage from "./components/pages/ContactPage";
-import ProfilePage from "./components/pages/ProfilePage";
 import LessonPage from "./components/pages/LessonPage";
 import CalendarPage from "./components/pages/CalendarPage";
 import MessagesPage from "./components/pages/MessagesPath";
@@ -12,7 +11,6 @@ const homePath = '/';
 const loginPath = '/login';
 const registerPath = '/register';
 const contactPath = '/contact';
-const profilePath = '/profile';
 const messagesPath = '/messages';
 const calendarPath = '/calendar';
 const lessonPath = '/lesson';
@@ -27,7 +25,6 @@ export default function AppRouter({children}){
                     <Route path={loginPath} element={<LoginPage/>}/>
                     <Route path={registerPath} element={<RegisterPage/>}/>
                     <Route path={contactPath} element={<ContactPage/>}/>
-                    <Route path={profilePath} element={<ProfilePage/>}/>
                     <Route path={lessonPath} element={<LessonPage/>}/>
                     <Route path={calendarPath} element={<CalendarPage/>}/>
                     <Route path={messagesPath} element={<MessagesPage/>}/>
@@ -37,4 +34,4 @@ export default function AppRouter({children}){
     );
 }
 
-export {homePath, loginPath, registerPath, contactPath, profilePath, messagesPath, calendarPath, lessonPath};
+export {homePath, loginPath, registerPath, contactPath, messagesPath, calendarPath, lessonPath};

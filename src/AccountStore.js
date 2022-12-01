@@ -1,6 +1,5 @@
-// @src/store/store.js
-import { atom } from "jotai";
+import {atomWithStorage} from "jotai/utils";
 
 // Stockage d'un utilisateur enregistré.
-export const connectedUser = atom(null);
+export const connectedUser = atomWithStorage('user', null);
 

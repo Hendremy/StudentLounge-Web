@@ -16,6 +16,8 @@ export default function HomePage(){
         />
     </Box>
     return (
-        <GridCentered component={cards}/>
+        <GridCentered>
+            {cards}
+        </GridCentered>
     );
 }

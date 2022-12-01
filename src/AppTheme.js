@@ -3,7 +3,6 @@ import {createTheme} from '@mui/material'
 const primary = "#5842DE";
 const secondary = "#241292";
 const iconActive = "#8aeaff";
-const linkActive = iconActive;
 
 const theme = createTheme({
     palette: {
@@ -22,5 +21,5 @@ const theme = createTheme({
     }
 });
 
-export {primary, secondary, theme, iconActive, linkActive};
+export {primary, secondary, theme, iconActive};
 

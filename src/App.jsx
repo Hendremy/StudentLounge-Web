@@ -1,17 +1,18 @@
 import AppHeader from './components/organisms/AppHeader';
-import AppRouter from './AppRouter.jsx';
+import AppRouter from './AppRouter';
+import GoogleAuth from "./GoogleAuth";
 import {ThemeProvider} from '@mui/material';
-import {theme} from './AppTheme'
+import {theme} from './AppTheme';
 
 export default function App() {
   return (
-      <>
-        <AppRouter>
-          <ThemeProvider theme={theme}>
-            <AppHeader/>
-          </ThemeProvider>
-        </AppRouter>
-      </>
+        <GoogleAuth>
+            <AppRouter>
+              <ThemeProvider theme={theme}>
+                <AppHeader/>
+              </ThemeProvider>
+            </AppRouter>
+        </GoogleAuth>
   );
 }
 
