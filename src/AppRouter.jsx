@@ -3,7 +3,7 @@ import HomePage from "./components/pages/HomePage";
 import LoginPage from './components/pages/LoginPage';
 import RegisterPage from "./components/pages/RegisterPage";
 import ContactPage from "./components/pages/ContactPage";
-import LessonPage from "./components/pages/LessonPage";
+import LessonsPage from "./components/pages/LessonsPage";
 import CalendarPage from "./components/pages/CalendarPage";
 import MessagesPage from "./components/pages/MessagesPath";
 
@@ -14,6 +14,7 @@ const contactPath = '/contact';
 const messagesPath = '/messages';
 const calendarPath = '/calendar';
 const lessonPath = '/lesson';
+const lessonWithIdPath = '/lesson/{id}'
 
 export default function AppRouter({children}){
     return (
@@ -25,7 +26,7 @@ export default function AppRouter({children}){
                     <Route path={loginPath} element={<LoginPage/>}/>
                     <Route path={registerPath} element={<RegisterPage/>}/>
                     <Route path={contactPath} element={<ContactPage/>}/>
-                    <Route path={lessonPath} element={<LessonPage/>}/>
+                    <Route path={lessonPath} element={<LessonsPage/>}/>
                     <Route path={calendarPath} element={<CalendarPage/>}/>
                     <Route path={messagesPath} element={<MessagesPage/>}/>
                 </Routes>

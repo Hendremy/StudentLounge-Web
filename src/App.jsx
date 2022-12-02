@@ -7,11 +7,11 @@ import {theme} from './AppTheme';
 export default function App() {
   return (
         <GoogleAuth>
+          <ThemeProvider theme={theme}>
             <AppRouter>
-              <ThemeProvider theme={theme}>
                 <AppHeader/>
-              </ThemeProvider>
             </AppRouter>
+          </ThemeProvider>
         </GoogleAuth>
   );
 }

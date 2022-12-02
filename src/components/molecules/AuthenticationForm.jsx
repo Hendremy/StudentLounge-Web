@@ -1,10 +1,10 @@
-import {Alert, Button, Grid, TextField, ThemeProvider, Typography} from "@mui/material";
-import {secondary, theme} from "../../AppTheme";
+import {Alert, Button, Grid, TextField, Typography} from "@mui/material";
+import {palette} from "../../AppTheme";
 import React, {useState} from "react";
 import {useNavigate} from "react-router-dom";
 import {useAtom} from "jotai";
 import {connectedUser} from "../../AccountStore";
-import {GetAccount} from "../../StudentLoungeAPI";
+import {getAccount} from "../../repositories/StudentLoungeAPI";
 import GoogleButtonLogin from "./GoogleButtonLogin";
 
 function checkResult(password, email, setMessage, setState, navigate) {
@@ -13,7 +13,7 @@ function checkResult(password, email, setMessage, setState, navigate) {
         return null;
     } else {
         try{
-            const response = GetAccount({email: email, password: password, setMessage: setMessage, setState: setState, navigate: navigate});
+            const response = getAccount({email: email, password: password, setMessage: setMessage, setState: setState, navigate: navigate});
             setMessage("Connexion validée !");
             setState({token: response.token, name: response.name, image: response.image, role: response.role});
             navigate("/");
@@ -30,14 +30,14 @@ export default function AuthenticationForm(){
     const navigate = useNavigate();
     const [state, setState] = useAtom(connectedUser);
     const fieldStyle = {
-        backgroundColor:secondary,
+        backgroundColor: palette.secondary,
         borderRadius:25,
         marginTop: 20,
     };
     const buttonStyle = {
         backgroundColor:'white',
         marginTop: 20,
-        color:secondary,
+        color:palette.secondary,
         borderRadius:10
     };
     const whiteColor = {
@@ -85,11 +85,9 @@ export default function AuthenticationForm(){
                 fullWidth/>
             {message && (<Alert style={{marginTop:15}} severity="error">{message}</Alert>)}
             <Grid align={'center'}>
-                <ThemeProvider theme={theme}>
-                    <Button type='submit' color='primary' style={buttonStyle} fullWidth>
-                        <Typography fontSize={15} margin={"auto"}>Connexion</Typography>
-                    </Button>
-                </ThemeProvider>
+                <Button type='submit' color='primary' style={buttonStyle} fullWidth>
+                    <Typography fontSize={15} margin={"auto"}>Connexion</Typography>
+                </Button>
                 <GoogleButtonLogin setMessage={setMessage} setState={setState} navigate={navigate}/>
             </Grid>
         </form>

@@ -1,6 +1,6 @@
 import {Card, CardContent, ThemeProvider, Typography} from "@mui/material";
 import {Box} from "@mui/system";
-import {primary, theme} from "../../AppTheme";
+import {palette, theme} from "../../AppTheme";
 import Title from "../atoms/Title";
 import SupervisedUserCircleIcon from "@mui/icons-material/SupervisedUserCircle";
 import InsertDriveFileIcon from '@mui/icons-material/InsertDriveFile';
@@ -17,7 +17,7 @@ export default function CustomCard({IconCard, TitleCard, TextCard, Number}) {
     return (
         <Card
             elevation = {10}
-            style={{backgroundColor : primary, margin:"100px"}}
+            style={{backgroundColor : palette.primary, margin:"100px"}}
             sx={{ maxWidth: 350, minHeight: 450, borderRadius:10}}>
             <CardContent style={{color:"white"}}>
                 <Box display={"flex"} flexDirection={"column"} alignItems={"center"} textAlign={"center"} margin={"auto"}>

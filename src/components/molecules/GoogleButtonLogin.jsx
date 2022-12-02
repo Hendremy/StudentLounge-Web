@@ -1,13 +1,13 @@
 import {Box, Button, ThemeProvider} from "@mui/material";
-import {secondary, theme} from "../../AppTheme";
+import {palette, theme} from "../../AppTheme";
 import GoogleIcon from "@mui/icons-material/Google";
 import GoogleLogin from "react-google-login";
 import React from "react";
-import {ConnectByGoogle} from "../../StudentLoungeAPI";
+import {connectByGoogle} from "../../repositories/StudentLoungeAPI";
 
 export default function GoogleButtonLogin(props){
     const onSuccess =  (res) => {
-            ConnectByGoogle(res.tokenId).then(
+            connectByGoogle(res.tokenId).then(
                 result => {
                     props.setMessage("Connexion validée !");
                     props.setState({token: result.token, name: result.name, image: result.image, role: result.role});
@@ -25,7 +25,7 @@ export default function GoogleButtonLogin(props){
     const googleStyle = {
         backgroundColor:'white',
         marginTop: 10,
-        color:secondary,
+        color: palette.secondary,
         borderRadius:10,
         border: 0,
         width: 280,

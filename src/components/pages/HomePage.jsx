@@ -1,14 +1,14 @@
 import CustomCard from "../molecules/CustomCard";
 import {Box} from "@mui/system";
 import GridCentered from "../atoms/GridCentered";
-import {GetNbFiles} from "../../StudentLoungeAPI";
+import {getNbFiles} from "../../repositories/StudentLoungeAPI";
 import {useEffect, useState} from "react";
 
 export default function HomePage() {
     const [nbFiles, setNbFiles] = useState(null);
 
     useEffect(() => {
-        GetNbFiles().then(
+        getNbFiles().then(
             result => {
                 setNbFiles(result);
             }

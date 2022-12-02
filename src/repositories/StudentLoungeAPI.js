@@ -1,5 +1,7 @@
-export async function CreateAccount({email, password, firstname, lastname, confirmPassword}) {
-    const url = "https://porthos-intra.cg.helmo.be/e190449/Auth/Register";
+const baseUrl = "https://porthos-intra.cg.helmo.be/e190449";
+
+export async function createAccount({email, password, firstname, lastname, confirmPassword}) {
+    const url = `${baseUrl}/Auth/Register`;
     const data = JSON.stringify({email: email, password: password, firstname:firstname, lastname:lastname, passwordRep:confirmPassword});
 
     return await fetch(url, {
@@ -24,8 +26,8 @@ export async function CreateAccount({email, password, firstname, lastname, confi
     });
 }
 
-export async function ConnectByGoogle(token) {
-    const url = "https://porthos-intra.cg.helmo.be/e190449/Auth/External";
+export async function connectByGoogle(token) {
+    const url = `${baseUrl}/Auth/External`;
     const data = JSON.stringify({providerName: "Google", token: token});
     return await fetch(url, {
         method: "POST",
@@ -47,8 +49,8 @@ export async function ConnectByGoogle(token) {
         })
 }
 
-export async function GetAccount({email, password}) {
-    const url = "https://porthos-intra.cg.helmo.be/e190449/Auth/Login";
+export async function getAccount({email, password}) {
+    const url = `${baseUrl}/Auth/Login`;
     const data = JSON.stringify({username: email, password: password});
 
     return await fetch(url, {
@@ -73,7 +75,7 @@ export async function GetAccount({email, password}) {
         });
 }
 
-export async function GetNbFiles() {
+export async function getNbFiles() {
     const url = "https://porthos-intra.cg.helmo.be/e190449/LessonFile/files";
 
     return await fetch(url)

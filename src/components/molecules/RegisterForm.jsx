@@ -1,10 +1,10 @@
 import {Alert, Button, Grid, TextField, ThemeProvider} from "@mui/material";
-import {secondary, theme} from "../../AppTheme";
+import {palette, theme} from "../../AppTheme";
 import {useState} from "react";
 import {useNavigate} from "react-router-dom";
 import {useAtom} from "jotai";
 import {connectedUser} from "../../AccountStore";
-import {CreateAccount} from "../../StudentLoungeAPI";
+import {createAccount} from "../../repositories/StudentLoungeAPI";
 
 function checkResult(password, email, firstname, lastname, confirmPassword, setMessage, setState, navigate) {
     if (password === '' || email === '' || firstname === '' || lastname === '' || confirmPassword === '') {
@@ -13,7 +13,7 @@ function checkResult(password, email, firstname, lastname, confirmPassword, setM
     } else {
         if(password === confirmPassword){
             try{
-                const response = CreateAccount({
+                const response = createAccount({
                     email: email,
                     password: password,
                     firstname: firstname,
@@ -43,7 +43,7 @@ export default function RegisterForm(){
     const navigate = useNavigate();
     const [state, setState] = useAtom(connectedUser);
     const fieldStyle = {
-        backgroundColor:secondary,
+        backgroundColor:palette.secondary,
         borderRadius:25,
         marginTop: 20,
 
@@ -51,7 +51,7 @@ export default function RegisterForm(){
     const buttonStyle = {
         backgroundColor:'white',
         marginTop: 20,
-        color:secondary,
+        color: palette.secondary,
         borderRadius:10
     };
     const whiteColor = {

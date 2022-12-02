@@ -1,8 +1,9 @@
 import { NavLink } from 'react-router-dom';
-import {iconActive} from '../../AppTheme';
+import {palette} from '../../AppTheme';
 
 const activeStyle = {
-    borderBottom: `5px solid ${iconActive}`
+    borderBottom: `5px solid ${palette.iconActive}`,
+    color: palette.iconActive
 }
 
 export function MenuIcon({path, icon:Icon}){

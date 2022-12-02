@@ -1,5 +1,5 @@
 import {Paper, ThemeProvider} from "@mui/material";
-import {primary, theme} from "../../AppTheme";
+import {palette, theme} from "../../AppTheme";
 import Title from "../atoms/Title";
 import GridCentered from "../atoms/GridCentered";
 import RegisterForm from "../molecules/RegisterForm";
@@ -9,7 +9,7 @@ export default function Register() {
         padding: 20,
         height:'auto',
         width:280,
-        backgroundColor:primary,
+        backgroundColor: palette.primary,
         color:'white',
         borderRadius:25
     };

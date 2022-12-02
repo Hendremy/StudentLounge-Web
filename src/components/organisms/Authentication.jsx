@@ -1,6 +1,6 @@
 import {Paper, ThemeProvider} from "@mui/material";
 import Title from "../atoms/Title";
-import {primary, theme} from "../../AppTheme";
+import {palette, theme} from "../../AppTheme";
 import React from "react";
 import GridCentered from "../atoms/GridCentered";
 import AuthenticationForm from "../molecules/AuthenticationForm";
@@ -11,7 +11,7 @@ export default function Authentication() {
         height:'auto',
         width:280,
         margin:"20vh auto",
-        backgroundColor:primary,
+        backgroundColor: palette.primary,
         color:'white',
         borderRadius:25
     };

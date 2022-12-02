@@ -2,7 +2,7 @@ import {Box, Button, IconButton, Menu} from "@mui/material";
 import {AccountCircle} from "@mui/icons-material";
 import AuthNavStyle from "../atoms/AuthNavStyle";
 import {useState} from "react";
-import {primary} from "../../AppTheme";
+import {palette} from "../../AppTheme";
 import {useGoogleLogout} from "react-google-login";
 import {useAtom} from "jotai";
 import {connectedUser} from "../../AccountStore";
@@ -20,7 +20,7 @@ export default function AuthNavPrivate(){
         setAnchorEl(null);
     }
     const buttonLogout = {
-        backgroundColor: primary,
+        backgroundColor: palette.primary,
         color:'white',
         border:0,
         borderRadius:5,
