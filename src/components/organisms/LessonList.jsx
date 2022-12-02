@@ -6,7 +6,9 @@ import Lesson from "../../models/lesson"
 import LessonRow from "../molecules/LessonRow";
 
 
-export default function LessonList(){
+export default function LessonList(props){
+
+    let lessons = props.lessons;
     const paperStyle = {
         padding: 20,
         height:'auto',
@@ -23,15 +25,9 @@ export default function LessonList(){
         borderRadius: '25px'
     };
 
-    const fakeLessons = [
-        new Lesson('1','Mathématiques'),
-        new Lesson('2','Informatique'),
-        new Lesson('3','Cybersécurité')
-    ];
-
     let lessonList = [];
 
-    fakeLessons.forEach(
+    lessons.forEach(
         (lesson) => {
         lessonList.push(<LessonRow lesson={lesson}></LessonRow>)
     });

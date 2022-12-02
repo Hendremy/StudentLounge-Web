@@ -4,6 +4,7 @@ import {palette, theme} from "../../AppTheme";
 
 export default function LessonHub(props){
     const lesson = props.lesson;
+
     const paperStyle = {
         padding: 20,
         height:'auto',
@@ -18,13 +19,24 @@ export default function LessonHub(props){
         backgroundColor: palette.primary,
         minHeight:'80vh',
     };
-
-    return(
-        <Paper elevation ={10} style={paperStyle}>
-            <Title text={"Mathématiques"}/>
-            <Box sx={boxStyle}>
-
-            </Box>
-        </Paper>
-    );
+    if(lesson){
+        return(
+            <Paper elevation ={10} style={paperStyle}>
+                <Title text={lesson.name}/>
+                <Box sx={boxStyle}>
+    
+                </Box>
+            </Paper>
+        );
+    }else{
+        return(
+            <Paper elevation ={10} style={paperStyle}>
+                <Title text={"Aucun cours sélectionné"}/>
+                <Box sx={boxStyle}>
+    
+                </Box>
+            </Paper>
+        );
+    }
+    
 }

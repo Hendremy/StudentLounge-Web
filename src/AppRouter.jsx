@@ -14,7 +14,7 @@ const contactPath = '/contact';
 const messagesPath = '/messages';
 const calendarPath = '/calendar';
 const lessonPath = '/lesson';
-const lessonWithIdPath = '/lesson/{id}'
+const lessonWithIdPath = '/lesson/:id'
 
 export default function AppRouter({children}){
     return (
@@ -27,6 +27,7 @@ export default function AppRouter({children}){
                     <Route path={registerPath} element={<RegisterPage/>}/>
                     <Route path={contactPath} element={<ContactPage/>}/>
                     <Route path={lessonPath} element={<LessonsPage/>}/>
+                    <Route path={lessonWithIdPath} element={<LessonsPage/>}/>
                     <Route path={calendarPath} element={<CalendarPage/>}/>
                     <Route path={messagesPath} element={<MessagesPage/>}/>
                 </Routes>
