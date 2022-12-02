@@ -19,6 +19,11 @@ export default function LessonHub(props){
         backgroundColor: palette.primary,
         minHeight:'80vh',
     };
+
+    const files = [
+        
+    ];
+
     if(lesson){
         return(
             <Paper elevation ={10} style={paperStyle}>
