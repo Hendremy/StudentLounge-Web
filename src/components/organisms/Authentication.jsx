@@ -1,6 +1,6 @@
 import {Paper, ThemeProvider} from "@mui/material";
 import Title from "../atoms/Title";
-import {palette, theme} from "../../AppTheme";
+import {palette, theme} from "../../appTheme";
 import React from "react";
 import GridCentered from "../atoms/GridCentered";
 import AuthenticationForm from "../molecules/AuthenticationForm";

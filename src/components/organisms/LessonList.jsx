@@ -1,10 +1,8 @@
-import { Box, List, Paper } from "@mui/material";
-import {ThemeProvider} from "@mui/material";
-import Title from "../atoms/Title";
-import {palette, theme} from "../../AppTheme";
-import Lesson from "../../models/lesson"
+import { Toc } from "@mui/icons-material";
+import { Box, IconButton, List, Paper } from "@mui/material";
+import {palette, theme} from "../../appTheme";
 import LessonRow from "../molecules/LessonRow";
-
+import ListHeader from '../molecules/ListHeader';
 
 export default function LessonList(props){
 
@@ -34,7 +32,11 @@ export default function LessonList(props){
 
     return(
         <Paper elevation ={10} style={paperStyle}>
-            <Title text={"Cours"}/>
+            <ListHeader title='Cours'>
+                <IconButton sx={{color: "white"}}>
+                    <Toc/>
+                </IconButton>
+            </ListHeader>
             <Box sx={boxStyle}>
                 <List>
                     {lessonList}

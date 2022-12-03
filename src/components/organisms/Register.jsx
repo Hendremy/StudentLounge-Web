@@ -1,5 +1,5 @@
 import {Paper, ThemeProvider} from "@mui/material";
-import {palette, theme} from "../../AppTheme";
+import {palette, theme} from "../../appTheme";
 import Title from "../atoms/Title";
 import GridCentered from "../atoms/GridCentered";
 import RegisterForm from "../molecules/RegisterForm";

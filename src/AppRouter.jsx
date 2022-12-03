@@ -18,6 +18,11 @@ const lessonWithIdPath = '/lesson/:id'
 
 export default function AppRouter({children}){
     return (
+        //On devrait p-e faire un routeur différent pour chaque role
+        // => N'exposer que les routes propre aux roles de l'user
+        // AnonymRouter = Login, Register, Contact, Home
+        // StudentRouter = Lessons, Chat, Schedule, Home
+        // AdminRouter = Users
         <HashRouter>
             {children}
             <main>

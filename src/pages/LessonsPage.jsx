@@ -3,9 +3,13 @@ import LessonList from "../components/organisms/LessonList";
 import LessonHub from "../components/organisms/LessonHub";
 import Lesson from "../models/lesson"
 import { useParams } from "react-router-dom";
- 
+import { useAtom } from "jotai";
+import { lessonsAtom } from "../stores/studentStore";
+
 export default function LessonsPage(){
-    let { id } = useParams();
+    const { id } = useParams();
+
+    //const [lessons, setLessons] = useAtom(lessonsAtom);
 
     const lessons = [
         new Lesson('aza','Mathématiques'),

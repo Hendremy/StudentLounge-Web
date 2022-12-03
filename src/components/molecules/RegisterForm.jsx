@@ -1,9 +1,9 @@
 import {Alert, Button, Grid, TextField, ThemeProvider} from "@mui/material";
-import {palette, theme} from "../../AppTheme";
+import {palette, theme} from "../../appTheme";
 import {useState} from "react";
 import {useNavigate} from "react-router-dom";
 import {useAtom} from "jotai";
-import {connectedUser} from "../../AccountStore";
+import {userAtom} from "../../stores/studentStore";
 import {createAccount} from "../../repositories/StudentLoungeAPI";
 
 function checkResult(password, email, firstname, lastname, confirmPassword, setMessage, setState, navigate) {
@@ -41,7 +41,7 @@ export default function RegisterForm(){
     const [lastname, setLastname] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
     const navigate = useNavigate();
-    const [state, setState] = useAtom(connectedUser);
+    const [state, setState] = useAtom(userAtom);
     const fieldStyle = {
         backgroundColor:palette.secondary,
         borderRadius:25,

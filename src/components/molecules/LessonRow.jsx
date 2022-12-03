@@ -1,6 +1,6 @@
 import { ListItemText, ListItemButton } from "@mui/material";
 import { lessonPath } from "../../AppRouter";
-import {palette} from '../../AppTheme';
+import {palette} from '../../appTheme';
 import { NavLink } from "react-router-dom";
 
 export default function LessonRow(props){

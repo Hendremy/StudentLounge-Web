@@ -1,5 +1,5 @@
 import {Box, Button, ThemeProvider} from "@mui/material";
-import {palette, theme} from "../../AppTheme";
+import {palette, theme} from "../../appTheme";
 import GoogleIcon from "@mui/icons-material/Google";
 import GoogleLogin from "react-google-login";
 import React from "react";

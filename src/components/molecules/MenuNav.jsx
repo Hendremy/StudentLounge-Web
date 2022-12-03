@@ -5,11 +5,11 @@ import HelpIcon from '@mui/icons-material/LiveHelpRounded';
 import {calendarPath, contactPath, lessonPath, messagesPath} from "../../AppRouter.jsx";
 import { Box } from "@mui/system";
 import {useAtom} from "jotai";
-import {connectedUser} from "../../AccountStore";
+import {userAtom} from "../../stores/studentStore";
 import {MenuIcon} from "./MenuIcon";
 
 export default function MenuNav(){
-    const [state, setState] = useAtom(connectedUser);
+    const [state, setState] = useAtom(userAtom);
     const style = {
         display: 'flex',
         justifyContent: 'space-around',

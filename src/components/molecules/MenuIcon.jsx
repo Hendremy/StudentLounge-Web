@@ -1,5 +1,5 @@
 import { NavLink } from 'react-router-dom';
-import {palette} from '../../AppTheme';
+import {palette} from '../../appTheme';
 
 const activeStyle = {
     borderBottom: `5px solid ${palette.iconActive}`,

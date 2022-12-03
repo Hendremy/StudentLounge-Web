@@ -2,14 +2,14 @@ import {Box, Button, IconButton, Menu} from "@mui/material";
 import {AccountCircle} from "@mui/icons-material";
 import AuthNavStyle from "../atoms/AuthNavStyle";
 import {useState} from "react";
-import {palette} from "../../AppTheme";
+import {palette} from "../../appTheme";
 import {useGoogleLogout} from "react-google-login";
 import {useAtom} from "jotai";
-import {connectedUser} from "../../AccountStore";
+import {userAtom} from "../../stores/studentStore";
 import {useNavigate} from "react-router-dom";
 
 export default function AuthNavPrivate(){
-    const [user, setUser] = useAtom(connectedUser);
+    const [user, setUser] = useAtom(userAtom);
     const navigate = useNavigate();
     const [anchorEl, setAnchorEl] = useState(null);
     const open = Boolean(anchorEl);

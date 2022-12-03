@@ -1,5 +1,5 @@
 import { Typography } from "@mui/material";
-import {palette} from "../../AppTheme";
+import {palette} from "../../appTheme";
 
 export default function NumberStyle({text}){
     return (

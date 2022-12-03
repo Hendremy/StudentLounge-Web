@@ -1,9 +1,9 @@
 import {Alert, Button, Grid, TextField, Typography} from "@mui/material";
-import {palette} from "../../AppTheme";
+import {palette} from "../../appTheme";
 import React, {useState} from "react";
 import {useNavigate} from "react-router-dom";
 import {useAtom} from "jotai";
-import {connectedUser} from "../../AccountStore";
+import {userAtom} from "../../stores/studentStore";
 import {getAccount} from "../../repositories/StudentLoungeAPI";
 import GoogleButtonLogin from "./GoogleButtonLogin";
 
@@ -28,7 +28,7 @@ export default function AuthenticationForm(){
     const [email, setEmail] = useState("")
     const [message, setMessage] = useState("");
     const navigate = useNavigate();
-    const [state, setState] = useAtom(connectedUser);
+    const [state, setState] = useAtom(userAtom);
     const fieldStyle = {
         backgroundColor: palette.secondary,
         borderRadius:25,
