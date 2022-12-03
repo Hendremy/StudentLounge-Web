@@ -1,14 +1,10 @@
 import Lesson from "../models/lesson";
+import { SecuredApiService } from "./ApiService";
 
-export class LessonRepository {
+export class LessonRepository extends SecuredApiService{
 
-    constructor(userToken){
-        this.userToken = userToken;
-        this.baseUrl = "https://porthos-intra.cg.helmo.be/e190449/Lesson";
-        this.headers = {
-            'Authorization': `Bearer ${this.userToken}`,
-            'Content-Type': 'application/json'
-        };
+    constructor({apiUrl, controller, token}){
+        super({apiUrl: apiUrl, controller: controller, token: token});
     }
 
     async getLessonInfo({id}){
@@ -16,7 +12,7 @@ export class LessonRepository {
         return await fetch(url, {
             method: "GET",
             mode: "cors",
-            headers: this.headers
+            headers: super.jsonHeaders
         })
         .then(response => {
             if (!response.ok) {
