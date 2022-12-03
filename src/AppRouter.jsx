@@ -1,11 +1,11 @@
 import { HashRouter, Routes, Route } from "react-router-dom";
-import HomePage from "./components/pages/HomePage";
-import LoginPage from './components/pages/LoginPage';
-import RegisterPage from "./components/pages/RegisterPage";
-import ContactPage from "./components/pages/ContactPage";
-import LessonsPage from "./components/pages/LessonsPage";
-import CalendarPage from "./components/pages/CalendarPage";
-import MessagesPage from "./components/pages/MessagesPath";
+import HomePage from "./pages/HomePage";
+import LoginPage from './pages/LoginPage';
+import RegisterPage from "./pages/RegisterPage";
+import ContactPage from "./pages/ContactPage";
+import LessonsPage from "./pages/LessonsPage";
+import CalendarPage from "./pages/CalendarPage";
+import MessagesPage from "./pages/MessagesPath";
 
 const homePath = '/';
 const loginPath = '/login';

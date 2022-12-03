@@ -1,4 +1,4 @@
-import Authentication from "../organisms/Authentication";
+import Authentication from "../components/organisms/Authentication";
 
 export default function LoginPage(){
 

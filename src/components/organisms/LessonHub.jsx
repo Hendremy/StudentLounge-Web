@@ -4,7 +4,6 @@ import FileTable from "./FileTable";
 import {palette, theme} from "../../AppTheme";
 import LessonFile from "../../models/lessonfile"
 import HubHeader from "../molecules/HubHeader";
-import { DriveFolderUploadRounded, UploadFile } from "@mui/icons-material";
 import AskTutoratButton from "../molecules/AskTutoratButton";
 import UploadFileButton from "../molecules/UploadFileButton";
 import ShowTutorRequestButton from "../molecules/ShowTutorRequestButton";

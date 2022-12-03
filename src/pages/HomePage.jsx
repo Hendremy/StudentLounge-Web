@@ -1,7 +1,7 @@
-import CustomCard from "../molecules/CustomCard";
+import CustomCard from "../components/molecules/CustomCard";
 import {Box} from "@mui/system";
-import GridCentered from "../atoms/GridCentered";
-import {getNbFiles} from "../../repositories/StudentLoungeAPI";
+import GridCentered from "../components/atoms/GridCentered";
+import {getNbFiles} from "../repositories/StudentLoungeAPI";
 import {useEffect, useState} from "react";
 
 export default function HomePage() {

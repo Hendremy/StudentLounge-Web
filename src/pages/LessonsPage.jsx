@@ -1,7 +1,7 @@
 import { Grid } from "@mui/material";
-import LessonList from "../organisms/LessonList";
-import LessonHub from "../organisms/LessonHub";
-import Lesson from "../../models/lesson"
+import LessonList from "../components/organisms/LessonList";
+import LessonHub from "../components/organisms/LessonHub";
+import Lesson from "../models/lesson"
 import { useParams } from "react-router-dom";
  
 export default function LessonsPage(){
