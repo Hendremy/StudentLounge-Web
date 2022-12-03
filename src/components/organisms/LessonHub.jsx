@@ -1,8 +1,13 @@
-import { Box, Paper } from "@mui/material";
+import { Box, Button, Grid, Paper } from "@mui/material";
 import Title from "../atoms/Title";
 import FileTable from "./FileTable";
 import {palette, theme} from "../../AppTheme";
 import LessonFile from "../../models/lessonfile"
+import HubHeader from "../molecules/HubHeader";
+import { DriveFolderUploadRounded, UploadFile } from "@mui/icons-material";
+import AskTutoratButton from "../molecules/AskTutoratButton";
+import UploadFileButton from "../molecules/UploadFileButton";
+import ShowTutorRequestButton from "../molecules/ShowTutorRequestButton";
 
 export default function LessonHub(props){
     const lesson = props.lesson;
@@ -20,7 +25,7 @@ export default function LessonHub(props){
         height: '100%',
         backgroundColor: palette.primary,
         minHeight:'80vh',
-        padding: '5%'
+        padding: '2%'
     };
 
     const files = [
@@ -31,12 +36,14 @@ export default function LessonHub(props){
         new LessonFile("e",1,"Api pour les nuls","Zuck",new Date()),
     ];
 
-    
-
     if(lesson){
         return(
             <Paper elevation ={10} style={paperStyle}>
-                <Title text={lesson.name}/>
+                <HubHeader title={lesson.name}>
+                    <UploadFileButton/>
+                    <AskTutoratButton/>
+                    <ShowTutorRequestButton/>
+                </HubHeader>
                 <Box sx={boxStyle}>
                     <FileTable files={files}/>
                 </Box>
