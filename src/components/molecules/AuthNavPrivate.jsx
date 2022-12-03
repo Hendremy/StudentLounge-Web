@@ -3,7 +3,6 @@ import {AccountCircle} from "@mui/icons-material";
 import AuthNavStyle from "../atoms/AuthNavStyle";
 import {useState} from "react";
 import {palette} from "../../appTheme";
-import {useGoogleLogout} from "react-google-login";
 import {useAtom} from "jotai";
 import {userAtom} from "../../stores/studentStore";
 import {useNavigate} from "react-router-dom";
@@ -28,24 +27,6 @@ export default function AuthNavPrivate(){
         marginTop:10
     }
 
-    const { signOut } = useGoogleLogout({
-        clientId: process.env.REACT_APP_GOOGLE_CLIENT_ID,
-        onFailure: () => {
-            throw new Error("Déconnexion échouée !");
-        },
-        onLogoutSuccess: () => {
-            alert("Déconnexion effectué ! 👌");
-        }
-    });
-
-    const HandleDeconnexion = (event) => {
-        event.preventDefault();
-        setUser(null);
-        signOut();
-        localStorage.clear();
-        sessionStorage.clear();
-        navigate("/");
-    }
 
     return (
         <AuthNavStyle>
@@ -75,7 +56,7 @@ export default function AuthNavPrivate(){
             >
                 <Box style={{margin:10, display:'flex', flexDirection:'column', alignItems:"center"}}>
                     {user.name}
-                    <Button onClick={HandleDeconnexion} style={buttonLogout}>
+                    <Button onClick={console.log("oyo")} style={buttonLogout}>
                         Se deconnecter
                     </Button>
                 </Box>

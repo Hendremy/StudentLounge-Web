@@ -5,6 +5,7 @@ import {useNavigate} from "react-router-dom";
 import {useAtom} from "jotai";
 import {userAtom} from "../../stores/studentStore";
 import {getAccount} from "../../repositories/StudentLoungeAPI";
+import { GoogleOAuthProvider } from "@react-oauth/google";
 import GoogleButtonLogin from "./GoogleButtonLogin";
 
 function checkResult(password, email, setMessage, setState, navigate) {
@@ -88,7 +89,9 @@ export default function AuthenticationForm(){
                 <Button type='submit' color='primary' style={buttonStyle} fullWidth>
                     <Typography fontSize={15} margin={"auto"}>Connexion</Typography>
                 </Button>
-                <GoogleButtonLogin setMessage={setMessage} setState={setState} navigate={navigate}/>
+                <GoogleOAuthProvider clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID}>
+                    <GoogleButtonLogin setMessage={setMessage} setState={setState} navigate={navigate}/>
+                </GoogleOAuthProvider>
             </Grid>
         </form>
     );
