@@ -1,4 +1,4 @@
-import {useEffect} from "react";
+/*import {useEffect} from "react";
 import {gapi} from "gapi-script";
 
 export default function GoogleAuth({children}) {
@@ -9,4 +9,4 @@ export default function GoogleAuth({children}) {
     },[]);
 
     return (children);
-}
+}*/

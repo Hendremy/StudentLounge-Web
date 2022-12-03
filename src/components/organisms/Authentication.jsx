@@ -1,6 +1,6 @@
-import {Paper, ThemeProvider} from "@mui/material";
+import {Paper} from "@mui/material";
 import Title from "../atoms/Title";
-import {palette, theme} from "../../appTheme";
+import {palette} from "../../appTheme";
 import React from "react";
 import GridCentered from "../atoms/GridCentered";
 import AuthenticationForm from "../molecules/AuthenticationForm";
@@ -19,9 +19,7 @@ export default function Authentication() {
     return (
     <GridCentered>
         <Paper elevation ={10} style={paperStyle}>
-            <ThemeProvider theme={theme}>
-                <Title text={"Connexion"}/>
-            </ThemeProvider>
+            <Title text={"Connexion"}/>
             <AuthenticationForm/>
         </Paper>
     </GridCentered>);

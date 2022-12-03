@@ -1,7 +1,7 @@
-import {Box, Button, ThemeProvider} from "@mui/material";
-import {palette, theme} from "../../appTheme";
+import {Box, Button} from "@mui/material";
+import {palette} from "../../appTheme";
 import GoogleIcon from "@mui/icons-material/Google";
-import GoogleLogin from "react-google-login";
+import { GoogleLogin } from "@react-oauth/google";
 import React from "react";
 import {connectByGoogle} from "../../repositories/StudentLoungeAPI";
 
@@ -41,12 +41,10 @@ export default function GoogleButtonLogin(props){
             cookiePolicy={'single_host_origin'}
             render={(renderProps) => (
                 <Box display={"flex"} flexDirection={"row"}>
-                    <ThemeProvider theme={theme}>
-                        <Button onClick={renderProps.onClick} style={googleStyle} fontSize={15}>
-                            <GoogleIcon style={{margin:10}}/>
-                            Continuer avec Google
-                        </Button>
-                    </ThemeProvider>
+                    <Button onClick={renderProps.onClick} style={googleStyle} fontSize={15}>
+                        <GoogleIcon style={{margin:10}}/>
+                        Continuer avec Google
+                    </Button>
                 </Box>)
             }
         />
