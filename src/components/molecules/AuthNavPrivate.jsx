@@ -3,16 +3,14 @@ import {AccountCircle} from "@mui/icons-material";
 import AuthNavStyle from "../atoms/AuthNavStyle";
 import {useState} from "react";
 import {palette} from "../../appTheme";
-import {useAtom} from "jotai";
-import {userAtom} from "../../stores/studentStore";
 import {useNavigate} from "react-router-dom";
 
-export default function AuthNavPrivate(){
-    const [user, setUser] = useAtom(userAtom);
+export default function AuthNavPrivate(props){
+    const user = props.user;
     const navigate = useNavigate();
     const [anchorEl, setAnchorEl] = useState(null);
     const open = Boolean(anchorEl);
-    const  handleMenu = (event: MouseEvent<HTMLElement>) => {
+    const  handleMenu = (event) => {
         setAnchorEl(event.currentTarget);
     }
     const handleClose = () => {
@@ -26,7 +24,6 @@ export default function AuthNavPrivate(){
         padding:7,
         marginTop:10
     }
-
 
     return (
         <AuthNavStyle>

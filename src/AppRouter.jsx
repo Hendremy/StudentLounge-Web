@@ -1,22 +1,27 @@
-import { HashRouter, Routes, Route } from "react-router-dom";
-import HomePage from "./pages/HomePage";
-import LoginPage from './pages/LoginPage';
-import RegisterPage from "./pages/RegisterPage";
-import ContactPage from "./pages/ContactPage";
-import LessonsPage from "./pages/LessonsPage";
-import CalendarPage from "./pages/CalendarPage";
-import MessagesPage from "./pages/MessagesPath";
+import { HashRouter, Routes } from "react-router-dom";
+import { useAtom } from "jotai";
+import { userAtom } from "./stores/userStore";
+import AnonymRoutes from "./routes/AnonymRoutes";
+import AdminRoutes from './routes/AdminRoutes';
+import StudentRoutes from './routes/StudentRoutes';
 
-const homePath = '/';
-const loginPath = '/login';
-const registerPath = '/register';
-const contactPath = '/contact';
-const messagesPath = '/messages';
-const calendarPath = '/calendar';
-const lessonPath = '/lesson';
-const lessonWithIdPath = '/lesson/:id'
 
 export default function AppRouter({children}){
+    const [user] = useAtom(userAtom);
+
+    const routes = [];
+
+    if(user){
+        if(user.isAdmin){
+            routes.push(<AdminRoutes/>);
+        }
+        if(user.isStudent){
+            routes.push(<StudentRoutes/>);
+        }
+    }else{
+        routes = <AnonymRoutes/>;
+    }
+
     return (
         //On devrait p-e faire un routeur différent pour chaque role
         // => N'exposer que les routes propre aux roles de l'user
@@ -27,18 +32,9 @@ export default function AppRouter({children}){
             {children}
             <main>
                 <Routes>
-                    <Route path={homePath} element={<HomePage/>}/>
-                    <Route path={loginPath} element={<LoginPage/>}/>
-                    <Route path={registerPath} element={<RegisterPage/>}/>
-                    <Route path={contactPath} element={<ContactPage/>}/>
-                    <Route path={lessonPath} element={<LessonsPage/>}/>
-                    <Route path={lessonWithIdPath} element={<LessonsPage/>}/>
-                    <Route path={calendarPath} element={<CalendarPage/>}/>
-                    <Route path={messagesPath} element={<MessagesPage/>}/>
+                    {routes}
                 </Routes>
             </main>
         </HashRouter>
     );
 }
-
-export {homePath, loginPath, registerPath, contactPath, messagesPath, calendarPath, lessonPath};

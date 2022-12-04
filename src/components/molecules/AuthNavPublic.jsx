@@ -1,6 +1,6 @@
 import {Box} from "@mui/material";
 import MenuItem from "./MenuItem";
-import {loginPath, registerPath} from "../../AppRouter";
+import {loginPath, registerPath} from '../../routes/AnonymRoutes';
 import AuthNavStyle from "../atoms/AuthNavStyle";
 
 export default function AuthNavPublic(){

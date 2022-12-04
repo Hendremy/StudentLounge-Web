@@ -4,7 +4,7 @@ import LessonHub from "../components/organisms/LessonHub";
 import Lesson from "../models/lesson"
 import { useParams } from "react-router-dom";
 import { useAtom } from "jotai";
-import { lessonsAtom } from "../stores/studentStore";
+import { lessonsAtom } from "../stores/userStore";
 
 export default function LessonsPage(){
     const { id } = useParams();

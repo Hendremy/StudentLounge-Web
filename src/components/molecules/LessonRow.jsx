@@ -1,5 +1,5 @@
 import { ListItemText, ListItemButton } from "@mui/material";
-import { lessonPath } from "../../AppRouter";
+import { lessonPath } from "../../routes/StudentRoutes";
 import {palette} from '../../appTheme';
 import { NavLink } from "react-router-dom";
 

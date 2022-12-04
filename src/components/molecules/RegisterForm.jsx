@@ -3,7 +3,7 @@ import {palette, theme} from "../../appTheme";
 import {useState} from "react";
 import {useNavigate} from "react-router-dom";
 import {useAtom} from "jotai";
-import {userAtom} from "../../stores/studentStore";
+import {userAtom} from "../../stores/userStore";
 import {createAccount} from "../../repositories/StudentLoungeAPI";
 
 function checkResult(password, email, firstname, lastname, confirmPassword, setMessage, setState, navigate) {

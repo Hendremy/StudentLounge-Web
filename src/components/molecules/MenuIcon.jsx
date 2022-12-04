@@ -6,7 +6,7 @@ const activeStyle = {
     color: palette.iconActive
 }
 
-export function MenuIcon({path, icon:Icon}){
+export default function MenuIcon({path, icon:Icon}){
     return (
         <NavLink to={path} style={({ isActive }) => isActive ? activeStyle : undefined}>
                 <Icon sx={{fontSize: 37}}/>
