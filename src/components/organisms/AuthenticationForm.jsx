@@ -1,12 +1,7 @@
 import {Alert, Button, Stack, TextField, Typography} from "@mui/material";
 import {palette} from "../../appTheme";
 import React, {useState} from "react";
-import {useNavigate} from "react-router-dom";
-import {useAtom} from "jotai";
-import {userAtom} from "../../stores/userStore";
-import {getAccount} from "../../repositories/StudentLoungeAPI";
-import { GoogleOAuthProvider } from "@react-oauth/google";
-import GoogleButtonLogin from "./GoogleButtonLogin";
+import {getAccount} from "../../repositories/studentLoungeAPI";
 
 function checkResult(password, email, setMessage, setState, navigate) {
     if (password === null || email === null || password === '' || email === '') {
@@ -28,8 +23,7 @@ export default function AuthenticationForm(){
     const [password, setPassword] = useState("");
     const [email, setEmail] = useState("")
     const [message, setMessage] = useState("");
-    const navigate = useNavigate();
-    const [state, setState] = useAtom(userAtom);
+
     const fieldStyle = {
         backgroundColor: palette.secondary,
         borderRadius:25,
@@ -85,14 +79,9 @@ export default function AuthenticationForm(){
                 sx={focusColor}
                 fullWidth/>
             {message && (<Alert style={{marginTop:15}} severity="error">{message}</Alert>)}
-            <Stack align={'center'} spacing={1}>
-                <Button type='submit' color='primary' style={buttonStyle} fullWidth>
-                    <Typography fontSize={15} margin={"auto"}>Connexion</Typography>
-                </Button>
-                <GoogleOAuthProvider clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID}>
-                    <GoogleButtonLogin onAuthenticated={() => {}}/>
-                </GoogleOAuthProvider>
-            </Stack>
+            <Button type='submit' color='primary' style={buttonStyle} fullWidth>
+                <Typography fontSize={15} margin={"auto"}>Connexion</Typography>
+            </Button>
         </form>
     );
 }

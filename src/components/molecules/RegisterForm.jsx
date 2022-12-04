@@ -4,7 +4,7 @@ import {useState} from "react";
 import {useNavigate} from "react-router-dom";
 import {useAtom} from "jotai";
 import {userAtom} from "../../stores/userStore";
-import {createAccount} from "../../repositories/StudentLoungeAPI";
+import {createAccount} from "../../repositories/studentLoungeAPI";
 
 function checkResult(password, email, firstname, lastname, confirmPassword, setMessage, setState, navigate) {
     if (password === '' || email === '' || firstname === '' || lastname === '' || confirmPassword === '') {

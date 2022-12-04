@@ -1,6 +1,6 @@
-import { LessonRepository } from "./LessonRepository";
+import { LessonRepository } from "./lessonRepository";
 
-class StudentServices {
+export default class StudentServices {
 
     constructor({baseUrl, token}){
         this.baseUrl = baseUrl;
@@ -12,7 +12,7 @@ class StudentServices {
             {
                 baseUrl: this.baseUrl, 
                 controller: 'Lesson', 
-                token: token
+                token: this.token
             });
     }
 }

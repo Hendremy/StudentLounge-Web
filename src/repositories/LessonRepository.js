@@ -1,5 +1,5 @@
 import Lesson from "../models/lesson";
-import { SecuredApiService } from "./ApiService";
+import { SecuredApiService } from "./apiService";
 
 export class LessonRepository extends SecuredApiService{
 
@@ -8,7 +8,7 @@ export class LessonRepository extends SecuredApiService{
     }
 
     async getLessonInfo({id}){
-        const url = `${baseUrl}/${id}`;
+        const url = `${super.baseUrl}/${id}`;
         return await fetch(url, {
             method: "GET",
             mode: "cors",
@@ -29,7 +29,7 @@ export class LessonRepository extends SecuredApiService{
     }
 
     async getUserLessons(){
-        return await fetch(url, {
+        return await fetch(super.baseUrl, {
             method: "GET",
             mode: "cors",
             headers: this.headers

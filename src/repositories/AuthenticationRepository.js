@@ -1,5 +1,5 @@
 import AppUser from "../models/appUser";
-import {ApiService} from "./ApiService";
+import {ApiService} from "./apiService";
 
 export default class AuthenticationRepository extends ApiService{
 

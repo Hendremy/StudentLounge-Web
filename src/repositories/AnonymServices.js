@@ -1,7 +1,7 @@
-import AuthenticationRepository from "./AuthenticationRepository";
-import StatsRepository from "./StatsRepository";
+import AuthenticationRepository from "./authenticationRepository";
+import StatsRepository from "./statsRepository";
 
-class AnonymServices{
+export default class AnonymServices {
 
     constructor({baseUrl}){
         this.baseUrl = baseUrl;

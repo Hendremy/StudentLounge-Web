@@ -1,4 +1,4 @@
-import { ApiService } from "./ApiService"
+import { ApiService } from "./apiService"
 
 export default class StatsRepository extends ApiService{
 
