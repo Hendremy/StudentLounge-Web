@@ -2,7 +2,7 @@ import {Alert, Button, Stack, TextField, Typography} from "@mui/material";
 import {palette} from "../../appTheme";
 import React, {useState} from "react";
 
-export default function AuthenticationForm({onAuthenticated, basicLogin}){
+export default function AuthenticationForm({onAuthenticated, authRepo}){
     const [password, setPassword] = useState("");
     const [email, setEmail] = useState("")
     const [message, setMessage] = useState("");
@@ -36,7 +36,7 @@ export default function AuthenticationForm({onAuthenticated, basicLogin}){
             setMessage("Remplissez tous les champs");
         }else{
             try{
-                const user = await basicLogin({email: email, password: password});
+                const user = await authRepo.login({email: email, password: password});
                 if(user){
                     onAuthenticated(user);
                     setMessage("Connexion validée !");

@@ -1,12 +1,9 @@
 import { GoogleOAuthProvider } from "@react-oauth/google"
 import GoogleButtonLogin from "../molecules/GoogleButtonLogin"
 
-export default function GoogleLogin(props){
-    const googleLogin = props.googleLogin;
-    const onAuthenticated = props.onAuthenticated;
-
+export default function GoogleLogin({onAuthenticated, authRepo}){
     const onJwtReceived = async (googleJwt) => {
-        var user = await googleLogin(googleJwt);
+        var user = await authRepo.googleLogin(googleJwt);
         if(user){
             onAuthenticated(user);
         }

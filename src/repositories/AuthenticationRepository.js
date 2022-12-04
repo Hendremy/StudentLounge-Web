@@ -67,6 +67,8 @@ export default class AuthenticationRepository extends ApiService{
     }
 
     _reviveAppUser(jsonUser){
+        console.log(jsonUser)
+        //_ref undefined ?
         return Object.assign(new AppUser(), jsonUser);
     }
 }

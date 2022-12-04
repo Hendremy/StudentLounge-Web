@@ -17,9 +17,6 @@ export default function LoginPage() {
     const [, setUser] = useAtom(userAtom);
     const navigate = useNavigate();
 
-    console.log(apiServices);
-    console.log(authRepository);
-    
     const paperStyle = {
         padding: 20,
         height:'auto',
@@ -40,8 +37,8 @@ export default function LoginPage() {
         <Paper elevation ={10} style={paperStyle}>
             <Title text={"Connexion"}/>
             <Stack align={'center'} spacing={1}>
-                <AuthenticationForm onAuthenticated={onAuthenticated} basicLogin={authRepository.login} />
-                <GoogleLogin onAuthenticated={onAuthenticated} googleLogin={authRepository.googleLogin}/>
+                <AuthenticationForm onAuthenticated={onAuthenticated} authRepo={authRepository} />
+                <GoogleLogin onAuthenticated={onAuthenticated} authRepo={authRepository}/>
             </Stack>
         </Paper>
     </GridCentered>);

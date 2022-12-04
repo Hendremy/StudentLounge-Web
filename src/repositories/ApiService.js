@@ -6,11 +6,6 @@ export class ApiService{
     }
 
     get baseUrl () {
-        console.log("apiUrl");
-        console.log(this.apiUrl);
-
-        console.log("controller");
-        console.log(this.controller);
         return `${this.apiUrl}/${this.controller}`;
     }
 
@@ -24,7 +19,7 @@ export class ApiService{
         if (!response.ok) {
             throw new Error(`${response.status} - ${response.statusText}`);
         }
-        return response.json();
+        return await response.json();
     }
 }
 
