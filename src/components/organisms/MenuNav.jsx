@@ -12,7 +12,7 @@ export default function MenuNav(props){
         width:1/5
     }
 
-    const navs = [];
+    let navs = [];
 
     if(user){
         if(user.isAdmin){

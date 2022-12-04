@@ -3,8 +3,8 @@ import {ApiService} from "./ApiService";
 
 export default class AuthenticationRepository extends ApiService{
 
-    constructor({apiUrl}){
-        super({apiUrl: apiUrl, controller: 'Auth'});
+    constructor({apiUrl, controller}){
+        super({apiUrl: apiUrl, controller: controller});
     }
 
     async createAccount({email, password, firstname, lastname, confirmPassword}) {

@@ -1,15 +1,15 @@
 import { HashRouter, Routes } from "react-router-dom";
 import { useAtom } from "jotai";
 import { userAtom } from "./stores/userStore";
-import AnonymRoutes from "./routes/AnonymRoutes";
-import AdminRoutes from './routes/AdminRoutes';
-import StudentRoutes from './routes/StudentRoutes';
+import { AnonymRoutes } from "./routes/AnonymRoutes";
+import { AdminRoutes } from './routes/AdminRoutes';
+import { StudentRoutes } from './routes/StudentRoutes';
 
 
 export default function AppRouter({children}){
     const [user] = useAtom(userAtom);
 
-    const routes = [];
+    let routes = [];
 
     if(user){
         if(user.isAdmin){
@@ -19,7 +19,7 @@ export default function AppRouter({children}){
             routes.push(<StudentRoutes/>);
         }
     }else{
-        routes = <AnonymRoutes/>;
+        routes = AnonymRoutes;
     }
 
     return (

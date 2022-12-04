@@ -1,5 +1,5 @@
 import { ListItemText, ListItemButton } from "@mui/material";
-import { lessonPath } from "../../routes/StudentRoutes";
+import { lessonsPath } from "../../routes/StudentRoutes";
 import {palette} from '../../appTheme';
 import { NavLink } from "react-router-dom";
 
@@ -18,7 +18,7 @@ export default function LessonRow(props){
 
     return (
         <ListItemButton sx={style}>
-            <NavLink to={`${lessonPath}/${lesson.id}`} style={({ isActive }) => isActive ? activeStyle : undefined}>
+            <NavLink to={`${lessonsPath}/${lesson.id}`} style={({ isActive }) => isActive ? activeStyle : undefined}>
                 <ListItemText primary={lesson.name}/>
             </NavLink>
         </ListItemButton>

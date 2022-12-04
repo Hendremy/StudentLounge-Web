@@ -1,7 +1,7 @@
-import MenuNav from '../molecules/MenuNav'
+import MenuNav from './MenuNav'
 import {AppBar, Box, Toolbar} from "@mui/material";
 import AuthNav from '../molecules/AuthNav';
-import {homePath} from "../../AppRouter";
+import {homePath} from "../../routes/SharedRoutes";
 import {NavLink} from "react-router-dom";
 
 export default function AppHeader(){

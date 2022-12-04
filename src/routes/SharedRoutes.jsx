@@ -7,16 +7,16 @@ const homePath = '/';
 
 function ContactRoute(){
     return (
-        <Route path={contactPath} element={<ContactPage/>}/>
+        <Route key={'contact'} path={contactPath} element={<ContactPage/>}/>
     );
 }
 
 function HomeRoute(){
     return(
-        <Route path={homePath} element={<HomePage/>}/>
+        <Route key={'home'} path={homePath} element={<HomePage/>}/>
     );
 }
 
 
-export {contactPath, ContactRoute, homePath, HomeRoute}
+export {contactPath, ContactRoute, homePath, HomeRoute};
 
