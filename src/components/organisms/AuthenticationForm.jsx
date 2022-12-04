@@ -1,25 +1,8 @@
 import {Alert, Button, Stack, TextField, Typography} from "@mui/material";
 import {palette} from "../../appTheme";
 import React, {useState} from "react";
-import {getAccount} from "../../repositories/studentLoungeAPI";
 
-function checkResult(password, email, setMessage, setState, navigate) {
-    if (password === null || email === null || password === '' || email === '') {
-        setMessage("Remplissez tous les champs");
-        return null;
-    } else {
-        try{
-            const response = getAccount({email: email, password: password, setMessage: setMessage, setState: setState, navigate: navigate});
-            setMessage("Connexion validée !");
-            setState({token: response.token, name: response.name, image: response.image, role: response.role});
-            navigate("/");
-        }catch (e) {
-            setMessage("L'email ou le mot de passe est incorrect");
-        }
-    }
-}
-
-export default function AuthenticationForm(){
+export default function AuthenticationForm({onAuthenticated, basicLogin}){
     const [password, setPassword] = useState("");
     const [email, setEmail] = useState("")
     const [message, setMessage] = useState("");
@@ -47,13 +30,28 @@ export default function AuthenticationForm(){
             }
         }
     }
-    async function HandleClick(event) {
+    async function handleClick(event) {
         event.preventDefault();
-        checkResult(password, email, setMessage, setState, navigate);
+        if (password === null || email === null || password === '' || email === '') {
+            setMessage("Remplissez tous les champs");
+        }else{
+            try{
+                const user = await basicLogin({email: email, password: password});
+                if(user){
+                    onAuthenticated(user);
+                    setMessage("Connexion validée !");
+                }else{
+                    setMessage("Erreur lors de la connexion");
+                }
+            }catch (e) {
+                console.log(e);
+                setMessage("L'email ou le mot de passe est incorrect");
+            }
+        }
     }
 
     return (
-        <form onSubmit={HandleClick}>
+        <form onSubmit={handleClick}>
             <TextField
                 value={email}
                 name={"email"}

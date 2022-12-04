@@ -9,7 +9,7 @@ import StudentServices from './repositories/studentServices';
 import { useAtom } from 'jotai';
 import { userAtom } from './stores/userStore';
 
-export const ApiContext = React.createContext();
+export const ApiServicesContext = React.createContext();
 
 export default function App() {
   const apiUrl = "https://porthos-intra.cg.helmo.be/e190449";
@@ -29,11 +29,11 @@ export default function App() {
 
   return (
     <ThemeProvider theme={theme}>
-      <ApiContext.Provider value={apiServices}>
-          <AppRouter>
-            <AppHeader/>
+      <ApiServicesContext.Provider value={apiServices}>
+        <AppRouter>
+          <AppHeader/>
         </AppRouter>
-      </ApiContext.Provider>
+      </ApiServicesContext.Provider>
     </ThemeProvider>
   );
 }

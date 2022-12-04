@@ -2,15 +2,15 @@ import { LessonRepository } from "./lessonRepository";
 
 export default class StudentServices {
 
-    constructor({baseUrl, token}){
-        this.baseUrl = baseUrl;
+    constructor({apiUrl, token}){
+        this.apiUrl = apiUrl;
         this.token = token;
     }
 
     get lessonRepo(){
         return new LessonRepository(
             {
-                baseUrl: this.baseUrl, 
+                apiUrl: this.apiUrl, 
                 controller: 'Lesson', 
                 token: this.token
             });

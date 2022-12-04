@@ -2,7 +2,7 @@ import { Box, Button, Grid, Paper } from "@mui/material";
 import Title from "../atoms/Title";
 import FileTable from "./FileTable";
 import {palette, theme} from "../../appTheme";
-import LessonFile from "../../models/lessonfile"
+import LessonFile from "../../models/lessonFile"
 import HubHeader from "../molecules/HubHeader";
 import AskTutoratButton from "../molecules/AskTutoratButton";
 import UploadFileButton from "../molecules/UploadFileButton";

@@ -2,8 +2,8 @@ import { ApiService } from "./apiService"
 
 export default class StatsRepository extends ApiService{
 
-    constructor({baseUrl, controller}){
-        super({baseUrl: baseUrl, controller: controller})
+    constructor({apiUrl, controller}){
+        super({apiUrl: apiUrl, controller: controller})
     }
 
     async getNbFiles() {

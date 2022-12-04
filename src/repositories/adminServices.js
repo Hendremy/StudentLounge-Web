@@ -1,7 +1,7 @@
 class AdminServices {
 
-    constructor({baseUrl, token}){
-        this.baseUrl = baseUrl;
+    constructor({apiUrl, token}){
+        this.apiUrl = apiUrl;
         this.token = token;
     }
 }

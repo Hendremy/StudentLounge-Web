@@ -7,7 +7,7 @@ export default class AuthenticationRepository extends ApiService{
         super({apiUrl: apiUrl, controller: controller});
     }
 
-    async createAccount({email, password, firstname, lastname, confirmPassword}) {
+    async register({email, password, firstname, lastname, confirmPassword}) {
         const url = `${super.baseUrl}/Register`;
         const data = JSON.stringify({email: email, password: password, firstname:firstname, lastname:lastname, passwordRep:confirmPassword});
     
@@ -27,7 +27,7 @@ export default class AuthenticationRepository extends ApiService{
         });
     }
     
-    async connectByGoogle(token) {
+    async googleLogin(token) {
         const url = `${super.baseUrl}/External`;
         const data = JSON.stringify({providerName: "Google", token: token});
         return await fetch(url, {
@@ -46,7 +46,7 @@ export default class AuthenticationRepository extends ApiService{
         });
     }
     
-    async getAccount({email, password}) {
+    async login({email, password}) {
         const url = `${super.baseUrl}/Login`;
         const data = JSON.stringify({username: email, password: password});
     

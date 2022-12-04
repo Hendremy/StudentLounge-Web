@@ -6,6 +6,11 @@ export class ApiService{
     }
 
     get baseUrl () {
+        console.log("apiUrl");
+        console.log(this.apiUrl);
+
+        console.log("controller");
+        console.log(this.controller);
         return `${this.apiUrl}/${this.controller}`;
     }
 

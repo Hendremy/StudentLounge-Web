@@ -3,14 +3,14 @@ import StatsRepository from "./statsRepository";
 
 export default class AnonymServices {
 
-    constructor({baseUrl}){
-        this.baseUrl = baseUrl;
+    constructor({apiUrl}){
+        this.apiUrl = apiUrl;
     }
 
     get authenticationRepository(){
         return new AuthenticationRepository(
             {
-                baseUrl: this.baseUrl,
+                apiUrl: this.apiUrl,
                 controller: 'Auth'
             }
         );
@@ -19,7 +19,7 @@ export default class AnonymServices {
     get statsRepository(){
         return new StatsRepository(
             {
-                baseUrl: this.baseUrl,
+                apiUrl: this.apiUrl,
                 controller: 'Stats'
             }
         );
