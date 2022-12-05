@@ -23,19 +23,10 @@ const theme = createTheme({
     },
     typography: {
       fontFamily: [
-        'Exo 2','Gugi'
+        'Exo 2','"Segoe UI"'
       ],
-      body1: 
-      {
-        fontFamily: ['Exo 2']
-      },
-      body2: 
-      {
-        fontFamily: ['Exo 2']
-      },
-      h5: 
-      {
-        fontFamily: ['Exo 2']
+      h4: {
+        fontFamily: ['Gugi','"Segoe UI']
       }
     }
 });

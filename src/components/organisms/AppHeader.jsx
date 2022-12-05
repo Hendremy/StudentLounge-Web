@@ -1,5 +1,5 @@
 import MenuNav from './MenuNav'
-import {AppBar, Box, Toolbar} from "@mui/material";
+import {AppBar, Box, Toolbar, Typography} from "@mui/material";
 import AuthNav from '../molecules/AuthNav';
 import {homePath} from "../../routes/SharedRoutes";
 import {NavLink} from "react-router-dom";
@@ -21,7 +21,11 @@ export default function AppHeader(){
       <AppBar position="fixed" color="primary">
         <Toolbar variant={"dense"}>
           <Box sx={style}>
-            <NavLink to={homePath} component="div" style={{fontSize:30}}>Student Lounge</NavLink>
+            <NavLink to={homePath} >
+              <Typography variant={'h4'}>
+                Student Lounge
+              </Typography>
+            </NavLink>
             <MenuNav user={user}/>
             <AuthNav user={user}/>
           </Box>

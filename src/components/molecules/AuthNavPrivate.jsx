@@ -1,4 +1,4 @@
-import {Box, Button, IconButton, Menu} from "@mui/material";
+import {Box, Button, IconButton, Menu, Typography} from "@mui/material";
 import {AccountCircle} from "@mui/icons-material";
 import AuthNavStyle from "../atoms/AuthNavStyle";
 import {useState} from "react";
@@ -27,6 +27,9 @@ export default function AuthNavPrivate(props){
 
     return (
         <AuthNavStyle>
+            <Typography component="span">
+                {user.fullname}
+            </Typography>
             <IconButton
                 aria-label="Profile"
                 aria-controls="menu-appbar"
@@ -52,7 +55,6 @@ export default function AuthNavPrivate(props){
                 style={{marginTop:35}}
             >
                 <Box style={{margin:10, display:'flex', flexDirection:'column', alignItems:"center"}}>
-                    {user.name}
                     <Button onClick={() => console.log("oyo")} style={buttonLogout}>
                         Se deconnecter
                     </Button>

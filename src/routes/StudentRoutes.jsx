@@ -1,5 +1,5 @@
 import { Route } from 'react-router-dom';
-import { ContactRoute, HomeRoute } from './SharedRoutes';
+import { ContactRoute, HomeRoute, NotFoundRoute } from './SharedRoutes';
 import LessonsPage from '../pages/LessonsPage';
 import CalendarPage from '../pages/CalendarPage';
 import MessagesPage from '../pages/MessagesPage';
@@ -11,6 +11,7 @@ const lessonsPath = '/lesson';
 const StudentRoutes = [
     HomeRoute(),
     ContactRoute(),
+    NotFoundRoute(),
     <Route key={'lessons'} path={lessonsPath} element={<LessonsPage/>}>
         <Route key={'lesson'} path={':id'} element={<LessonsPage/>}/>
     </Route>,

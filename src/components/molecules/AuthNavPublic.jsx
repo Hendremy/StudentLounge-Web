@@ -3,7 +3,7 @@ import MenuItem from "./MenuItem";
 import {loginPath, registerPath} from '../../routes/AnonymRoutes';
 import AuthNavStyle from "../atoms/AuthNavStyle";
 
-export default function AuthNavPublic(){
+export default function AuthNavPublic({user}){
     return (
         <AuthNavStyle>
             <Box style={{margin:10}}>

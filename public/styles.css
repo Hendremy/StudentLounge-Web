@@ -22,16 +22,11 @@ body{
     background-size: cover;
 }
 
-header{
-    font-family: 'Gugi', serif;
-}
-
 #root{
     height: 100%;
 }
 
 main{
-    font-family: 'Exo2', serif;
     height: 100%;
     padding-left: 10%;
     padding-right: 10%;
