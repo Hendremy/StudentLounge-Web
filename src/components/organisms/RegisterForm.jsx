@@ -1,47 +1,15 @@
-import {Alert, Button, Grid, TextField, ThemeProvider} from "@mui/material";
-import {palette, theme} from "../../appTheme";
+import {Alert, Button, Grid, TextField} from "@mui/material";
+import {palette} from "../../appTheme";
 import {useState} from "react";
-import {useNavigate} from "react-router-dom";
-import {useAtom} from "jotai";
-import {userAtom} from "../../stores/userStore";
-import {createAccount} from "../../repositories/studentLoungeAPI";
 
-function checkResult(password, email, firstname, lastname, confirmPassword, setMessage, setState, navigate) {
-    if (password === '' || email === '' || firstname === '' || lastname === '' || confirmPassword === '') {
-        setMessage("Remplissez tous les champs");
-        return null;
-    } else {
-        if(password === confirmPassword){
-            try{
-                const response = createAccount({
-                    email: email,
-                    password: password,
-                    firstname: firstname,
-                    lastname: lastname,
-                    confirmPassword: confirmPassword});
-                setMessage("Inscription effectuée !");
-                setState(response);
-                navigate("/");
-            }catch (e){
-                setMessage("Une erreur est survenue, veuillez reessayer plus tard.")
-                return null;
-            }
-        }else{
-            setMessage("Le mot de passe et la confirmation du mot de passe ne sont pas identique");
-            return null;
-        }
-    }
-}
-
-export default function RegisterForm(){
+export default function RegisterForm({onAuthenticated, authRepository}){
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("");
     const [message, setMessage] = useState("");
     const [firstname, setFirstname] = useState("");
     const [lastname, setLastname] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
-    const navigate = useNavigate();
-    const [state, setState] = useAtom(userAtom);
+
     const fieldStyle = {
         backgroundColor:palette.secondary,
         borderRadius:25,
@@ -67,13 +35,39 @@ export default function RegisterForm(){
         }
     }
 
-    function HandleClick(event) {
+    function handleClick(event) {
         event.preventDefault();
-        checkResult(password, email, firstname, lastname, confirmPassword, setMessage, setState, navigate);
+        checkResult(password, email, firstname, lastname, confirmPassword);
+    }
+
+    async function checkResult(password, email, firstname, lastname, confirmPassword) {
+        if (password === '' || email === '' || firstname === '' || lastname === '' || confirmPassword === '') {
+            setMessage("Remplissez tous les champs");
+            return null;
+        } else {
+            if(password === confirmPassword){
+                try{
+                    const user = await authRepository.register({
+                        email: email,
+                        password: password,
+                        firstname: firstname,
+                        lastname: lastname,
+                        confirmPassword: confirmPassword});
+                    setMessage("Inscription effectuée !");
+                    onAuthenticated(user);
+                }catch (e){
+                    setMessage("Une erreur est survenue, veuillez reessayer plus tard.")
+                    return null;
+                }
+            }else{
+                setMessage("Le mot de passe et la confirmation du mot de passe ne sont pas identique");
+                return null;
+            }
+        }
     }
 
     return (
-        <form onSubmit={HandleClick}>
+        <form onSubmit={handleClick}>
             <TextField
                 value={lastname}
                 name={"lastname"}
@@ -136,9 +130,7 @@ export default function RegisterForm(){
                 fullWidth/>
             {message && (<Alert style={{marginTop:15}} severity="error">{message}</Alert>)}
             <Grid align={'center'}>
-                <ThemeProvider theme={theme}>
-                    <Button type='submit' color='primary' style={buttonStyle} fullWidth>S'inscrire</Button>
-                </ThemeProvider>
+                <Button type='submit' color='primary' style={buttonStyle} fullWidth>S'inscrire</Button>
             </Grid>
         </form>
     );

@@ -3,11 +3,11 @@ import Title from "../components/atoms/Title";
 import {palette} from "../appTheme";
 import React, {useContext} from "react";
 import GridCentered from "../components/atoms/GridCentered";
-import AuthenticationForm from "../components/organisms/AuthenticationForm";
 import { useAtom } from "jotai";
 import { userAtom } from "../stores/userStore";
 import { useNavigate } from "react-router-dom";
 import { ApiServicesContext } from "../App";
+import LoginForm from '../components/organisms/LoginForm';
 
 import GoogleLogin from "../components/organisms/GoogleLogin";
 
@@ -37,7 +37,7 @@ export default function LoginPage() {
         <Paper elevation ={10} style={paperStyle}>
             <Title text={"Connexion"}/>
             <Stack align={'center'} spacing={1}>
-                <AuthenticationForm onAuthenticated={onAuthenticated} authRepo={authRepository} />
+                <LoginForm onAuthenticated={onAuthenticated} authRepo={authRepository} />
                 <GoogleLogin onAuthenticated={onAuthenticated} authRepo={authRepository}/>
             </Stack>
         </Paper>
