@@ -10,7 +10,6 @@ export default function LessonList(props){
     const paperStyle = {
         padding: 20,
         height:'auto',
-        margin:"10vh auto",
         backgroundColor:palette.primary,
         color:'white',
         borderRadius:25
@@ -24,6 +23,7 @@ export default function LessonList(props){
     };
 
     let lessonList = [];
+    //TODO: Charger la liste des lessons, p-e utiliser hook useAsync de ReactAsync ?
 
     lessons.forEach(
         (lesson) => {

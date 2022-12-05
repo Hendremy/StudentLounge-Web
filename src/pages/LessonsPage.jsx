@@ -11,23 +11,19 @@ import { ApiServicesContext } from "../App";
 export default function LessonsPage(){
     const { id } = useParams();
     const apiServices = useContext(ApiServicesContext);
-    const lessonsRepository = apiServices.lessonsRepo;
-    //const [lessons, setLessons] = useAtom(lessonsAtom);
+    const lessonRepository = apiServices.lessonsRepo;
+    const [lessons, setLessons] = useAtom(lessonsAtom);
 
-    const lessons = [
-        new Lesson('aza','Mathématiques'),
-        new Lesson('eze','Informatique'),
-        new Lesson('ozo','Cybersécurité')
-    ];
+    let lessonMap = {};
 
-    const lessonMap = {
-        "aza" : new Lesson('aza','Mathématiques'),
-        "eze" : new Lesson('eze','Informatique'),
-        "ozo" : new Lesson('ozo','Cybersécurité')
-    };
+    const gridStyle = {
+        height: 'auto',
+        margin:"10vh auto",
+        minHeight:'80vh'
+    }
 
     return (
-    <Grid container spacing={2}>
+    <Grid container spacing={2} sx={gridStyle}>
         <Grid item xs={2}>
             <LessonList lessons={lessons}></LessonList>
         </Grid>

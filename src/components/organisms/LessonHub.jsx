@@ -14,7 +14,6 @@ export default function LessonHub(props){
     const paperStyle = {
         padding: 20,
         height:'auto',
-        margin:"10vh auto",
         backgroundColor:palette.primary,
         color:'white',
         borderRadius:25
@@ -24,7 +23,7 @@ export default function LessonHub(props){
         height: '100%',
         backgroundColor: palette.primary,
         minHeight:'80vh',
-        padding: '2%'
+        padding: '1%'
     };
 
     const files = [
