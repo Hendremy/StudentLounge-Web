@@ -22,7 +22,7 @@ export default function AppHeader(){
         <Toolbar variant={"dense"}>
           <Box sx={style}>
             <NavLink to={homePath} >
-              <Typography variant={'h4'}>
+              <Typography variant={'h4'} component={'h4'} >
                 Student Lounge
               </Typography>
             </NavLink>

@@ -25,9 +25,9 @@ const theme = createTheme({
       fontFamily: [
         'Exo 2','"Segoe UI"'
       ],
-      h4: {
-        fontFamily: ['Gugi','"Segoe UI']
-      }
+      // h4: {
+      //   fontFamily: ['Gugi','"Segoe UI']
+      // }
     }
 });
 
