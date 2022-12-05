@@ -6,9 +6,7 @@ import {useState} from "react";
 import {palette} from "../../appTheme";
 import {useNavigate} from "react-router-dom";
 
-export default function AuthNavPrivate(props){
-    const user = props.user;
-    const navigate = useNavigate();
+export default function AuthNavPrivate({user, logout}){
     const [anchorEl, setAnchorEl] = useState(null);
     const open = Boolean(anchorEl);
     const  handleMenu = (event) => {
@@ -60,8 +58,8 @@ export default function AuthNavPrivate(props){
                 style={{marginTop:35}}
             >
                 <Box style={{margin:10, display:'flex', flexDirection:'column', alignItems:"center"}}>
-                    <Button onClick={() => console.log("oyo")} style={buttonLogout}>
-                        Se deconnecter
+                    <Button onClick={() => logout()} style={buttonLogout}>
+                        Se déconnecter
                     </Button>
                 </Box>
             </Menu>

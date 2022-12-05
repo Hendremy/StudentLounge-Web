@@ -5,10 +5,13 @@ import Lesson from "../models/lesson"
 import { useParams } from "react-router-dom";
 import { useAtom } from "jotai";
 import { lessonsAtom } from "../stores/userStore";
+import { useContext } from "react";
+import { ApiServicesContext } from "../App";
 
 export default function LessonsPage(){
     const { id } = useParams();
-
+    const apiServices = useContext(ApiServicesContext);
+    const lessonsRepository = apiServices.lessonsRepo;
     //const [lessons, setLessons] = useAtom(lessonsAtom);
 
     const lessons = [
