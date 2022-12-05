@@ -1,6 +1,6 @@
 export default class AppUser{
 
-    constructor({id, fullname, token, image, roles}){
+    constructor({id = 0, fullname = "", token = "", image = "", roles = []}){
         this.id = id;
         this.fullname = fullname;
         this.token = token;
@@ -9,11 +9,11 @@ export default class AppUser{
     }
 
     get isAdmin(){
-        return this.roles.includes(Roles.Student);
+        return this.roles.includes(Roles.Admin);
     }
 
     get isStudent(){
-        return this.roles.includes(Roles.Admin);
+        return this.roles.includes(Roles.Student);
     }
 }
 

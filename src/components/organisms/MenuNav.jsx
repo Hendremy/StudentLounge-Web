@@ -19,7 +19,7 @@ export default function MenuNav(props){
             navs.push(<AdminNavs/>);
         }
         if(user.isStudent){
-            navs.push(<StudentNavs/>);
+            navs.push(StudentNavs);
         }
     }else{
         navs = <AnonymNavs/>

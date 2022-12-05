@@ -53,7 +53,7 @@ export default function AuthNavPrivate(props){
             >
                 <Box style={{margin:10, display:'flex', flexDirection:'column', alignItems:"center"}}>
                     {user.name}
-                    <Button onClick={console.log("oyo")} style={buttonLogout}>
+                    <Button onClick={() => console.log("oyo")} style={buttonLogout}>
                         Se deconnecter
                     </Button>
                 </Box>

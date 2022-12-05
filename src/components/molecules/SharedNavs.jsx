@@ -6,7 +6,7 @@ export {ContactNav}
 
 function ContactNav(){
     return(
-        <MenuIcon path={contactPath} icon={HelpIcon}/>
+        <MenuIcon key={'contact_nav'} path={contactPath} icon={HelpIcon}/>
     );
 }
 

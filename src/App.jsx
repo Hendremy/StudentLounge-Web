@@ -8,12 +8,15 @@ import AdminServices from './repositories/adminServices';
 import StudentServices from './repositories/studentServices';
 import { useAtom } from 'jotai';
 import { userAtom } from './stores/userStore';
+import AppUser from './models/appUser';
 
 export const ApiServicesContext = React.createContext();
+export const AppUserContext = React.createContext();
 
 export default function App() {
   const apiUrl = "https://porthos-intra.cg.helmo.be/e190449";
-  const [user] = useAtom(userAtom);
+  const [storedUser] = useAtom(userAtom);
+  const user = storedUser !== null ? new AppUser(storedUser) : null;
 
   let apiServices;
 
@@ -30,9 +33,11 @@ export default function App() {
   return (
     <ThemeProvider theme={theme}>
       <ApiServicesContext.Provider value={apiServices}>
-        <AppRouter>
-          <AppHeader/>
-        </AppRouter>
+        <AppUserContext.Provider value={user}>
+          <AppRouter>
+            <AppHeader/>
+          </AppRouter>
+        </AppUserContext.Provider>
       </ApiServicesContext.Provider>
     </ThemeProvider>
   );

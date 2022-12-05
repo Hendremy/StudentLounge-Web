@@ -1,4 +1,4 @@
-class AdminServices {
+export default class AdminServices {
 
     constructor({apiUrl, token}){
         this.apiUrl = apiUrl;

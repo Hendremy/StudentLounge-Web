@@ -3,8 +3,11 @@ import {AppBar, Box, Toolbar} from "@mui/material";
 import AuthNav from '../molecules/AuthNav';
 import {homePath} from "../../routes/SharedRoutes";
 import {NavLink} from "react-router-dom";
+import { AppUserContext } from '../../App';
+import { useContext } from 'react';
 
 export default function AppHeader(){
+  const user = useContext(AppUserContext);
 
   const style = {
     display: "flex",
@@ -19,8 +22,8 @@ export default function AppHeader(){
         <Toolbar variant={"dense"}>
           <Box sx={style}>
             <NavLink to={homePath} component="div" style={{fontSize:30}}>Student Lounge</NavLink>
-            <MenuNav/>
-            <AuthNav/>
+            <MenuNav user={user}/>
+            <AuthNav user={user}/>
           </Box>
         </Toolbar>
       </AppBar>
