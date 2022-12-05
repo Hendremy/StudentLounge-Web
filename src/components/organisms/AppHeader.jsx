@@ -21,8 +21,8 @@ export default function AppHeader(){
       <AppBar position="fixed" color="primary">
         <Toolbar variant={"dense"}>
           <Box sx={style}>
-            <NavLink to={homePath} >
-              <Typography variant={'h4'} component={'h4'} >
+            <NavLink key={'home'} to={homePath} >
+              <Typography variant={'h1'} component={'h1'} sx={{fontSize: 30}}>
                 Student Lounge
               </Typography>
             </NavLink>

@@ -1,5 +1,6 @@
 import {Box, Button, IconButton, Menu, Typography} from "@mui/material";
 import {AccountCircle} from "@mui/icons-material";
+import {Avatar} from "@mui/material";
 import AuthNavStyle from "../atoms/AuthNavStyle";
 import {useState} from "react";
 import {palette} from "../../appTheme";
@@ -25,6 +26,10 @@ export default function AuthNavPrivate(props){
         marginTop:10
     }
 
+    const UserImage = user.image 
+        ? <Avatar alt={user.fullname} src={user.image} sx={{width: '24px', height:'24px'}}/> 
+        : <AccountCircle /> ;
+
     return (
         <AuthNavStyle>
             <Typography component="span">
@@ -36,7 +41,7 @@ export default function AuthNavPrivate(props){
                 aria-haspopup="true"
                 onClick={handleMenu}
                 color={"inherit"}>
-                <AccountCircle />
+                {UserImage}
             </IconButton>
             <Menu
                 id="menu-appbar"
