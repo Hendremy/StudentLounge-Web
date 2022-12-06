@@ -6,11 +6,13 @@ import { useAtom } from "jotai";
 import { lessonsAtom } from "../stores/userStore";
 import { useContext, useEffect } from "react";
 import { ApiServicesContext } from "../App";
+import EmptyLessonHub from "../components/organisms/EmptyLessonHub";
 
 export default function LessonsPage(){
     const { id } = useParams();
     const apiServices = useContext(ApiServicesContext);
     const lessonRepository = apiServices.lessonRepo;
+    const lessonFileRepository = apiServices.lessonFileRepo;
     const [lessons, setLessons] = useAtom(lessonsAtom);
 
     const gridStyle = {
@@ -22,7 +24,6 @@ export default function LessonsPage(){
     useEffect(() => {
         lessonRepository.getUserLessons()
         .then(lessonList => {
-            console.log(lessonList)
             setLessons(lessonList);
         })
         .catch(error => {
@@ -30,14 +31,30 @@ export default function LessonsPage(){
         });
     },[]);
 
-    return (
-    <Grid container spacing={2} sx={gridStyle}>
-        <Grid item xs={2}>
-            <LessonList lessons={lessons}></LessonList>
-        </Grid>
-        <Grid item xs={10}>
-            <LessonHub lesson={lessons.find(lesson => lesson.id === id)}></LessonHub>
-        </Grid>
-    </Grid>
-    );
+    let lesson = lessons.find(lesson => lesson.id === id);
+    
+    if(lesson){
+        return (
+            <Grid container spacing={2} sx={gridStyle}>
+                <Grid item xs={2}>
+                    <LessonList lessons={lessons} lessonRepository={lessonRepository}></LessonList>
+                </Grid>
+                <Grid item xs={10}>
+                    <LessonHub lesson={lesson} lessonFileRepository={lessonFileRepository}></LessonHub>
+                </Grid>
+            </Grid>
+            );
+    }else{
+        return (
+            <Grid container spacing={2} sx={gridStyle}>
+                <Grid item xs={2}>
+                    <LessonList lessons={lessons} lessonRepository={lessonRepository}></LessonList>
+                </Grid>
+                <Grid item xs={10}>
+                    <EmptyLessonHub />
+                </Grid>
+            </Grid>
+            );
+    }
+    
 }

@@ -1,16 +1,14 @@
 import { Box, Button, Grid, Paper } from "@mui/material";
-import Title from "../atoms/Title";
 import FileTable from "./FileTable";
-import {palette, theme} from "../../appTheme";
-import LessonFile from "../../models/lessonFile"
+import {palette} from "../../appTheme";
 import HubHeader from "../molecules/HubHeader";
 import AskTutoratButton from "../molecules/AskTutoratButton";
 import UploadFileButton from "../molecules/UploadFileButton";
-import ShowTutorRequestButton from "../molecules/ShowTutorRequestButton";
+import TutorRequestsButton from "../molecules/ShowTutorRequestButton";
+import { useState, useEffect } from "react";
 
-export default function LessonHub(props){
-    const lesson = props.lesson;
-
+export default function LessonHub({lesson, lessonFileRepository}){
+    const [lessonFiles, setLessonFiles] = useState([]);
     const paperStyle = {
         padding: 20,
         height:'auto',
@@ -26,36 +24,28 @@ export default function LessonHub(props){
         padding: '1%'
     };
 
-    const files = [
-        new LessonFile("a",1,"Api pour les nuls","Zuck",new Date()),
-        new LessonFile("b",0,"Api REST","Zuck",new Date()),
-        new LessonFile("c",1,"Api pour les nuls","Zuck",new Date()),
-        new LessonFile("d",0,"Api LOLLOL","Zuck",new Date()),
-        new LessonFile("e",1,"Api pour les nuls","Zuck",new Date()),
-    ];
+    useEffect(() => {
+        if(lesson){
+            lessonFileRepository.getLessonFiles(lesson.id)
+                .then(lessonFiles => {
+                    setLessonFiles(lessonFiles);
+                })
+                .catch(error => {
+                    console.log(error)
+                })
+        }
+    },[]);
 
-    if(lesson){
-        return(
-            <Paper elevation ={10} style={paperStyle}>
-                <HubHeader title={lesson.name}>
-                    <UploadFileButton/>
-                    <AskTutoratButton/>
-                    <ShowTutorRequestButton/>
-                </HubHeader>
-                <Box sx={boxStyle}>
-                    <FileTable files={files}/>
-                </Box>
-            </Paper>
-        );
-    }else{
-        return(
-            <Paper elevation ={10} style={paperStyle}>
-                <Title text={"Aucun cours sélectionné"}/>
-                <Box sx={boxStyle}>
-    
-                </Box>
-            </Paper>
-        );
-    }
-    
+    return(
+        <Paper elevation ={10} style={paperStyle}>
+            <HubHeader title={lesson.name}>
+                <UploadFileButton/>
+                <AskTutoratButton/>
+                <TutorRequestsButton/>
+            </HubHeader>
+            <Box sx={boxStyle}>
+                <FileTable files={lessonFiles}/>
+            </Box>
+        </Paper>
+    );
 }

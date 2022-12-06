@@ -48,6 +48,6 @@ export class LessonRepository extends SecuredApiService{
     }
 
     _reviveLesson(jlesson){
-        return Lesson(jlesson);
+        return new Lesson(jlesson);
     }
 }
