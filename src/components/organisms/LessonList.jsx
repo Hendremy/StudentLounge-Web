@@ -4,9 +4,7 @@ import {palette, theme} from "../../appTheme";
 import LessonRow from "../molecules/LessonRow";
 import ListHeader from '../molecules/ListHeader';
 
-export default function LessonList(props){
-
-    let lessons = props.lessons;
+export default function LessonList({lessons}){
     const paperStyle = {
         padding: 20,
         height:'auto',
@@ -19,15 +17,14 @@ export default function LessonList(props){
         height: '100%',
         backgroundColor: palette.secondary,
         minHeight:'80vh',
-        borderRadius: '25px'
+        borderRadius: '5px'
     };
 
     let lessonList = [];
-    //TODO: Charger la liste des lessons, p-e utiliser hook useAsync de ReactAsync ?
 
     lessons.forEach(
         (lesson) => {
-        lessonList.push(<LessonRow lesson={lesson}></LessonRow>)
+        lessonList.push(<LessonRow key={lesson.id} lesson={lesson}></LessonRow>)
     });
 
     return(

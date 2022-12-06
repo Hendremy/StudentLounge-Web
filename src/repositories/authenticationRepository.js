@@ -11,7 +11,7 @@ export default class AuthenticationRepository extends ApiService{
         const url = `${super.baseUrl}/Register`;
         const data = JSON.stringify({email: email, password: password, firstname:firstname, lastname:lastname, passwordRep:confirmPassword});
     
-        return await fetch(url, {
+        return fetch(url, {
             method: "POST",
             body: data,
             mode: "cors",
@@ -30,7 +30,7 @@ export default class AuthenticationRepository extends ApiService{
     async googleLogin(token) {
         const url = `${super.baseUrl}/External`;
         const data = JSON.stringify({providerName: "Google", token: token});
-        return await fetch(url, {
+        return fetch(url, {
             method: "POST",
             body: data,
             mode: "cors",
@@ -50,7 +50,7 @@ export default class AuthenticationRepository extends ApiService{
         const url = `${super.baseUrl}/Login`;
         const data = JSON.stringify({username: email, password: password});
     
-        return await fetch(url, {
+        return fetch(url, {
             method: "POST",
             body: data,
             mode: "cors",

@@ -1,3 +1,4 @@
+import LessonFileRepository from "./lessonFileRepository";
 import { LessonRepository } from "./lessonRepository";
 
 export default class StudentServices {
@@ -14,5 +15,13 @@ export default class StudentServices {
                 controller: 'Lesson', 
                 token: this.token
             });
+    }
+
+    get lessonFileRepo(){
+        return new LessonFileRepository({
+            apiUrl: this.apiUrl,
+            controller: 'LessonFile',
+            token: this.token
+        });
     }
 }

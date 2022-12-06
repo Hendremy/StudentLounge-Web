@@ -8,15 +8,31 @@ export class LessonRepository extends SecuredApiService{
     }
 
     async getUserLessons(){
-        return await fetch(super.baseUrl, {
+        return fetch(super.baseUrl, {
             method: "GET",
             mode: "cors",
-            headers: this.headers
+            headers: this.bearerHeader
         })
         .then(response => this._handleHttpResponse(response))
         .then(lessonArray =>{
             let lessons = [];
-            lessonArray.array.forEach(jlesson => {
+            lessonArray.forEach(jlesson => {
+                lessons.push(this._reviveLesson(jlesson));
+            });
+            return lessons;
+        });
+    }
+
+    async getAllLessons(){
+        return fetch(super.baseUrl + '/all', {
+            method: "GET",
+            mode: "cors",
+            headers: this.bearerHeader
+        })
+        .then(response => this._handleHttpResponse(response))
+        .then(lessonArray =>{
+            let lessons = [];
+            lessonArray.forEach(jlesson => {
                 lessons.push(new Lesson(jlesson));
             });
             return lessons;
@@ -30,7 +46,6 @@ export class LessonRepository extends SecuredApiService{
     async leaveLesson(){
 
     }
-
 
     _reviveLesson(jlesson){
         return Lesson(jlesson);

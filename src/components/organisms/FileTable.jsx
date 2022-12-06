@@ -6,14 +6,14 @@ export default function FileTable(props){
 
     let fileRows = [];
     if(files){
-        files.forEach(file => fileRows.push(<FileRow file={file}/>));
+        files.forEach(file => fileRows.push(<FileRow key={file.id} file={file}/>));
     }
 
     return (
     <TableContainer component={Paper}>
         <Table>
             <TableHead>
-                <TableRow>
+                <TableRow key={'filehead'}>
                     <TableCell>Type</TableCell>
                     <TableCell>Nom</TableCell>
                     <TableCell>Auteur</TableCell>
