@@ -14,7 +14,7 @@ export default class LessonFileRepository extends SecuredApiService {
             mode: "cors",
             headers: this.bearerHeader
         })
-        .then(response => this._handleHttpResponse(response))
+        .then(response => this._handleJsonResponse(response))
         .then(lessonFileArray =>{
             let lessonFiles = [];
             lessonFileArray.forEach(jlessonFile => {
@@ -32,7 +32,7 @@ export default class LessonFileRepository extends SecuredApiService {
             body: formData,
             headers: this.bearerHeader
         })
-        .then(response => this._handleHttpResponse(response))
+        .then(response => this._handleJsonResponse(response))
     }
 
     getDownloadUrl({lessonFileId}){

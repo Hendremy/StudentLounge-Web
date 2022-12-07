@@ -1,5 +1,5 @@
 import AuthenticationRepository from "./authenticationRepository";
-import StatsRepository from "./statsRepository";
+import CountRepository from './countRepository';
 
 export default class AnonymServices {
 
@@ -16,11 +16,11 @@ export default class AnonymServices {
         );
     }
 
-    get statsRepository(){
-        return new StatsRepository(
+    get countRepository(){
+        return new CountRepository(
             {
                 apiUrl: this.apiUrl,
-                controller: 'Stats'
+                controller: 'Count'
             }
         );
     }

@@ -1,3 +1,5 @@
+import roles from './roles';
+
 export default class AppUser{
 
     constructor({id = 0, fullname = "", token = "", image = "", roles = []}){
@@ -9,15 +11,10 @@ export default class AppUser{
     }
 
     get isAdmin(){
-        return this.roles.includes(Roles.Admin);
+        return this.roles.includes(roles.admin);
     }
 
     get isStudent(){
-        return this.roles.includes(Roles.Student);
+        return this.roles.includes(roles.student);
     }
-}
-
-const Roles = {
-    Student: 'Student',
-    Admin: 'Admin'
 }

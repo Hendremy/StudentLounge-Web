@@ -13,7 +13,7 @@ export class LessonRepository extends SecuredApiService{
             mode: "cors",
             headers: this.bearerHeader
         })
-        .then(response => this._handleHttpResponse(response))
+        .then(response => this._handleJsonResponse(response))
         .then(lessonArray => this._reviveLessonArray(lessonArray));
     }
 
@@ -23,7 +23,7 @@ export class LessonRepository extends SecuredApiService{
             mode: "cors",
             headers: this.bearerHeader
         })
-        .then(response => this._handleHttpResponse(response))
+        .then(response => this._handleJsonResponse(response))
         .then(lessonArray => this._reviveLessonArray(lessonArray));
     }
 
@@ -34,7 +34,7 @@ export class LessonRepository extends SecuredApiService{
             mode: 'cors',
             headers: this.bearerHeader
         })
-        .then(response => this._handleHttpResponse(response))
+        .then(response => this._handleJsonResponse(response))
         .then(lesson => this._reviveLesson(lesson));
     }
 
@@ -45,7 +45,7 @@ export class LessonRepository extends SecuredApiService{
             mode: 'cors',
             headers: this.bearerHeader
         })
-        .then(response => this._handleHttpResponse(response))
+        .then(response => this._handleJsonResponse(response))
         .then(lesson => this._reviveLesson(lesson));
     }
 

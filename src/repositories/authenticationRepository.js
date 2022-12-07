@@ -20,7 +20,7 @@ export default class AuthenticationRepository extends ApiService{
             }
         })
         .then(response => {
-            return this._handleHttpResponse(response);
+            return this._handleJsonResponse(response);
         })
         .then(jsonBody => {
             return this._reviveAppUser(jsonBody);
@@ -39,7 +39,7 @@ export default class AuthenticationRepository extends ApiService{
             }
         })
         .then(response => {
-            return this._handleHttpResponse(response);
+            return this._handleJsonResponse(response);
         })
         .then(jsonBody => {
             return this._reviveAppUser(jsonBody);
@@ -59,7 +59,7 @@ export default class AuthenticationRepository extends ApiService{
             }
         })
         .then(response => {
-            return this._handleHttpResponse(response);
+            return this._handleJsonResponse(response);
         })
         .then(jsonBody => {
             return this._reviveAppUser(jsonBody);

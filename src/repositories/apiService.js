@@ -15,7 +15,7 @@ export class ApiService{
         }
     }
 
-    async _handleHttpResponse(response){
+    async _handleJsonResponse(response){
         if (!response.ok) {
             throw new Error(`${response.status} - ${response.statusText}`);
         }

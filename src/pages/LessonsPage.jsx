@@ -11,9 +11,9 @@ import EmptyLessonHub from "../components/organisms/EmptyLessonHub";
 export default function LessonsPage(){
     const { id } = useParams();
     const [lessons,] = useAtom(lessonsAtom);
-    const apiServices = useContext(ApiServicesContext);
-    const lessonRepository = apiServices.lessonRepo;
-    const lessonFileRepository = apiServices.lessonFileRepo;
+    const studentApiServices = useContext(ApiServicesContext)['Student'];
+    const lessonRepository = studentApiServices.lessonRepo;
+    const lessonFileRepository = studentApiServices.lessonFileRepo;
 
     const gridStyle = {
         height: 'auto',

@@ -9,6 +9,7 @@ import StudentServices from './repositories/studentServices';
 import { useAtom } from 'jotai';
 import { userAtom } from './stores/userStore';
 import AppUser from './models/appUser';
+import roles from './models/roles';
 
 export const ApiServicesContext = React.createContext();
 export const AppUserContext = React.createContext();
@@ -19,18 +20,19 @@ export default function App() {
   const [storedUser] = useAtom(userAtom);
   const user = storedUser !== null ? new AppUser(storedUser) : null;
 
-  let apiServices;
+  let apiServices = {
+    [roles.anonym] : new AnonymServices({apiUrl: apiUrl})
+  };
 
   if(user){
     if(user.isAdmin){
-      apiServices = new AdminServices({apiUrl: apiUrl, token: user.token});
-    }else if(user.isStudent){
-      apiServices = new StudentServices({apiUrl: apiUrl, token: user.token});
+      apiServices[roles.admin] = new AdminServices({apiUrl: apiUrl, token: user.token});
     }
-  }else{
-    apiServices = new AnonymServices({apiUrl: apiUrl});
+    if(user.isStudent){
+      apiServices[roles.student] = new StudentServices({apiUrl: apiUrl, token: user.token});
+    }
   }
-
+  
   return (
     <ThemeProvider theme={theme}>
       <ApiServicesContext.Provider value={apiServices}>
