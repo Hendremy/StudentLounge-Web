@@ -26,7 +26,7 @@ export default function LessonHub({lesson, lessonFileRepository}){
         padding: '1%'
     };
 
-    useEffect(() => {
+    const loadFiles = () => {
         if(lesson){
             lessonFileRepository.getLessonFiles({lessonId: lesson.id})
                 .then(lessonFiles => {
@@ -36,10 +36,14 @@ export default function LessonHub({lesson, lessonFileRepository}){
                     console.log(error)
                 })
         }
+    }
+
+    useEffect(() => {
+        loadFiles();
     },[]);
 
     const onFileUploaded = () => {
-
+        loadFiles();
     };
 
     return(
@@ -55,7 +59,7 @@ export default function LessonHub({lesson, lessonFileRepository}){
                 <TutorRequestsButton/>
             </HubHeader>
             <Box sx={boxStyle}>
-                <FileTable files={lessonFiles}/>
+                <FileTable files={lessonFiles} filesRepository={lessonFileRepository}/>
             </Box>
         </Paper>
     );

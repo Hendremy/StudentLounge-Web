@@ -34,6 +34,10 @@ export default class LessonFileRepository extends SecuredApiService {
         .then(response => this._handleHttpResponse(response))
     }
 
+    getDownloadUrl({lessonFileId}){
+        return `${this.baseUrl}/${lessonFileId}`;
+    }
+
     _reviveLessonFile(jlessonFile){
         return new LessonFile(jlessonFile);
     }

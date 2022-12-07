@@ -3,10 +3,14 @@ import FileRow from '../molecules/FileRow';
 
 export default function FileTable(props){
     let files = props.files;
+    let filesRepository = props.filesRepository;
 
     let fileRows = [];
     if(files){
-        files.forEach(file => fileRows.push(<FileRow key={file.id} file={file}/>));
+        fileRows = files.map(file => {
+            let url = filesRepository.getDownloadUrl(file.id);
+            return <FileRow key={file.id} file={file} url={url}/>
+        });
     }
 
     return (
