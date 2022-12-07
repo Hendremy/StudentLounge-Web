@@ -46,6 +46,7 @@ export default function LessonHub({lesson, lessonFileRepository}){
         loadFiles();
     };
 
+    //Backend pourrait renvoyer si l'user a déjà un tutorat pour ce compte qd il le charge
     return(
         <Paper elevation ={10} style={paperStyle}>
             <HubHeader title={lesson.name}>

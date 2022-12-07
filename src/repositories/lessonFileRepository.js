@@ -28,6 +28,7 @@ export default class LessonFileRepository extends SecuredApiService {
         const url = `${this.baseUrl}`
         return fetch(url,{
             method: "POST",
+            mode:'cors',
             body: formData,
             headers: this.bearerHeader
         })
