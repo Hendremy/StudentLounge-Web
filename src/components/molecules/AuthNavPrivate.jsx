@@ -58,6 +58,9 @@ export default function AuthNavPrivate({user, logout}){
                 style={{marginTop:35}}
             >
                 <Box style={{margin:10, display:'flex', flexDirection:'column', alignItems:"center"}}>
+                    <Typography component="span" variant="body1">
+                        Rôles : {user.roles.join(",")}
+                    </Typography>
                     <Button onClick={() => logout()} style={buttonLogout}>
                         Se déconnecter
                     </Button>
