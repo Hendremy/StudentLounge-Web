@@ -4,7 +4,10 @@ import { useState } from 'react';
 export default function OpenModalButton(props){
     const [open, setOpen] = useState(false);
     const handleOpen = () => setOpen(true);
-    const handleClose = () => setOpen(false);
+    const handleClose = () => {
+        setOpen(false);
+        props.onClose();
+    };
 
     const Icon = props.icon;
     const Modal = props.modal;

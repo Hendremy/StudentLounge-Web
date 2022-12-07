@@ -1,6 +1,6 @@
 import { Toc } from "@mui/icons-material";
-import { Box, IconButton, List, Paper } from "@mui/material";
-import {palette, theme} from "../../appTheme";
+import { Box, List, Paper } from "@mui/material";
+import {palette} from "../../appTheme";
 import LessonRow from "../molecules/LessonRow";
 import ListHeader from '../molecules/ListHeader';
 import OpenModalButton from "../molecules/OpenModalButton";
@@ -9,8 +9,8 @@ import LessonJoinModal from "./LessonJoinModal";
 import { useAtom } from "jotai";
 import { lessonsAtom } from "../../stores/userStore";
 
-export default function LessonList({lessonRepository}){
-    const [lessonList, setLessonList] = useAtom(lessonsAtom);
+export default function LessonList({lessonRepository, reloadList}){
+    const [userLessons, setUserLessons] = useAtom(lessonsAtom);
     const [lessonRows, setLessonRows] = useState([]);
 
     const paperStyle = {
@@ -28,25 +28,29 @@ export default function LessonList({lessonRepository}){
         borderRadius: '5px'
     };
 
-    const onLessonLeftOrJoined = (lesson, joined) => {
-        let lessonsCopy = [...lessonList];
-        if(joined){
-            lessonsCopy.push(lesson);
-        }else{
-            lessonsCopy.remove(lesson);
-        }
-        setLessonList(lessonsCopy);
+    const loadUserLessons = () => {
+        lessonRepository.getUserLessons()
+        .then(lessonList => {
+            setUserLessons(lessonList);
+        })
+        .catch(error => {
+            console.log(error);
+        });
     }
 
-    const renderLessonRows = () => {
-        setLessonRows(lessonList.map(
+    const renderLessonRows = (lessons) => {
+        setLessonRows(lessons.map(
             (lesson) => <LessonRow key={lesson.id} lesson={lesson}></LessonRow>
         ))
     }
 
     useEffect(() => {
-        renderLessonRows();
-    },[lessonList])
+        loadUserLessons();
+    },[]);
+
+    useEffect(() => {
+        renderLessonRows(userLessons);
+    },[userLessons])
 
     return(
         <Paper elevation ={10} style={paperStyle}>
@@ -54,8 +58,8 @@ export default function LessonList({lessonRepository}){
             <OpenModalButton 
                     icon={Toc}
                     modal={LessonJoinModal}
-                    repository={lessonRepository}
-                    callback={onLessonLeftOrJoined}/>
+                    onClose={loadUserLessons}
+                    repository={lessonRepository}/>
             </ListHeader>
             <Box sx={boxStyle}>
                 <List>

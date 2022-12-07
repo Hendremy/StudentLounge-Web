@@ -27,7 +27,7 @@ export class LessonRepository extends SecuredApiService{
         .then(lessonArray => this._reviveLessonArray(lessonArray));
     }
 
-    async joinlesson({lessonId}){
+    async joinLesson({lessonId}){
         const url = `${this.baseUrl}/${lessonId}`;
         return fetch(url,{
             method:'PUT',
