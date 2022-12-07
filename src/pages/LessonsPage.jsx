@@ -9,8 +9,8 @@ import { ApiServicesContext } from "../App";
 import EmptyLessonHub from "../components/organisms/EmptyLessonHub";
 
 export default function LessonsPage(){
-    const [lessons,] = useAtom(lessonsAtom);
     const { id } = useParams();
+    const [lessons,] = useAtom(lessonsAtom);
     const apiServices = useContext(ApiServicesContext);
     const lessonRepository = apiServices.lessonRepo;
     const lessonFileRepository = apiServices.lessonFileRepo;
@@ -21,16 +21,17 @@ export default function LessonsPage(){
         minHeight:'80vh'
     }
 
-    let lesson = lessons.find(lesson => lesson.id === id);
+
+    let selectedLesson = lessons.find(lesson => lesson.id === id);
     
-    if(lesson){
+    if(selectedLesson){
         return (
             <Grid container spacing={2} sx={gridStyle}>
                 <Grid item xs={2}>
                     <LessonList lessonRepository={lessonRepository}></LessonList>
                 </Grid>
                 <Grid item xs={10}>
-                    <LessonHub lesson={lesson} lessonFileRepository={lessonFileRepository}></LessonHub>
+                    <LessonHub key={selectedLesson.id} lesson={selectedLesson} lessonFileRepository={lessonFileRepository}></LessonHub>
                 </Grid>
             </Grid>
         );
