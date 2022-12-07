@@ -1,7 +1,6 @@
 import CustomCard from "../components/molecules/CustomCard";
 import {Box} from "@mui/system";
 import GridCentered from "../components/atoms/GridCentered";
-import {getNbFiles} from "../repositories/studentLoungeAPI";
 import {useContext, useEffect, useState} from "react";
 import { ApiServicesContext } from "../App";
 

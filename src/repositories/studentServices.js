@@ -1,5 +1,6 @@
 import LessonFileRepository from "./lessonFileRepository";
-import { LessonRepository } from "./lessonRepository";
+import LessonRepository from "./lessonRepository";
+import TutoringRepository from "./tutoringRepository";
 
 export default class StudentServices {
 
@@ -8,7 +9,7 @@ export default class StudentServices {
         this.token = token;
     }
 
-    get lessonRepo(){
+    get lessonRepository(){
         return new LessonRepository(
             {
                 apiUrl: this.apiUrl, 
@@ -17,10 +18,18 @@ export default class StudentServices {
             });
     }
 
-    get lessonFileRepo(){
+    get lessonFileRepository(){
         return new LessonFileRepository({
             apiUrl: this.apiUrl,
             controller: 'LessonFile',
+            token: this.token
+        });
+    }
+
+    get tutoringRepository(){
+        return new TutoringRepository({
+            apiUrl: this.apiUrl,
+            controller: 'Tutoring',
             token: this.token
         });
     }

@@ -12,8 +12,9 @@ export default function LessonsPage(){
     const { id } = useParams();
     const [lessons,] = useAtom(lessonsAtom);
     const studentApiServices = useContext(ApiServicesContext)['Student'];
-    const lessonRepository = studentApiServices.lessonRepo;
-    const lessonFileRepository = studentApiServices.lessonFileRepo;
+    const lessonRepository = studentApiServices.lessonRepository;
+    const lessonFileRepository = studentApiServices.lessonFileRepository;
+    const tutoringRepository = studentApiServices.tutoringRepository;
 
     const gridStyle = {
         height: 'auto',
@@ -31,7 +32,12 @@ export default function LessonsPage(){
                     <LessonList lessonRepository={lessonRepository}></LessonList>
                 </Grid>
                 <Grid item xs={10}>
-                    <LessonHub key={selectedLesson.id} lesson={selectedLesson} lessonFileRepository={lessonFileRepository}></LessonHub>
+                    <LessonHub 
+                        key={selectedLesson.id} 
+                        lesson={selectedLesson} 
+                        lessonFileRepository={lessonFileRepository}
+                        tutoringRepository={tutoringRepository}
+                        />
                 </Grid>
             </Grid>
         );

@@ -6,10 +6,11 @@ import AskTutoratButton from "../molecules/AskTutoratButton";
 import TutorRequestsButton from "../molecules/ShowTutorRequestButton";
 import { useState, useEffect } from "react";
 import OpenModalButton from "../molecules/OpenModalButton";
-import { UploadFile } from "@mui/icons-material";
+import { Groups, UploadFile } from "@mui/icons-material";
 import FileUploadModal from "./FileUploadModal";
+import TutoringRequestsModal from "./TutoringRequestsModal";
 
-export default function LessonHub({lesson, lessonFileRepository}){
+export default function LessonHub({lesson, lessonFileRepository, tutoringRepository}){
     const [lessonFiles, setLessonFiles] = useState([]);
     const paperStyle = {
         padding: 20,
@@ -57,7 +58,12 @@ export default function LessonHub({lesson, lessonFileRepository}){
                     repository={lessonFileRepository}
                     callback={onFileUploaded}/>
                 <AskTutoratButton/>
-                <TutorRequestsButton/>
+                <OpenModalButton
+                    icon={Groups}
+                    text={'Voir les demandes de tutorat'}
+                    modal={TutoringRequestsModal}
+                    repository={tutoringRepository}
+                />
             </HubHeader>
             <Box sx={boxStyle}>
                 <FileTable files={lessonFiles} filesRepository={lessonFileRepository}/>

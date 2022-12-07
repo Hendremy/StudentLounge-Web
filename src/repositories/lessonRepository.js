@@ -1,7 +1,7 @@
 import Lesson from "../models/lesson";
 import { SecuredApiService } from "./apiService";
 
-export class LessonRepository extends SecuredApiService{
+export default class LessonRepository extends SecuredApiService{
 
     constructor({apiUrl, controller, token}){
         super({apiUrl: apiUrl, controller: controller, token: token});
