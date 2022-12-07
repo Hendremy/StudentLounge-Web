@@ -14,8 +14,8 @@ export const ApiServicesContext = React.createContext();
 export const AppUserContext = React.createContext();
 
 export default function App() {
-  const apiUrl = "https://localhost:44321";
-  //const apiUrl = "https://porthos-intra.cg.helmo.be/e190449";
+  //const apiUrl = "https://localhost:44321";
+  const apiUrl = "https://porthos-intra.cg.helmo.be/e190449";
   const [storedUser] = useAtom(userAtom);
   const user = storedUser !== null ? new AppUser(storedUser) : null;
 

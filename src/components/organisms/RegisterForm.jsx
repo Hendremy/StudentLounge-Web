@@ -1,6 +1,7 @@
 import {Alert, Button, Grid, TextField} from "@mui/material";
 import {palette} from "../../appTheme";
 import {useState} from "react";
+import SendFormButton from "../atoms/SendFormButton";
 
 export default function RegisterForm({onAuthenticated, authRepository}){
     const [email, setEmail] = useState("")
@@ -130,7 +131,7 @@ export default function RegisterForm({onAuthenticated, authRepository}){
                 fullWidth/>
             {message && (<Alert style={{marginTop:15}} severity="error">{message}</Alert>)}
             <Grid align={'center'}>
-                <Button type='submit' color='primary' style={buttonStyle} fullWidth>S'inscrire</Button>
+                <SendFormButton text={"S'inscrire"}/>
             </Grid>
         </form>
     );

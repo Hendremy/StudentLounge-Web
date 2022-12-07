@@ -1,6 +1,7 @@
 import {Alert, Button, Stack, TextField, Typography} from "@mui/material";
 import {palette} from "../../appTheme";
 import React, {useState} from "react";
+import SendFormButton from "../atoms/SendFormButton";
 
 export default function AuthenticationForm({onAuthenticated, authRepo}){
     const [password, setPassword] = useState("");
@@ -77,9 +78,7 @@ export default function AuthenticationForm({onAuthenticated, authRepo}){
                 sx={focusColor}
                 fullWidth/>
             {message && (<Alert style={{marginTop:15}} severity="error">{message}</Alert>)}
-            <Button type='submit' color='primary' style={buttonStyle} fullWidth>
-                <Typography fontSize={15} margin={"auto"}>Connexion</Typography>
-            </Button>
+            <SendFormButton text={"Connexion"} />
         </form>
     );
 }

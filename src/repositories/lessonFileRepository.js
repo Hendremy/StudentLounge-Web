@@ -8,7 +8,7 @@ export default class LessonFileRepository extends SecuredApiService {
     }
 
     async getLessonFiles({lessonId}){
-        const url = `${super.baseUrl}/lesson/${lessonId}`;
+        const url = `${this.baseUrl}/lesson/${lessonId}`;
         return fetch(url, {
             method: "GET",
             mode: "cors",
@@ -22,6 +22,16 @@ export default class LessonFileRepository extends SecuredApiService {
             });
             return lessonFiles;
         });
+    }
+
+    async uploadFile({formData}){
+        const url = `${this.baseUrl}`
+        return fetch(url,{
+            method: "POST",
+            body: formData,
+            headers: this.bearerHeader
+        })
+        .then(response => this._handleHttpResponse(response))
     }
 
     _reviveLessonFile(jlessonFile){

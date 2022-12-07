@@ -3,9 +3,11 @@ import FileTable from "./FileTable";
 import {palette} from "../../appTheme";
 import HubHeader from "../molecules/HubHeader";
 import AskTutoratButton from "../molecules/AskTutoratButton";
-import UploadFileButton from "../molecules/UploadFileButton";
 import TutorRequestsButton from "../molecules/ShowTutorRequestButton";
 import { useState, useEffect } from "react";
+import OpenModalButton from "../molecules/OpenModalButton";
+import { UploadFile } from "@mui/icons-material";
+import FileUploadModal from "./FileUploadModal";
 
 export default function LessonHub({lesson, lessonFileRepository}){
     const [lessonFiles, setLessonFiles] = useState([]);
@@ -26,7 +28,7 @@ export default function LessonHub({lesson, lessonFileRepository}){
 
     useEffect(() => {
         if(lesson){
-            lessonFileRepository.getLessonFiles(lesson.id)
+            lessonFileRepository.getLessonFiles({lessonId: lesson.id})
                 .then(lessonFiles => {
                     setLessonFiles(lessonFiles);
                 })
@@ -36,10 +38,19 @@ export default function LessonHub({lesson, lessonFileRepository}){
         }
     },[]);
 
+    const onFileUploaded = () => {
+
+    };
+
     return(
         <Paper elevation ={10} style={paperStyle}>
             <HubHeader title={lesson.name}>
-                <UploadFileButton/>
+                <OpenModalButton 
+                    icon={UploadFile} 
+                    text={'Importer un fichier'}
+                    modal={FileUploadModal}
+                    repository={lessonFileRepository}
+                    callback={onFileUploaded}/>
                 <AskTutoratButton/>
                 <TutorRequestsButton/>
             </HubHeader>

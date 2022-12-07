@@ -8,7 +8,7 @@ export class LessonRepository extends SecuredApiService{
     }
 
     async getUserLessons(){
-        return fetch(super.baseUrl, {
+        return fetch(this.baseUrl, {
             method: "GET",
             mode: "cors",
             headers: this.bearerHeader
@@ -24,7 +24,7 @@ export class LessonRepository extends SecuredApiService{
     }
 
     async getAllLessons(){
-        return fetch(super.baseUrl + '/all', {
+        return fetch(this.baseUrl + '/all', {
             method: "GET",
             mode: "cors",
             headers: this.bearerHeader

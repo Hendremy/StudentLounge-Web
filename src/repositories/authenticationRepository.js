@@ -8,7 +8,7 @@ export default class AuthenticationRepository extends ApiService{
     }
 
     async register({email, password, firstname, lastname, confirmPassword}) {
-        const url = `${super.baseUrl}/Register`;
+        const url = `${this.baseUrl}/Register`;
         const data = JSON.stringify({email: email, password: password, firstname:firstname, lastname:lastname, passwordRep:confirmPassword});
     
         return fetch(url, {
@@ -28,7 +28,7 @@ export default class AuthenticationRepository extends ApiService{
     }
     
     async googleLogin(token) {
-        const url = `${super.baseUrl}/External`;
+        const url = `${this.baseUrl}/External`;
         const data = JSON.stringify({providerName: "Google", token: token});
         return fetch(url, {
             method: "POST",
@@ -47,7 +47,7 @@ export default class AuthenticationRepository extends ApiService{
     }
     
     async login({email, password}) {
-        const url = `${super.baseUrl}/Login`;
+        const url = `${this.baseUrl}/Login`;
         const data = JSON.stringify({username: email, password: password});
     
         return fetch(url, {

@@ -4,9 +4,10 @@ import LessonHub from "../components/organisms/LessonHub";
 import { useParams } from "react-router-dom";
 import { useAtom } from "jotai";
 import { lessonsAtom } from "../stores/userStore";
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 import { ApiServicesContext } from "../App";
 import EmptyLessonHub from "../components/organisms/EmptyLessonHub";
+import Lesson from "../models/lesson";
 
 export default function LessonsPage(){
     const { id } = useParams();
