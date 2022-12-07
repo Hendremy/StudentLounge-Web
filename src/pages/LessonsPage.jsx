@@ -7,14 +7,13 @@ import { lessonsAtom } from "../stores/userStore";
 import { useContext, useEffect, useState } from "react";
 import { ApiServicesContext } from "../App";
 import EmptyLessonHub from "../components/organisms/EmptyLessonHub";
-import Lesson from "../models/lesson";
 
 export default function LessonsPage(){
+    const [lessons, setLessons] = useAtom(lessonsAtom);
     const { id } = useParams();
     const apiServices = useContext(ApiServicesContext);
     const lessonRepository = apiServices.lessonRepo;
     const lessonFileRepository = apiServices.lessonFileRepo;
-    const [lessons, setLessons] = useAtom(lessonsAtom);
 
     const gridStyle = {
         height: 'auto',

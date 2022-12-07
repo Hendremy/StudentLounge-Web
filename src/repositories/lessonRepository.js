@@ -14,13 +14,7 @@ export class LessonRepository extends SecuredApiService{
             headers: this.bearerHeader
         })
         .then(response => this._handleHttpResponse(response))
-        .then(lessonArray =>{
-            let lessons = [];
-            lessonArray.forEach(jlesson => {
-                lessons.push(this._reviveLesson(jlesson));
-            });
-            return lessons;
-        });
+        .then(lessonArray => this._reviveLessonArray(lessonArray));
     }
 
     async getAllLessons(){
@@ -30,24 +24,37 @@ export class LessonRepository extends SecuredApiService{
             headers: this.bearerHeader
         })
         .then(response => this._handleHttpResponse(response))
-        .then(lessonArray =>{
-            let lessons = [];
-            lessonArray.forEach(jlesson => {
-                lessons.push(new Lesson(jlesson));
-            });
-            return lessons;
-        });
+        .then(lessonArray => this._reviveLessonArray(lessonArray));
     }
 
-    async joinlesson(){
-
+    async joinlesson({lessonId}){
+        const url = `${this.baseUrl}/${lessonId}`;
+        return fetch(url,{
+            method:'PUT',
+            mode: 'cors',
+            headers: this.bearerHeader
+        })
+        .then(response => this._handleHttpResponse(response))
+        .then(lesson => this._reviveLesson(lesson));
     }
 
-    async leaveLesson(){
-
+    async leaveLesson({lessonId}){
+        const url = `${this.baseUrl}/${lessonId}`;
+        return fetch(url,{
+            method:'DELETE',
+            mode: 'cors',
+            headers: this.bearerHeader
+        })
+        .then(response => this._handleHttpResponse(response))
+        .then(lesson => this._reviveLesson(lesson));
     }
 
     _reviveLesson(jlesson){
         return new Lesson(jlesson);
+    }
+
+    _reviveLessonArray(jlessonArray){
+        return jlessonArray.map(
+            jlesson => this._reviveLesson(jlesson));
     }
 }
