@@ -16,7 +16,17 @@ export default function FileRow({file, repository}){
     let dateString = formatDate(file.date)
 
     const onDownload = () => {
-        repository.downloadFile({lessonFileId: file.id});
+        repository.downloadFile({lessonFileId: file.id})
+            .then(blob => {
+                const objectURL = URL.createObjectURL(blob);
+                var link = document.createElement("a");
+                link.download = file.name;
+                link.href = objectURL;
+                link.target = "_blank";
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+            });
       };
 
     // function downloadURI(uri, name) {

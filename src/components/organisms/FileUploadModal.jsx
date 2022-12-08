@@ -8,11 +8,8 @@ export default function FileUploadModal({open, onClose, callback, repository, da
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        console.log(event);
         let form = event.target;
-        console.log(form);
         let file = form.file.files[0];
-        console.log(file);
         let type = form.type.value;
         
         const formData = new FormData();

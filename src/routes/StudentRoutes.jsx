@@ -2,7 +2,7 @@ import { Route } from 'react-router-dom';
 import { ContactRoute, HomeRoute, NotFoundRoute } from './SharedRoutes';
 import LessonsPage from '../pages/LessonsPage';
 import CalendarPage from '../pages/CalendarPage';
-import MessagesPage from '../pages/MessagesPage';
+import MessagesPage from '../pages/ChatPage';
 
 const messagesPath = '/messages';
 const calendarPath = '/calendar';

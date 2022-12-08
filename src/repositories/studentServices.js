@@ -1,3 +1,4 @@
+import ChatRepository from "./chatRepository";
 import LessonFileRepository from "./lessonFileRepository";
 import LessonRepository from "./lessonRepository";
 import TutoringRepository from "./tutoringRepository";
@@ -30,6 +31,14 @@ export default class StudentServices {
         return new TutoringRepository({
             apiUrl: this.apiUrl,
             controller: 'Tutoring',
+            token: this.token
+        });
+    }
+
+    get chatRepository(){
+        return new ChatRepository({
+            apiUrl: this.apiUrl,
+            controller: 'Chat',
             token: this.token
         });
     }
