@@ -5,7 +5,7 @@ export default function AskTutoratButton(props){
 
     if(props.text){
         return (
-            <Button onClick={props.onClick} variant="contained" component="label">
+            <Button onClick={props.onClick} variant="contained" component="label" disabled={props.disabled}>
                 {props.text}
                 <Icon/>
                 {props.children}
@@ -13,7 +13,7 @@ export default function AskTutoratButton(props){
         );
     }else{
         return (
-            <IconButton onClick={props.onClick}>
+            <IconButton onClick={props.onClick} disabled={props.disabled}>
                 <Icon/>
             </IconButton>
         );

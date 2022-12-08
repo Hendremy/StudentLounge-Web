@@ -2,7 +2,7 @@ import { Box, Button, Grid, Paper } from "@mui/material";
 import FileTable from "./FileTable";
 import {palette} from "../../appTheme";
 import HubHeader from "../molecules/HubHeader";
-import AskTutoratButton from "../molecules/AskTutoratButton";
+import AskTutoringButton from "./AskTutoringButton";
 import TutorRequestsButton from "../molecules/ShowTutorRequestButton";
 import { useState, useEffect } from "react";
 import OpenModalButton from "../molecules/OpenModalButton";
@@ -56,8 +56,12 @@ export default function LessonHub({lesson, lessonFileRepository, tutoringReposit
                     text={'Importer un fichier'}
                     modal={FileUploadModal}
                     repository={lessonFileRepository}
-                    callback={onFileUploaded}/>
-                <AskTutoratButton/>
+                    callback={onFileUploaded}
+                    />
+                <AskTutoringButton
+                    lessonId={lesson.id}
+                    repository={tutoringRepository}
+                />
                 <OpenModalButton
                     icon={Groups}
                     text={'Voir les demandes de tutorat'}

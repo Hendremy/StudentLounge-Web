@@ -4,7 +4,7 @@ import LessonHub from "../components/organisms/LessonHub";
 import { useParams } from "react-router-dom";
 import { useAtom } from "jotai";
 import { lessonsAtom } from "../stores/userStore";
-import { useContext, useEffect, useState } from "react";
+import { useContext } from "react";
 import { ApiServicesContext } from "../App";
 import EmptyLessonHub from "../components/organisms/EmptyLessonHub";
 import roles from "../models/roles";
