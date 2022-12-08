@@ -1,48 +1,42 @@
 import { ListItemText, ListItem, IconButton } from "@mui/material";
 import {palette} from '../../appTheme';
-import { Done, PersonAdd, Dangerous } from "@mui/icons-material";
+import { Done, PersonAdd, Dangerous, WarningAmberRounded } from "@mui/icons-material";
 import { useState } from "react";
-
-export default function TutoringRequestRow({lesson, isJoined, repository}){
-    const [accepted, setAccepted] = useState(isJoined);
+import LabelIconButton from '../atoms/LabelIconButton'
+ 
+export default function TutoringRequestRow({request, repository}){
+    const [accepted, setAccepted] = useState(false);
+    const [requestRows, setRequestRows] = useState([])
     const [error, setError] = useState(null);
     const style = {
         color: 'white'
     }
-    const ActionIcon = error ? Dangerous
+    const disabled = error || accepted;
+    const ActionIcon = error ? WarningAmberRounded
                              : accepted ? Done
                                       : PersonAdd;
+    const message = error ? error.message
+                          : accepted ? 'Tutorat accepté !'
+                                     : 'Accepter'
 
-    const joinOrLeave = () => {
-        if(accepted){
-            repository.leaveLesson({lessonId: lesson.id})
-                .then(
-                    () => setAccepted(false)
-                )
-                .catch(
-                    error => setError(error)
-                );
-        }else{
-            repository.joinLesson({lessonId: lesson.id})
-                .then(
-                    () => setAccepted(true)
-                )
-                .catch(
-                    error => setError(error)
-                );
+    const acceptRequest = () => {
+        if(!accepted){
+
         }
     };
 
     return (
         <ListItem
-        key={lesson.id}
+        key={request.id}
         sx={style}
         secondaryAction={
-            <IconButton sx={style} onClick={() => joinOrLeave()} disabled={error}>
-                <ActionIcon />
-            </IconButton>
+            <LabelIconButton 
+                icon={ActionIcon} 
+                text={message} 
+                onClick={() => acceptRequest()}
+                disabled={disabled}/>
         }>
-            <ListItemText primary={lesson.name} />
+            <ListItemText primary={request.username} />
         </ListItem>
     );
 }
