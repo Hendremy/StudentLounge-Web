@@ -32,7 +32,7 @@ export default class LessonFileRepository extends SecuredApiService {
             body: formData,
             headers: this.bearerHeader
         })
-        .then(response => this._handleJsonResponse(response))
+        .then(response => this._handleSimpleResponse(response))
     }
 
     async downloadFile({lessonFileId}){

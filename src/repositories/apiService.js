@@ -21,6 +21,13 @@ export class ApiService{
         }
         return await response.json();
     }
+
+    async _handleSimpleResponse(response){
+        if (!response.ok) {
+            throw new Error(`${response.status} - ${response.statusText}`);
+        }
+        return true;
+    }
 }
 
 export class SecuredApiService extends ApiService{

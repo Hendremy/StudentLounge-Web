@@ -1,12 +1,18 @@
 import SendFormButton from "../atoms/SendFormButton";
 import CenteredModal from "../atoms/CenteredModal";
 import Title from "../atoms/Title";
-import { FormControl, FormLabel, RadioGroup, FormControlLabel, Radio, TextField } from "@mui/material";
+import { FormControl, FormLabel, RadioGroup, FormControlLabel, Radio, TextField, Alert } from "@mui/material";
 import { FileOpen, TextFields } from "@mui/icons-material";
+import { useState } from "react";
 
-export default function FileUploadModal({open, onClose, callback, repository, data}){
+export default function FileUploadModal({open, onClose, repository, data}){
+    const [success, setSuccess] = useState(false);
+    const [message, setMessage] = useState(null);
+    const [error, setError] = useState(false);
 
     const handleSubmit = (event) => {
+        setSuccess(false);
+        setError(false);
         event.preventDefault();
         let form = event.target;
         let file = form.file.files[0];
@@ -20,13 +26,14 @@ export default function FileUploadModal({open, onClose, callback, repository, da
         repository.uploadFile({formData: formData})
             .then(
                 () =>{
-                    callback();
-                    onClose();
+                    setSuccess(true);
+                    setMessage('Fichier envoyé !');
                 }
             )
             .catch( 
                 error => {
-                    console.log(error);
+                    setError(true);
+                    setMessage(error.message);
             });
     }
 
@@ -55,6 +62,8 @@ export default function FileUploadModal({open, onClose, callback, repository, da
             </FormControl>
                 <SendFormButton text={'Envoyer'}/>
             </form>
+            {success && (<Alert style={{marginTop:15}} severity="success">{message}</Alert>)}
+            {error && (<Alert style={{marginTop:15}} severity="error">{message}</Alert>)}
         </CenteredModal>
     );
 }

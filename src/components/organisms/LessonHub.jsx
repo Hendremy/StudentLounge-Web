@@ -56,7 +56,7 @@ export default function LessonHub({lesson, lessonFileRepository, tutoringReposit
                     text={'Importer un fichier'}
                     modal={FileUploadModal}
                     repository={lessonFileRepository}
-                    callback={onFileUploaded}
+                    onClose={onFileUploaded}
                     data={{lessonId: lesson.id}}
                     />
                 <AskTutoringButton
