@@ -4,18 +4,21 @@ import Title from "../atoms/Title";
 import { FormControl, FormLabel, RadioGroup, FormControlLabel, Radio, TextField } from "@mui/material";
 import { FileOpen, TextFields } from "@mui/icons-material";
 
-export default function FileUploadModal({open, onClose, callback, repository}){
+export default function FileUploadModal({open, onClose, callback, repository, data}){
 
     const handleSubmit = (event) => {
         event.preventDefault();
         console.log(event);
         let form = event.target;
-        let file = form.file;
+        console.log(form);
+        let file = form.file.files[0];
+        console.log(file);
         let type = form.type.value;
         
         const formData = new FormData();
         formData.append('file', file);
         formData.append('type', type);
+        formData.append('lessonId', data.lessonId);
 
         repository.uploadFile({formData: formData})
             .then(

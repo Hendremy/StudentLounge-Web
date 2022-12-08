@@ -4,7 +4,7 @@ export default class LessonFile{
         this.type = type;
         this.name = name;
         this.user = user;
-        this.date = date;
+        this.date = new Date(date);
     }
 
     get isNotes(){

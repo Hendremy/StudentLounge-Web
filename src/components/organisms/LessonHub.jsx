@@ -57,6 +57,7 @@ export default function LessonHub({lesson, lessonFileRepository, tutoringReposit
                     modal={FileUploadModal}
                     repository={lessonFileRepository}
                     callback={onFileUploaded}
+                    data={{lessonId: lesson.id}}
                     />
                 <AskTutoringButton
                     lessonId={lesson.id}

@@ -35,8 +35,14 @@ export default class LessonFileRepository extends SecuredApiService {
         .then(response => this._handleJsonResponse(response))
     }
 
-    getDownloadUrl({lessonFileId}){
-        return `${this.baseUrl}/${lessonFileId}`;
+    async donwloadFile({lessonFileId}){
+        const url = `${this.baseUrl}/${lessonFileId}`;
+        return fetch(url,{
+            method: 'GET',
+            mode:'cors',
+            headers: this.bearerHeader
+        })
+        .then();
     }
 
     _reviveLessonFile(jlessonFile){
