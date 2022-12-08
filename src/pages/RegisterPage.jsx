@@ -8,10 +8,11 @@ import { useAtom } from "jotai";
 import { userAtom } from "../stores/userStore";
 import { useNavigate } from "react-router-dom";
 import { ApiServicesContext } from "../App";
+import roles from "../models/roles";
 
 export default function RegisterPage() {
-    const apiServices = useContext(ApiServicesContext);
-    const authRepository = apiServices.authenticationRepository;
+    const anonymApiServices = useContext(ApiServicesContext)[roles.anonym];
+    const authRepository = anonymApiServices.authenticationRepository;
     const [, setUser] = useAtom(userAtom);
     const navigate = useNavigate();
 

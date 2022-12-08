@@ -10,10 +10,11 @@ import { ApiServicesContext } from "../App";
 import LoginForm from '../components/organisms/LoginForm';
 
 import GoogleLogin from "../components/organisms/GoogleLogin";
+import roles from "../models/roles";
 
 export default function LoginPage() {
-    const apiServices = useContext(ApiServicesContext);
-    const authRepository = apiServices.authenticationRepository;
+    const anonymApiServices = useContext(ApiServicesContext)[roles.anonym];
+    const authRepository = anonymApiServices.authenticationRepository;
     const [, setUser] = useAtom(userAtom);
     const navigate = useNavigate();
 

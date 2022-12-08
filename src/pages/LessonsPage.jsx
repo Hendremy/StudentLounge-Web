@@ -7,11 +7,12 @@ import { lessonsAtom } from "../stores/userStore";
 import { useContext, useEffect, useState } from "react";
 import { ApiServicesContext } from "../App";
 import EmptyLessonHub from "../components/organisms/EmptyLessonHub";
+import roles from "../models/roles";
 
 export default function LessonsPage(){
     const { id } = useParams();
     const [lessons,] = useAtom(lessonsAtom);
-    const studentApiServices = useContext(ApiServicesContext)['Student'];
+    const studentApiServices = useContext(ApiServicesContext)[roles.student];
     const lessonRepository = studentApiServices.lessonRepository;
     const lessonFileRepository = studentApiServices.lessonFileRepository;
     const tutoringRepository = studentApiServices.tutoringRepository;

@@ -3,9 +3,10 @@ import {Box} from "@mui/system";
 import GridCentered from "../components/atoms/GridCentered";
 import {useContext, useEffect, useState} from "react";
 import { ApiServicesContext } from "../App";
+import roles from "../models/roles";
 
 export default function HomePage() {
-    const anonymServices = useContext(ApiServicesContext)['Anonym'];
+    const anonymServices = useContext(ApiServicesContext)[roles.anonym];
     const countRepository = anonymServices.countRepository;
     const [counts, setCounts] = useState({users: 0, files: 0});
 
