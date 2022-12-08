@@ -1,15 +1,11 @@
 import { Table, TableCell, TableRow, TableContainer, Paper, TableHead, TableBody } from "@mui/material";
 import FileRow from '../molecules/FileRow';
 
-export default function FileTable(props){
-    let files = props.files;
-    let filesRepository = props.filesRepository;
-
+export default function FileTable({files, filesRepository}){
     let fileRows = [];
     if(files){
         fileRows = files.map(file => {
-            let url = filesRepository.getDownloadUrl(file.id);
-            return <FileRow key={file.id} file={file} url={url}/>
+            return <FileRow key={file.id} file={file} repository={filesRepository}/>
         });
     }
 
