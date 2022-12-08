@@ -1,7 +1,7 @@
 export default class Tutoring {
-    constructor({id, tutor, tutored}){
+    constructor({id, username, userimage}){
         this.id = id;
-        this.tutor = tutor;
-        this.tutored = tutored;
+        this.username = username;
+        this.userimage = userimage;
     }
 }

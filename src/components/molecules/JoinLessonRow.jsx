@@ -1,6 +1,6 @@
 import { ListItemText, ListItem, IconButton } from "@mui/material";
 import {palette} from '../../appTheme';
-import { Remove, Add, Dangerous } from "@mui/icons-material";
+import { Remove, Add, Dangerous, WarningAmberRounded } from "@mui/icons-material";
 import { useState } from "react";
 
 export default function LessonRow({lesson, isJoined, repository}){
@@ -9,7 +9,7 @@ export default function LessonRow({lesson, isJoined, repository}){
     const style = {
         color: 'white'
     }
-    const ActionIcon = error ? Dangerous
+    const ActionIcon = error ? WarningAmberRounded
                              : joined ? Remove 
                                       : Add;
 

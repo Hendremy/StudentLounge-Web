@@ -28,7 +28,7 @@ export default class TutoringRepository extends SecuredApiService{
         .then(response => this._handleJsonResponse(response));
     }
 
-    async acceptTutoringRequest({tutoringId}){
+    async acceptRequest({tutoringId}){
         const url = `${this.baseUrl}/${tutoringId}`;
         return fetch(url,{
             method: 'PUT',
