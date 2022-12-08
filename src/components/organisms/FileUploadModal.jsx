@@ -19,7 +19,7 @@ export default function FileUploadModal({open, onClose, callback, repository}){
 
         repository.uploadFile({formData: formData})
             .then(
-                ok =>{
+                () =>{
                     callback();
                     onClose();
                 }

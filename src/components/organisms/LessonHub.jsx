@@ -67,6 +67,7 @@ export default function LessonHub({lesson, lessonFileRepository, tutoringReposit
                     text={'Voir les demandes de tutorat'}
                     modal={TutoringRequestsModal}
                     repository={tutoringRepository}
+                    data={{lessonId: lesson.id}}
                 />
             </HubHeader>
             <Box sx={boxStyle}>

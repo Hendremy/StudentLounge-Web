@@ -6,7 +6,9 @@ export default function OpenModalButton(props){
     const handleOpen = () => setOpen(true);
     const handleClose = () => {
         setOpen(false);
-        props.onClose();
+        if(props.onClose){
+            props.onClose();
+        }
     };
 
     const Icon = props.icon;
@@ -15,7 +17,12 @@ export default function OpenModalButton(props){
     return(
         <>
             <LabelIconButton onClick={handleOpen} text={props.text} icon={Icon}/>
-            <Modal open={open} onClose={handleClose} repository={props.repository} callback={props.callback}/>
+            <Modal 
+                open={open} 
+                onClose={handleClose}
+                data={props.data}
+                repository={props.repository}  
+                callback={props.callback}/>
         </>
     );
 }
