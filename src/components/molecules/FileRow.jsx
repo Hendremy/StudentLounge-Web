@@ -16,7 +16,7 @@ export default function FileRow({file, repository}){
     let dateString = formatDate(file.date)
 
     const onDownload = () => {
-        repository.download
+        repository.downloadFile({lessonFileId: file.id});
       };
 
     // function downloadURI(uri, name) {
