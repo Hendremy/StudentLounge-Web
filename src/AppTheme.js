@@ -7,7 +7,9 @@ const iconActive = "#8aeaff";
 const palette = {
   primary: "#5842DE",
   secondary: "#241292",
-  iconActive: "#8aeaff"
+  iconActive: "#8aeaff",
+  blue: "#218aff",
+  grey: "#808080"
 };
 
 const theme = createTheme({

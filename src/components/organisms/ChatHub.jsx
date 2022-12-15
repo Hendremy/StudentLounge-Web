@@ -1,13 +1,13 @@
-import { Box, IconButton, Grid, Icon, Paper, TextField } from "@mui/material";
+import { Box, IconButton, Grid, Icon, Paper, TextField, Text, Typography } from "@mui/material";
 import { useEffect, useState } from "react";
 import { userAtom } from "../../stores/userStore";
 import { useAtom } from "jotai";
 import {initializeApp} from 'firebase/app';
-import {getFirestore, collection, addDoc, orderBy, limit, getDocs, query, serverTimestamp} from 'firebase/firestore';
+import {getFirestore, collection, addDoc, orderBy, limit, onSnapshot, query, serverTimestamp} from 'firebase/firestore';
 import {palette} from "../../AppTheme";
-import ChatBubble from 'react-chat-bubble';
 import SendRoundedIcon from '@mui/icons-material/SendRounded';
 import GridCentered from "../atoms/GridCentered";
+import { margin } from "@mui/system";
 
 export default function ChatHub({chat, chatRepository}){
     const app = initializeApp({
@@ -28,15 +28,11 @@ export default function ChatHub({chat, chatRepository}){
         borderRadius:25
     };
 
-    const messageStyle = {
-        height:'60vh',
-    };
-
     const boxStyle = {
         height: '100%',
         backgroundColor: palette.primary,
         minHeight:'75vh',
-        padding: '1%'
+        padding: '1%',
     };
 
     const firestore = getFirestore(app);
@@ -62,6 +58,20 @@ export default function ChatHub({chat, chatRepository}){
             }
         }
     }
+    const bubbleStyleSent = {
+        backgroundColor:palette.blue,
+        padding:10,
+        borderRadius:10,
+        margin:5
+    }
+
+    const bubbleStyleRecieve = {
+        backgroundColor:palette.grey,
+        padding:10,
+        borderRadius:10,
+        margin:5
+    }
+
     const bottom = {
         flex: 1,
         justifyContent: 'flex-end',
@@ -79,15 +89,11 @@ export default function ChatHub({chat, chatRepository}){
         setFormValue('');
     }
 
-    const getMessages = async () => {
-       
-        await getDocs(q)
-            .then((querySnapshot)=>{              
-                const newData = querySnapshot.docs
-                    .map((doc) => ({...doc.data(), id:doc.id }));
-                setMessages(newData);                
-            })
-       
+    const getMessages = () => {
+        return onSnapshot(q, (snapshot) => {
+            let updatedData = snapshot.docs.map(doc => doc.data());
+            setMessages(updatedData);
+        })
     }
 
     useEffect(() => {
@@ -97,9 +103,9 @@ export default function ChatHub({chat, chatRepository}){
     return (
         <Paper elevation ={10} style={paperStyle}>
             <Box sx={boxStyle}>
-                <div style={messageStyle}>
+                <Grid direction={"column"}>
                     {messages && messages.map(msg => <ChatMessage key={msg.id} message={msg}/>)}
-                </div>
+                </Grid>
                 <form onSubmit={sendMessage} style={bottom}>
                     <Grid container>
                         <Grid item xs={11}>
@@ -133,12 +139,22 @@ export default function ChatHub({chat, chatRepository}){
     function ChatMessage(props) {
         const {message, id, name, time} = props.message;
 
-        const type = name === user.fullname ? 0 : 1;
+        const type = name === user.fullname ? 'right' : 'left';
 
-        return (
-                <ChatBubble messages = {{
-                    "type" : type,
-                    "text": message}} />
-        )
+            if(type === 'right'){
+                return(
+                <Grid item display="flex" justifyContent="flex-end">
+                    <Box style={bubbleStyleSent}>
+                        <Typography>{message}</Typography>
+                    </Box>
+                </Grid>); 
+            }else{
+                return(
+                <Grid item display={"flex"} justifyContent="flex-start">
+                    <Box style={bubbleStyleRecieve}>
+                        <Typography>{message}</Typography>
+                    </Box>
+                </Grid>);
+            }
     }
 }

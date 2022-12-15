@@ -1,4 +1,4 @@
-import Chat from "../models/Chat";
+import Chat from "../models/chat";
 import { SecuredApiService } from "./apiService";
 
 export default class ChatRepository extends SecuredApiService {
