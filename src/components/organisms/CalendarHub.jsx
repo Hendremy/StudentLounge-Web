@@ -1,4 +1,4 @@
-import { Box, Button, Grid, Paper } from "@mui/material";
+import { Box, Button, colors, Grid, Paper } from "@mui/material";
 import {palette} from "../../AppTheme";
 import HubHeader from "../molecules/HubHeader";
 import { useState, useEffect } from "react";
@@ -17,19 +17,19 @@ export default function CalendarHub({agendaRepository}){
     },[])
 
     useEffect(() => {
-        // let agendaIndex = 0;
-        // let colors = ['red','blue','primary','green'];
-        // var allScheduleEvents = agendas.map(
-        //     agenda => {
-        //         let color = colors[agendaIndex % colors.length];
-        //         agendaIndex++;
-        //         return agenda.agendaEvents.map(event => new ScheduleEvent({
-        //             agendaEvent: event, groupName: agenda.name, color: color
-        //         }));
-        //     }
-        // );
-        // var calendarEvents = allScheduleEvents.reduce((events = [], scheduleEvents) => events.push(...scheduleEvents));
-        // setScheduleEvents(calendarEvents);
+        let agendaIndex = 0;
+        let colors = ['purple','blue','primary','green'];
+        var allScheduleEvents = agendas.map(
+            agenda => {
+                let color = colors[agendaIndex % colors.length];
+                agendaIndex++;
+                return agenda.agendaEvents.map(event => new ScheduleEvent({
+                    agendaEvent: event, groupName: agenda.name, color: color
+                }));
+            }
+        );
+        var calendarEvents = allScheduleEvents.length > 0 ? allScheduleEvents.reduce((events = [], scheduleEvents) => events.push(...scheduleEvents)) : [];
+        setScheduleEvents(calendarEvents);
     },[agendas])
 
     const paperStyle = {
@@ -54,7 +54,7 @@ export default function CalendarHub({agendaRepository}){
             </HubHeader>
             <Box sx={boxStyle}>
                 <Schedule
-                    events={scheduleEvents}
+                    scheduleEvents={scheduleEvents}
                 />
             </Box>
         </Paper>

@@ -31,13 +31,12 @@ export default class AgendaRepository extends SecuredApiService {
         .then(jsonAgendas => this._reviveAgendas(jsonAgendas));
     }
 
-    _reviveAgendas({jsonAgendas}){
-        return jsonAgendas.map(jAgenda => this._reviveAgenda(jAgenda)
-        );
+    _reviveAgendas(jsonAgendas){
+        return jsonAgendas.map(jAgenda => this._reviveAgenda(jAgenda));
     }
 
-    _reviveAgenda({jsonAgenda}){
+    _reviveAgenda(jsonAgenda){
         var events = jsonAgenda.agendaEvents.map(jEvent => new AgendaEvent(jEvent));
-        return Agenda({id: jsonAgenda.id, name: jsonAgenda.name, agendaEvents: events});
+        return new Agenda({id: jsonAgenda.id, name: jsonAgenda.name, agendaEvents: events});
     }
 }

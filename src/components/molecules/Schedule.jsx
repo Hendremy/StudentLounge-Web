@@ -1,26 +1,34 @@
-import FullCalendar from '@fullcalendar/react'
-import dayGridPlugin from '@fullcalendar/daygrid'
+import FullCalendar from '@fullcalendar/react';
+import timeGridPlugin from '@fullcalendar/timegrid';
+import frLocale from '@fullcalendar/core/locales/fr';
 
 export default function Schedule({scheduleEvents}){
     const events = [
         { title: 'Meeting', start: new Date() }
     ]
 
-    function renderEventContent(eventInfo) {
+    console.log(scheduleEvents);
+
+    
+    // <span>{schedEvent.event.extendedprops.location}</span>
+    function renderEventContent(schedEvent) {
+        console.log(schedEvent.event.extendedProps.location);
         return (
           <>
-            <b>{eventInfo.timeText}</b>
-            <i>{eventInfo.event.title}</i>
+            <b>{schedEvent.timeText}</b>
+            <span>{schedEvent.event.title}</span>
+            <p>{schedEvent.event.extendedProps.location}</p>
           </>
         )
     }
 
     return (
     <FullCalendar
-        plugins={[dayGridPlugin]}
-        initialView='dayGridWeek'
+        locale={frLocale}
+        plugins={[timeGridPlugin]}
+        initialView='timeGridWeek'
         weekends={false}
-        events={events}
+        events={scheduleEvents}
         eventContent={renderEventContent}
     />
     );

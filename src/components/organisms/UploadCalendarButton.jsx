@@ -8,8 +8,8 @@ export default function UploadCalendarButton({agendaRepository, onCalendarUpload
     function handleCalendarUpload(event){
         let icalFile = event.target.files[0];
         const formData = new FormData();
-        formData.append('file', icalFile);
-        agendaRepository.uploadCalendarFile(formData)
+        formData.append('calendarFile', icalFile);
+        agendaRepository.uploadCalendarFile({formData: formData})
             .then(agendas => {
                 onCalendarUploaded(agendas);
             });
@@ -27,7 +27,7 @@ export default function UploadCalendarButton({agendaRepository, onCalendarUpload
             <LabelIconButton 
                 text = "Importer un calendrier"
                 icon = {UploadFile}
-                onClick={() => fileInput.click()}
+                onClick={() => fileInput.current.click()}
             />
         </>
     )
