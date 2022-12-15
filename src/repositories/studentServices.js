@@ -3,6 +3,7 @@ import ChatRepository from "./chatRepository";
 import LessonFileRepository from "./lessonFileRepository";
 import LessonRepository from "./lessonRepository";
 import TutoringRepository from "./tutoringRepository";
+import AppointmenRepository from "./appointmentRepository";
 
 export default class StudentServices {
 
@@ -48,6 +49,14 @@ export default class StudentServices {
         return new AgendaRepository({
             apiUrl: this.apiUrl,
             controller: 'Agenda',
+            token: this.token
+        });
+    }
+
+    get appointmentRepository(){
+        return new AppointmenRepository({
+            apiUrl: this.apiUrl,
+            controller: 'Appointment',
             token: this.token
         });
     }

@@ -23,7 +23,6 @@ export default function LessonsPage(){
         minHeight:'80vh'
     }
 
-
     let selectedLesson = lessons.find(lesson => lesson.id === id);
     
     if(selectedLesson){

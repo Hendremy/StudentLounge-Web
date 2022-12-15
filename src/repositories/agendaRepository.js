@@ -19,7 +19,7 @@ export default class AgendaRepository extends SecuredApiService {
         .then(jsonAgendas => this._reviveAgendas(jsonAgendas));
     }
 
-    async importCalendarFile({formData}){
+    async uploadCalendarFile({formData}){
         const url = this.baseUrl;
         return fetch(url,{
             method: "POST",

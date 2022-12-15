@@ -1,19 +1,19 @@
 import { Button, IconButton } from "@mui/material";
 
-export default function AskTutoratButton(props){
-    let Icon = props.icon;
+export default function AskTutoratButton({icon, text, onClick, children, disabled = false}){
+    let Icon = icon;
 
-    if(props.text){
+    if(text){
         return (
-            <Button onClick={props.onClick} variant="contained" component="label" disabled={props.disabled}>
-                {props.text}
+            <Button onClick={onClick} variant="contained" component="label" disabled={disabled}>
+                {text}
                 <Icon/>
-                {props.children}
+                {children}
             </Button>
         );
     }else{
         return (
-            <IconButton onClick={props.onClick} disabled={props.disabled}>
+            <IconButton onClick={onClick} disabled={disabled}>
                 <Icon/>
             </IconButton>
         );
