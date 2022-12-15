@@ -1,4 +1,6 @@
 import { SecuredApiService } from "./apiService";
+import Agenda from "../models/agenda";
+import AgendaEvent from "../models/agendaEvent";
 
 export default class AgendaRepository extends SecuredApiService {
 
