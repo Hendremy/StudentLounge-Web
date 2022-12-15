@@ -15,9 +15,6 @@ export default function MenuNav(props){
     let navs = [];
 
     if(user){
-        if(user.isAdmin){
-            navs.push(<AdminNavs/>);
-        }
         if(user.isStudent){
             navs.push(StudentNavs);
         }
