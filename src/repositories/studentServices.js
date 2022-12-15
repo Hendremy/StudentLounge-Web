@@ -1,3 +1,4 @@
+import AgendaRepository from "./agendaRepository";
 import ChatRepository from "./chatRepository";
 import LessonFileRepository from "./lessonFileRepository";
 import LessonRepository from "./lessonRepository";
@@ -39,6 +40,14 @@ export default class StudentServices {
         return new ChatRepository({
             apiUrl: this.apiUrl,
             controller: 'Chat',
+            token: this.token
+        });
+    }
+
+    get agendaRepository(){
+        return new AgendaRepository({
+            apiUrl: this.apiUrl,
+            controller: 'Agenda',
             token: this.token
         });
     }
