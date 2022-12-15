@@ -69,7 +69,7 @@ export default function ContactPage(){
                     <TextField
                         label={"Adresse e-mail"}
                         value={mail}
-                        name={"input"}
+                        name={"mail"}
                         onChange={(event) => setMail(event.target.value)}
                         placeholder={'Entrez votre messages ici...'}
                         style={fieldStyle}
@@ -81,7 +81,7 @@ export default function ContactPage(){
                     <TextField
                         label={"Sujet"}
                         value={sujet}
-                        name={"input"}
+                        name={"sujet"}
                         onChange={(event) => setSujet(event.target.value)}
                         placeholder={'Entrez votre messages ici...'}
                         style={fieldStyle}
@@ -95,7 +95,7 @@ export default function ContactPage(){
                         rows={13}
                         label={"Message"}
                         value={message}
-                        name={"input"}
+                        name={"message"}
                         onChange={(event) => setMessage(event.target.value)}
                         placeholder={'Entrez votre messages ici...'}
                         style={fieldStyle}
