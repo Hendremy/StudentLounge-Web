@@ -1,17 +1,14 @@
-import { Toc } from "@mui/icons-material";
 import { Box, List, Paper } from "@mui/material";
-import {palette} from "../../appTheme";
-import LessonRow from "../molecules/LessonRow";
-import ListHeader from '../molecules/ListHeader';
-import OpenModalButton from "../molecules/OpenModalButton";
-import { useState, useEffect } from "react";
-import LessonJoinModal from "./LessonJoinModal";
+import {palette} from "../../AppTheme";
 import { useAtom } from "jotai";
-import { lessonsAtom } from "../../stores/userStore";
+import { chatAtom } from "../../stores/userStore";
+import { useEffect, useState } from "react";
+import ListHeader from '../molecules/ListHeader';
+import ChatRow from "../molecules/ChatRow";
 
-export default function ChatList({lessonRepository, reloadList}){
-    const [userChatGroups, setUserChatGroups] = useAtom(lessonsAtom);
-    const [lessonRows, setLessonRows] = useState([]);
+export default function ChatList({chatRepository, reloadList}){
+    const [chats, setChats] = useAtom(chatAtom);
+    const [chatRows, setChatRows] = useState([]);
 
     const paperStyle = {
         padding: 20,
@@ -24,41 +21,44 @@ export default function ChatList({lessonRepository, reloadList}){
     const boxStyle = {
         height: '100%',
         backgroundColor: palette.secondary,
-        minHeight:'80vh',
+        minHeight:'73.5vh',
         borderRadius: '5px'
     };
 
-    const loadUserLessons = () => {
-        lessonRepository.getUserLessons()
-        .then(lessonList => {
-            setUserChatGroups(lessonList);
+    const loadChat = () => {
+        chatRepository.getChat()
+        .then(chatList => {
+            setChats(chatList);
         })
         .catch(error => {
             console.log(error);
         });
     }
 
-    const renderLessonRows = (lessons) => {
-        setLessonRows(lessons.map(
-            (lesson) => <LessonRow key={lesson.id} lesson={lesson}></LessonRow>
-        ))
+    const renderChatRows = (chats) => {
+        try{
+            setChatRows(chats.map(
+                (chat) => <ChatRow key={chat.id} chat={chat}></ChatRow>
+            ))
+        }catch(e){
+            console.log(e);
+        }
     }
 
     useEffect(() => {
-        loadUserLessons();
+        loadChat();
     },[]);
 
     useEffect(() => {
-        renderLessonRows(userChatGroups);
-    },[userChatGroups])
+        renderChatRows(chats);
+    },[chats])
 
     return(
         <Paper elevation ={10} style={paperStyle}>
-            <ListHeader title='Messagerie'>
-            </ListHeader>
+            <ListHeader title='Messages'/>
             <Box sx={boxStyle}>
                 <List>
-                    {lessonRows}
+                    {chatRows}
                 </List>
             </Box>
         </Paper>

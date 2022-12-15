@@ -1,6 +1,6 @@
 import { Box, Button, Grid, Paper } from "@mui/material";
 import FileTable from "./FileTable";
-import {palette} from "../../appTheme";
+import {palette} from "../../AppTheme";
 import HubHeader from "../molecules/HubHeader";
 import AskTutoringButton from "./AskTutoringButton";
 import TutorRequestsButton from "../molecules/ShowTutorRequestButton";

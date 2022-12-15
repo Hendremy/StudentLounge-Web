@@ -1,5 +1,4 @@
 import { ListItemText, ListItem, IconButton } from "@mui/material";
-import {palette} from '../../appTheme';
 import { Remove, Add, Dangerous, WarningAmberRounded } from "@mui/icons-material";
 import { useState } from "react";
 

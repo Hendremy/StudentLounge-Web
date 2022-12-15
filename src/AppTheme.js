@@ -1,5 +1,4 @@
 import {createTheme} from '@mui/material'
-import { fontFamily } from '@mui/system';
 
 const primary = "#5842DE";
 const secondary = "#241292";

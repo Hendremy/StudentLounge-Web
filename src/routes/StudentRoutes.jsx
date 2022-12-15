@@ -16,7 +16,9 @@ const StudentRoutes = [
         <Route key={'lesson'} path={':id'} element={<LessonsPage/>}/>
     </Route>,
     <Route key={'calendar'} path={calendarPath} element={<CalendarPage/>}/>,
-    <Route key={'messages'} path={messagesPath} element={<MessagesPage/>}/>
+    <Route key={'chat'} path={messagesPath} element={<MessagesPage/>}>
+        <Route key={'chat'} path={':id'} element={<MessagesPage/>}/>
+    </Route>
 ];
 
 export {messagesPath, calendarPath, lessonsPath, StudentRoutes};

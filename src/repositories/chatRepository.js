@@ -1,3 +1,4 @@
+import Chat from "../models/Chat";
 import { SecuredApiService } from "./apiService";
 
 export default class ChatRepository extends SecuredApiService {
@@ -6,4 +7,22 @@ export default class ChatRepository extends SecuredApiService {
         super({apiUrl: apiUrl, controller: controller, token: token});
     }
 
+    async getChat(){
+        return fetch(this.apiUrl + '/Tutoring/chat', {
+            method: "GET",
+            mode: "cors",
+            headers: this.bearerHeader
+        })
+        .then(response => this._handleJsonResponse(response))
+        .then(chatArray => this._reviveChatArray(chatArray));
+    }
+
+    _reviveChatArray(jChatArray){
+        return jChatArray.map(
+            jChat => this._reviveChat(jChat));
+    }
+
+    _reviveChat(jChat){
+        return new Chat(jChat);
+    }
 }

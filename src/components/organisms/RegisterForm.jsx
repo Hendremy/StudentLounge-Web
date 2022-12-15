@@ -1,5 +1,5 @@
 import {Alert, Button, Grid, TextField} from "@mui/material";
-import {palette} from "../../appTheme";
+import {palette} from "../../AppTheme";
 import {useState} from "react";
 import SendFormButton from "../atoms/SendFormButton";
 

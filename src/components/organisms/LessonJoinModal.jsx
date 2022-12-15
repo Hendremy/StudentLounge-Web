@@ -1,6 +1,6 @@
 import CenteredModal from "../atoms/CenteredModal";
 import Title from "../atoms/Title";
-import { palette } from "../../appTheme";
+import { palette } from "../../AppTheme";
 import { useAtom } from "jotai";
 import { lessonsAtom } from "../../stores/userStore";
 import { useState } from "react";

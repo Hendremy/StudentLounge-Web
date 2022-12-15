@@ -1,6 +1,6 @@
 import {Paper, Stack} from "@mui/material";
 import Title from "../components/atoms/Title";
-import {palette} from "../appTheme";
+import {palette} from "../AppTheme";
 import React, {useContext} from "react";
 import GridCentered from "../components/atoms/GridCentered";
 import { useAtom } from "jotai";

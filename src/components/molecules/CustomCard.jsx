@@ -1,6 +1,6 @@
 import {Card, CardContent, ThemeProvider, Typography} from "@mui/material";
 import {Box} from "@mui/system";
-import {palette, theme} from "../../appTheme";
+import {palette, theme} from "../../AppTheme";
 import Title from "../atoms/Title";
 import SupervisedUserCircleIcon from "@mui/icons-material/SupervisedUserCircle";
 import InsertDriveFileIcon from '@mui/icons-material/InsertDriveFile';

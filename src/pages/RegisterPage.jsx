@@ -1,5 +1,5 @@
 import {Paper} from "@mui/material";
-import {palette} from "../appTheme";
+import {palette} from "../AppTheme";
 import Title from "../components/atoms/Title";
 import GridCentered from "../components/atoms/GridCentered";
 import RegisterForm from "../components/organisms/RegisterForm";

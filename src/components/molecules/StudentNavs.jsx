@@ -10,7 +10,7 @@ const StudentNavs =[
     <MenuIcon key={'messages_nav'} path={messagesPath} icon={ChatIcon}/>,
     <MenuIcon key={'lessons_nav'} path={lessonsPath} icon={LessonIcon}/>,
     <MenuIcon key={'calendar_nav'} path={calendarPath} icon={CalendarIcon}/>,
-    <ContactNav />
+    <ContactNav key={'contact_nav'}/>
 ];
 
 export default StudentNavs;

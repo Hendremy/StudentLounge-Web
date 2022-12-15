@@ -1,6 +1,6 @@
 import { Toc } from "@mui/icons-material";
 import { Box, List, Paper } from "@mui/material";
-import {palette} from "../../appTheme";
+import {palette} from "../../AppTheme";
 import LessonRow from "../molecules/LessonRow";
 import ListHeader from '../molecules/ListHeader';
 import OpenModalButton from "../molecules/OpenModalButton";

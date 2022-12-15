@@ -1,10 +1,10 @@
 import { ListItemText, ListItemButton } from "@mui/material";
-import { lessonsPath } from "../../routes/StudentRoutes";
+import { messagesPath } from "../../routes/StudentRoutes";
 import {palette} from '../../AppTheme';
 import { NavLink } from "react-router-dom";
 
-export default function LessonRow(props){
-    let lesson = props.lesson;
+export default function ChatRow(props){
+    let chat = props.chat;
 
     const style= {
         backgroundColor: palette.primary,
@@ -18,8 +18,8 @@ export default function LessonRow(props){
 
     return (
         <ListItemButton sx={style}>
-            <NavLink to={`${lessonsPath}/${lesson.id}`} style={({ isActive }) => isActive ? activeStyle : undefined}>
-                <ListItemText primary={lesson.name}/>
+            <NavLink to={`${messagesPath}/${chat.id}`} style={({ isActive }) => isActive ? activeStyle : undefined}>
+                <ListItemText primary={chat.name}/>
             </NavLink>
         </ListItemButton>
     );

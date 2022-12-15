@@ -3,8 +3,7 @@ import {AccountCircle} from "@mui/icons-material";
 import {Avatar} from "@mui/material";
 import AuthNavStyle from "../atoms/AuthNavStyle";
 import {useState} from "react";
-import {palette} from "../../appTheme";
-import {useNavigate} from "react-router-dom";
+import {palette} from "../../AppTheme";
 
 export default function AuthNavPrivate({user, logout}){
     const [anchorEl, setAnchorEl] = useState(null);

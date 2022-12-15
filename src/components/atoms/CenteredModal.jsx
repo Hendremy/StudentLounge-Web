@@ -1,6 +1,6 @@
 import { Modal } from "@mui/material";
 import { Stack } from "@mui/system";
-import { palette } from "../../appTheme";
+import { palette } from "../../AppTheme";
 
 export default function CenteredModal({children, open, onClose}){
     const style = {

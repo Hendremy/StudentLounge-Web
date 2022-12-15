@@ -1,5 +1,5 @@
-import {Alert, Button, Stack, TextField, Typography} from "@mui/material";
-import {palette} from "../../appTheme";
+import {Alert, TextField} from "@mui/material";
+import {palette} from "../../AppTheme";
 import React, {useState} from "react";
 import SendFormButton from "../atoms/SendFormButton";
 
@@ -12,12 +12,6 @@ export default function AuthenticationForm({onAuthenticated, authRepo}){
         backgroundColor: palette.secondary,
         borderRadius:25,
         marginTop: 20,
-    };
-    const buttonStyle = {
-        backgroundColor:'white',
-        marginTop: 20,
-        color:palette.secondary,
-        borderRadius:10
     };
     const whiteColor = {
         style:{color:'white'}

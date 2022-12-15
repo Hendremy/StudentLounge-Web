@@ -1,6 +1,6 @@
 import CenteredModal from "../atoms/CenteredModal";
 import Title from "../atoms/Title";
-import { palette } from '../../appTheme';
+import { palette } from '../../AppTheme';
 import { Box, List } from "@mui/material";
 import { useState, useEffect } from "react";
 import TutoringRequestRow from '../molecules/TutoringRequestRow';

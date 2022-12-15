@@ -1,20 +1,19 @@
 import { Grid } from "@mui/material";
-import LessonList from "../components/organisms/LessonList";
-import LessonHub from "../components/organisms/LessonHub";
+import ChatList from "../components/organisms/ChatList";
+import ChatHub from "../components/organisms/ChatHub";
 import { useParams } from "react-router-dom";
 import { useAtom } from "jotai";
-import { lessonsAtom } from "../stores/userStore";
+import { chatAtom } from "../stores/userStore";
 import { useContext } from "react";
 import { ApiServicesContext } from "../App";
-import EmptyLessonHub from "../components/organisms/EmptyLessonHub";
+import EmptyChatHub from "../components/organisms/EmptyChatHub";
 import roles from "../models/roles";
 
 export default function ChatPage(){
     const { id } = useParams();
-    const [lessons,] = useAtom(lessonsAtom);
+    const [chats,] = useAtom(chatAtom);
     const studentApiServices = useContext(ApiServicesContext)[roles.student];
-    const lessonRepository = studentApiServices.lessonRepository;
-    const lessonFileRepository = studentApiServices.lessonFileRepository;
+    const chatRepository = studentApiServices.chatRepository;
     const tutoringRepository = studentApiServices.tutoringRepository;
 
     const gridStyle = {
@@ -24,20 +23,19 @@ export default function ChatPage(){
     }
 
 
-    let selectedLesson = lessons.find(lesson => lesson.id === id);
+    let selectedchat = chats.find(chat => chat.id+'' === id);
     
-    if(selectedLesson){
+    if(selectedchat){
         return (
             <Grid container spacing={2} sx={gridStyle}>
                 <Grid item xs={2}>
-                    <LessonList lessonRepository={lessonRepository}></LessonList>
+                    <ChatList chat={chats} chatRepository={chatRepository}></ChatList>
                 </Grid>
                 <Grid item xs={10}>
-                    <LessonHub 
-                        key={selectedLesson.id} 
-                        lesson={selectedLesson} 
-                        lessonFileRepository={lessonFileRepository}
-                        tutoringRepository={tutoringRepository}
+                    <ChatHub 
+                        key={selectedchat.id} 
+                        chat={selectedchat} 
+                        chatRepository={chatRepository}
                         />
                 </Grid>
             </Grid>
@@ -46,10 +44,10 @@ export default function ChatPage(){
         return (
             <Grid container spacing={2} sx={gridStyle}>
                 <Grid item xs={2}>
-                    <LessonList lessons={lessons} lessonRepository={lessonRepository}></LessonList>
+                    <ChatList chat={chats} chatRepository={chatRepository}></ChatList>
                 </Grid>
                 <Grid item xs={10}>
-                    <EmptyLessonHub />
+                    <EmptyChatHub />
                 </Grid>
             </Grid>
         );

@@ -1,8 +1,7 @@
 import { ListItemText, ListItem, Avatar } from "@mui/material";
-import {palette} from '../../appTheme';
 import { Done, PersonAdd, WarningAmberRounded, AccountCircle } from "@mui/icons-material";
 import { useState } from "react";
-import LabelIconButton from '../atoms/LabelIconButton'
+import LabelIconButton from '../atoms/LabelIconButton';
  
 export default function TutoringRequestRow({request, repository}){
     const [accepted, setAccepted] = useState(false);

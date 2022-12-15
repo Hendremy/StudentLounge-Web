@@ -1,4 +1,4 @@
-import { palette } from "../../appTheme";
+import { palette } from "../../AppTheme";
 import { Button, Typography } from "@mui/material";
 
 export default function SendFormButton({text}){

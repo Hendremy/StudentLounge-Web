@@ -23,7 +23,7 @@ export default function EmptyLessonHub(){
         <Paper elevation ={10} style={paperStyle}>
             <Box sx={boxStyle}>
                 <GridCentered>
-                    <Title text={"Aucun cours sélectionné"}/>
+                    <Title text={"Aucune discussion sélectionnée"}/>
                 </GridCentered>
             </Box>
         </Paper>

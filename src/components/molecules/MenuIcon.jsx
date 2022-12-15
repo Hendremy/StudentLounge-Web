@@ -1,5 +1,5 @@
 import { NavLink } from 'react-router-dom';
-import {palette} from '../../appTheme';
+import {palette} from '../../AppTheme';
 
 const activeStyle = {
     borderBottom: `5px solid ${palette.iconActive}`,
@@ -8,8 +8,8 @@ const activeStyle = {
 
 export default function MenuIcon({path, icon:Icon}){
     return (
-        <NavLink to={path} style={({ isActive }) => isActive ? activeStyle : undefined}>
-                <Icon sx={{fontSize: 37}}/>
+        <NavLink key={'contact-nav-icon'} to={path} style={({ isActive }) => isActive ? activeStyle : undefined}>
+                <Icon key={'icon-profile'} sx={{fontSize: 37}}/>
         </NavLink>
     );
 }
