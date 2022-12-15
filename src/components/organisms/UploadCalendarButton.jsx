@@ -1,5 +1,6 @@
 import { UploadFile } from "@mui/icons-material";
 import { useRef } from 'react';
+import LabelIconButton from '../atoms/LabelIconButton';
 
 export default function UploadCalendarButton({agendaRepository, onCalendarUploaded}){
     const fileInput = useRef(null);

@@ -27,7 +27,6 @@ export default function AppointmentList({appointmentRepository}){
             </ListHeader>
             <Box sx={boxStyle}>
                 <List>
-                    {lessonRows}
                 </List>
             </Box>
         </Paper>

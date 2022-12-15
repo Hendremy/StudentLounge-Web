@@ -3,13 +3,17 @@ import {palette} from "../../AppTheme";
 import HubHeader from "../molecules/HubHeader";
 import { useState, useEffect } from "react";
 import ScheduleEvent from "../../models/scheduleEvent";
+import UploadCalendarButton from './UploadCalendarButton';
+import Scheduler from 'react-mui-scheduler';
 
 export default function CalendarHub({agendaRepository}){
     const [agendas, setAgendas] = useState([]);
     const [scheduleEvents, setScheduleEvents] = useState([]);
 
+    const updateAgendas = (agendas) => setAgendas(agendas);
+
     useEffect(() => {
-        appointmentRepository.getUserAgendas()
+        agendaRepository.getUserAgendas()
             .then(agendas => setAgendas(agendas));
     },[])
 
@@ -47,7 +51,7 @@ export default function CalendarHub({agendaRepository}){
     return(
         <Paper elevation ={10} style={paperStyle}>
             <HubHeader title={"Horaire"}>
-                
+                <UploadCalendarButton agendaRepository={agendaRepository} onCalendarUpdated={updateAgendas} />
             </HubHeader>
             <Box sx={boxStyle}>
                 <Scheduler 
