@@ -32,9 +32,8 @@ export default class AgendaRepository extends SecuredApiService {
     }
 
     _reviveAgendas({jsonAgendas}){
-        return jsonAgendas.map(jAgenda => {
-            this._reviveAgenda(jAgenda)
-        });
+        return jsonAgendas.map(jAgenda => this._reviveAgenda(jAgenda)
+        );
     }
 
     _reviveAgenda({jsonAgenda}){

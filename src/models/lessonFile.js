@@ -8,7 +8,7 @@ export default class LessonFile{
     }
 
     get isNotes(){
-        return this.type == FileTypes.Notes;
+        return this.type === FileTypes.Notes;
     }
 }
 

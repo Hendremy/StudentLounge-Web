@@ -4,8 +4,7 @@ import HubHeader from "../molecules/HubHeader";
 import { useState, useEffect } from "react";
 import ScheduleEvent from "../../models/scheduleEvent";
 import UploadCalendarButton from './UploadCalendarButton';
-import Scheduler from 'react-mui-scheduler';
-
+import Schedule from "../molecules/Schedule";
 export default function CalendarHub({agendaRepository}){
     const [agendas, setAgendas] = useState([]);
     const [scheduleEvents, setScheduleEvents] = useState([]);
@@ -18,19 +17,19 @@ export default function CalendarHub({agendaRepository}){
     },[])
 
     useEffect(() => {
-        let agendaIndex = 0;
-        let colors = ['red','blue','primary','green'];
-        var allScheduleEvents = agendas.map(
-            agenda => {
-                let color = colors[agendaIndex % colors.length];
-                agendaIndex++;
-                return agenda.agendaEvents.map(event => new ScheduleEvent({
-                    agendaEvent: event, groupName: agenda.name, color: color
-                }));
-            }
-        );
-        var calendarEvents = allScheduleEvents.reduce((events = [], scheduleEvents) => events.push(...scheduleEvents));
-        setScheduleEvents(calendarEvents);
+        // let agendaIndex = 0;
+        // let colors = ['red','blue','primary','green'];
+        // var allScheduleEvents = agendas.map(
+        //     agenda => {
+        //         let color = colors[agendaIndex % colors.length];
+        //         agendaIndex++;
+        //         return agenda.agendaEvents.map(event => new ScheduleEvent({
+        //             agendaEvent: event, groupName: agenda.name, color: color
+        //         }));
+        //     }
+        // );
+        // var calendarEvents = allScheduleEvents.reduce((events = [], scheduleEvents) => events.push(...scheduleEvents));
+        // setScheduleEvents(calendarEvents);
     },[agendas])
 
     const paperStyle = {
@@ -54,8 +53,7 @@ export default function CalendarHub({agendaRepository}){
                 <UploadCalendarButton agendaRepository={agendaRepository} onCalendarUpdated={updateAgendas} />
             </HubHeader>
             <Box sx={boxStyle}>
-                <Scheduler 
-                    locale="fr"
+                <Schedule
                     events={scheduleEvents}
                 />
             </Box>
