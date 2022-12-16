@@ -2,7 +2,7 @@ import { useState } from "react";
 import CenteredModal from "../atoms/CenteredModal";
 import Title from "../atoms/Title";
 import { palette } from '../../AppTheme';
-import { Box, List, Alert} from '@mui/material';
+import { Box, List, Alert, TextField} from '@mui/material';
 import { DateTimePicker } from '@mui/x-date-pickers/DateTimePicker';
 import SelectTutoringField from "../molecules/SelectTutoringField";
 import SendFormButton from '../atoms/SendFormButton';
@@ -21,6 +21,11 @@ export default function MakeAppointmentModal({open, onClose, repository, data}){
         let form = event.target;
     };
 
+    const handleChange = () => {
+
+    }
+
+    //TODO: Picker le lieu avec gmaps
     return(
         <CenteredModal open={open} onClose={onClose}>
             <Title text={'Ajouter un rendez-vous'}/>
@@ -28,6 +33,14 @@ export default function MakeAppointmentModal({open, onClose, repository, data}){
             <form onSubmit={handleSubmit}>
                 <SelectTutoringField tutorings={availableTutorings}/>
                 <DateTimePicker 
+                    label="Début"
+                    onChange={handleChange}
+                    renderInput={(params) => <TextField {...params} />}
+                />
+                <DateTimePicker 
+                    label="Fin"
+                    onChange={handleChange}
+                    renderInput={(params) => <TextField {...params} />}
                 />
                 <SendFormButton text={'Confirmer'}/>
             </form>
