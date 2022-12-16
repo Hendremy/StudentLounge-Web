@@ -3,7 +3,7 @@ import ChatRepository from "./chatRepository";
 import LessonFileRepository from "./lessonFileRepository";
 import LessonRepository from "./lessonRepository";
 import TutoringRepository from "./tutoringRepository";
-import AppointmenRepository from "./appointmentRepository";
+import AppointmentsRepository from "./appointmentsRepository";
 
 export default class StudentServices {
 
@@ -54,9 +54,9 @@ export default class StudentServices {
     }
 
     get appointmentRepository(){
-        return new AppointmenRepository({
+        return new AppointmentsRepository({
             apiUrl: this.apiUrl,
-            controller: 'Appointment',
+            controller: 'Appointments',
             token: this.token
         });
     }

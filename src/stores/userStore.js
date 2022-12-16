@@ -5,3 +5,4 @@ import {atom} from 'jotai';
 export const userAtom = atomWithStorage('user', null);
 export const lessonsAtom = atom([]);
 export const chatAtom = atom([]);
+export const tutoringsAtom = atom([]);

@@ -9,6 +9,7 @@ export default function CalendarPage(){
     const studentApiServices = useContext(ApiServicesContext)[roles.student];
     const appointmentRepository = studentApiServices.appointmentRepository;
     const agendaRepository = studentApiServices.agendaRepository;
+    const tutoringRepository = studentApiServices.tutoringRepository;
 
     const gridStyle = {
         height: 'auto',
@@ -19,11 +20,15 @@ export default function CalendarPage(){
     return (
         <Grid container spacing={2} sx={gridStyle}>
             <Grid item xs={2}>
-                <AppointmentList appointmentRepository={appointmentRepository}/>
+                <AppointmentList
+                    appointmentRepository={appointmentRepository} 
+                    tutoringRepository={tutoringRepository}
+                />
             </Grid>
             <Grid item xs={10}>
                 <CalendarHub
                     agendaRepository={agendaRepository}
+                    appointmentRepository={appointmentRepository}
                 />
             </Grid>
         </Grid>
