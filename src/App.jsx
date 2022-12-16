@@ -10,6 +10,8 @@ import { useAtom } from 'jotai';
 import { userAtom } from './stores/userStore';
 import AppUser from './models/appUser';
 import roles from './models/roles';
+import { AdapterMoment } from '@mui/x-date-pickers/AdapterMoment';
+import { LocalizationProvider } from '@mui/x-date-pickers';
 
 export const ApiServicesContext = React.createContext();
 export const AppUserContext = React.createContext();
@@ -34,15 +36,17 @@ export default function App() {
   }
   
   return (
-    <ThemeProvider theme={theme}>
-      <ApiServicesContext.Provider value={apiServices}>
-        <AppUserContext.Provider value={user}>
-          <AppRouter>
-            <AppHeader/>
-          </AppRouter>
-        </AppUserContext.Provider>
-      </ApiServicesContext.Provider>
-    </ThemeProvider>
+    <LocalizationProvider dateAdapter={AdapterMoment}>
+      <ThemeProvider theme={theme}>
+        <ApiServicesContext.Provider value={apiServices}>
+          <AppUserContext.Provider value={user}>
+            <AppRouter>
+              <AppHeader/>
+            </AppRouter>
+          </AppUserContext.Provider>
+        </ApiServicesContext.Provider>
+      </ThemeProvider>
+    </LocalizationProvider>
   );
 }
 

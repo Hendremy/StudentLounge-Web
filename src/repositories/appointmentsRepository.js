@@ -13,7 +13,7 @@ export default class AppointmentsRepository extends SecuredApiService{
         return fetch(url, {
             method: 'POST',
             body: data,
-            headers: this.jsonHeaders
+            headers: this.bearerHeader
         })
         .then(response => this._handleJsonResponse(response))
         .then(jappointment => this._reviveAppointment(jappointment));
@@ -23,7 +23,7 @@ export default class AppointmentsRepository extends SecuredApiService{
         const url = this.baseUrl;
         return fetch(url, {
             method: 'GET',
-            headers: this.jsonHeaders
+            headers: this.bearerHeader
         })
         .then(response => this._handleJsonResponse(response))
         .then(jappointment => this._reviveAppointmentArray(jappointment));
