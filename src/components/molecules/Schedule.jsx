@@ -12,7 +12,7 @@ export default function Schedule({scheduleEvents}){
     
     // <span>{schedEvent.event.extendedprops.location}</span>
     function renderEventContent(schedEvent) {
-        console.log(schedEvent.event.extendedProps.location);
+        console.log(schedEvent);
         return (
           <>
             <b>{schedEvent.timeText}</b>
