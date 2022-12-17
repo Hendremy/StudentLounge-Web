@@ -9,7 +9,8 @@ const palette = {
   secondary: "#241292",
   iconActive: "#8aeaff",
   blue: "#218aff",
-  grey: "#808080"
+  grey: "#808080",
+  white:'#FFFFFF'
 };
 
 const theme = createTheme({

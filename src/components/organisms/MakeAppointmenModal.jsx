@@ -6,13 +6,15 @@ import { Box, List, Alert, TextField} from '@mui/material';
 import { DateTimePicker } from '@mui/x-date-pickers/DateTimePicker';
 import SelectTutoringField from "../molecules/SelectTutoringField";
 import SendFormButton from '../atoms/SendFormButton';
+import LocationPicker from "./LocationPicker";
+import { Stack } from "@mui/system";
 
 export default function MakeAppointmentModal({open, onClose, repository, data}){
     const [error, setError] = useState(null);
     const availableTutorings = data;
     const boxStyle = {
-        backgroundColor: palette.secondary,
         minHeight:'10vh',
+        minWidth:'70vw',
         borderRadius: '5px'
     };
 
@@ -29,21 +31,24 @@ export default function MakeAppointmentModal({open, onClose, repository, data}){
     return(
         <CenteredModal open={open} onClose={onClose}>
             <Title text={'Ajouter un rendez-vous'}/>
-            {error && (<Alert style={{marginTop:15}} severity="error">{error.message}</Alert>)}
-            <form onSubmit={handleSubmit}>
-                <SelectTutoringField tutorings={availableTutorings}/>
-                <DateTimePicker 
-                    label="Début"
-                    onChange={handleChange}
-                    renderInput={(params) => <TextField {...params} />}
-                />
-                <DateTimePicker 
-                    label="Fin"
-                    onChange={handleChange}
-                    renderInput={(params) => <TextField {...params} />}
-                />
-                <SendFormButton text={'Confirmer'}/>
-            </form>
+            <Stack sx={boxStyle}>
+                {error && (<Alert style={{marginTop:15}} severity="error">{error.message}</Alert>)}
+                <form onSubmit={handleSubmit}>
+                    <SelectTutoringField tutorings={availableTutorings}/>
+                    <DateTimePicker 
+                        label="Début"
+                        onChange={handleChange}
+                        renderInput={(params) => <TextField {...params} />}
+                    />
+                    <DateTimePicker 
+                        label="Fin"
+                        onChange={handleChange}
+                        renderInput={(params) => <TextField {...params} />}
+                    />
+                    <LocationPicker />
+                    <SendFormButton text={'Confirmer'}/>
+                </form>
+            </Stack>
         </CenteredModal> 
     );
 }
