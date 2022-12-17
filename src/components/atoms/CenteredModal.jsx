@@ -8,7 +8,6 @@ export default function CenteredModal({children, open, onClose}){
         top: '50%',
         left: '50%',
         transform: 'translate(-50%, -50%)',
-        width: '30vw',
         bgcolor: palette.primary,
         borderRadius: '25px',
         boxShadow: 24,

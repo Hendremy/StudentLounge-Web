@@ -5,7 +5,7 @@ import { useState, useEffect } from "react";
 import ScheduleEvent from "../../models/scheduleEvent";
 import UploadCalendarButton from './UploadCalendarButton';
 import Schedule from "../molecules/Schedule";
-export default function CalendarHub({agendaRepository}){
+export default function CalendarHub({agendaRepository, appointmentRepository}){
     const [agendas, setAgendas] = useState([]);
     const [scheduleEvents, setScheduleEvents] = useState([]);
 

@@ -1,10 +1,17 @@
+import { MoreTime } from "@mui/icons-material";
 import { Box, List, Paper } from "@mui/material";
-import { useEffect } from "react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useAtom } from "jotai";
 import {palette} from "../../AppTheme";
+import { tutoringsAtom } from "../../stores/userStore";
 import ListHeader from '../molecules/ListHeader';
+import OpenModalButton from "../molecules/OpenModalButton";
+import MakeAppointmentModal from "./MakeAppointmenModal";
+import AppointmentRow from "../molecules/AppointmentRow";
 
-export default function AppointmentList({appointmentRepository}){
+export default function AppointmentList({appointmentRepository, tutoringRepository}){
+    const [tutorings, setTutorings] = useAtom(tutoringsAtom);
+    const [appointments, setAppointments] = useState([]);
 
     const paperStyle = {
         padding: 20,
@@ -21,12 +28,33 @@ export default function AppointmentList({appointmentRepository}){
         borderRadius: '5px'
     };
 
+    useEffect(() => {
+        tutoringRepository.getUserValidatedTutorings()
+            .then(
+                validatedTutorings => setTutorings(validatedTutorings)
+            );
+        
+        appointmentRepository.getAppointments()
+            .then(
+                userAppointments => setAppointments(userAppointments)
+            );
+    },[]);
+
     return(
         <Paper elevation ={10} style={paperStyle}>
             <ListHeader title='Rendez-vous'>
+            <OpenModalButton 
+                    icon={MoreTime}
+                    modal={MakeAppointmentModal}
+                    onClose={() => {}}
+                    data={tutorings}
+                    repository={appointmentRepository}/>
             </ListHeader>
             <Box sx={boxStyle}>
                 <List>
+                    {
+                        appointments.map(a => <AppointmentRow appointment={a}/>)
+                    }
                 </List>
             </Box>
         </Paper>
