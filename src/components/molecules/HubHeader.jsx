@@ -4,7 +4,7 @@ import Title from "../atoms/Title";
 export default function HubHeader(props){
 
     return(
-        <Grid contained>
+        <Grid>
             <Grid item xs={4}>
                 <Title text={props.title}/>
             </Grid>

@@ -12,20 +12,19 @@ export default function UserRow({user, repository}){
     const onDelete = () => {
         repository.deleteUser({userId: user.id})
     }
-
     return(
         <TableRow>
-            <TableCell width={5}>{user.id}</TableCell>
-            <TableCell width={5}>{user.firstname}</TableCell>
-            <TableCell width={5}>{user.lastname}</TableCell>
-            <TableCell width={5}>{user.username}</TableCell>
-            <TableCell width={5}>{user.password}</TableCell>
-            <TableCell>
-                <IconButton color="primary" onClick={onUpdate}>
+            <TableCell style={style}>{user.id}</TableCell>
+            <TableCell style={style}>{user.firstname}</TableCell>
+            <TableCell style={style}>{user.lastname}</TableCell>
+            <TableCell style={style}>{user.username}</TableCell>
+            <TableCell style={style}>{user.password}</TableCell>
+            <TableCell style={stylebutton}>
+                <IconButton color="primary" onClick={onUpdate} disabled={user.password ? false : true}>
                     <EditIcon/>
                 </IconButton>
             </TableCell>
-            <TableCell>
+            <TableCell style={stylebutton}>
                 <IconButton color="primary" onClick={onDelete}>
                     <DeleteIcon/>
                 </IconButton>

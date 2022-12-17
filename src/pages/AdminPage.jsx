@@ -1,23 +1,51 @@
-import { Box, Paper, TableContainer, TableCell, TableHead, Table, TableRow, TableBody} from "@mui/material";
+import { Box, Paper, Grid, IconButton} from "@mui/material";
 import {palette} from "../AppTheme";
 import { ApiServicesContext } from "../App";
 import { useContext, useState, useEffect } from "react";
 import roles from "../models/roles";
-import GridCentered from "../components/atoms/GridCentered";
-import UserRow from "../components/molecules/UserRow";
-
+import HubHeader from "../components/molecules/HubHeader";
+import { DataGrid } from "@mui/x-data-grid";
+import EditIcon from '@mui/icons-material/Edit';
+import DeleteIcon from '@mui/icons-material/Delete';
 
 export default function AdminPage(){
     const adminApiServices = useContext(ApiServicesContext)[roles.admin];
     const usersRepository = adminApiServices.usersRepository;
     const [users, setUsers] = useState([]);
 
+    function onUpdate({user, id, firstname, lastname, password, username}){
+        var newUser = new Map();
+        newUser.set('id',id);
+
+        if(firstname !== user.firstname){
+            newUser.set('firstname',firstname);
+        }
+
+        if(lastname !== user.lastname){
+            newUser.set('lastname',lastname);
+        }
+
+        if(password !== '●●●●●●●●●●●●'){
+            newUser.set('password',password);
+        }
+
+        if(username !== user.username){
+            newUser.set('username',username);
+        }
+
+        usersRepository.updateUser(newUser);
+    }
+
+    function onDelete(user){
+        usersRepository.deleteUser(user.id);
+    }
+
     const paperStyle = {
         padding: 20,
         height:'auto',
         backgroundColor:palette.primary,
         color:'white',
-        borderRadius:25
+        borderRadius:25,
     };
 
     const boxStyle = {
@@ -26,6 +54,12 @@ export default function AdminPage(){
         minHeight:'75vh',
         padding: '1%',
     };
+
+    const gridStyle = {
+        margin:"10vh auto",
+        width: "60vw"
+
+    }
 
     const loadUsers = () => { usersRepository.getUsers().then(userList => {
             setUsers(userList);
@@ -42,32 +76,83 @@ export default function AdminPage(){
     let userRows = [];
     if(users){
         userRows = users.map(user => {
-            return <UserRow key={user.id} user={user} repository={usersRepository}/>
+            return {
+                user: user,
+                id: user.id, 
+                firstname: user.firstname, 
+                lastname: user.lastname, 
+                username: user.username, 
+                password: "●●●●●●●●●●●●", 
+                modify:
+                    <IconButton color="primary" onClick={onUpdate}>
+                        <EditIcon/>
+                    </IconButton>,
+                delete: (params) => {            
+                    return <IconButton color="primary" onClick={onDelete}>
+                        <DeleteIcon/>
+                    </IconButton>}
+            }
         });
     }
+
+    const handleCellClick = (param, event) => {
+        event.stopPropagation();
+    };
+
+    const handleRowClick = (param, event) => {
+        event.stopPropagation();
+    };
+
+    const style = {
+        width: 100,
+        maxWidth: 100,
+        overflow: "hidden",
+        textOverflow: "ellipsis",
+        borderStyle: "border-box"
+    };
+
+      const columns = [
+        { field: 'id', headerName: 'Id', editable: true, width:150},
+        { field: 'firstname', headerName: 'Prenom', editable: true, width:100},
+        { field: 'lastname', headerName: 'Nom', editable: true, with: 100},
+        { field: 'username', headerName: 'E-mail', editable: true, width:150},
+        { field: 'password', headerName: 'Mot de passe', editable: true, width:150},
+        { field: 'modify', 
+            headerName: "Modifier",
+            editable: false, 
+            renderCell: (params) => {
+                return (<IconButton color="primary" onClick={(event) => {onUpdate(params.row)}} disabled={params.row.fromGoogle}>
+                            <EditIcon/>
+                        </IconButton>)
+            }
+        },
+        { field: 'delete', 
+            headerName: "Supprimer",
+            editable: false, 
+            renderCell: (params) => {
+                return (<IconButton color="primary" onClick={(event) => {onDelete(params.row)}}>
+                            <DeleteIcon/>
+                        </IconButton>)
+            }
+        }
+      ];
     
     return (
-        <GridCentered>
+        <Grid style={gridStyle}>
             <Paper elevation ={10} style={paperStyle}>
+                <HubHeader title={"Utilisateurs"}/>
                 <Box sx={boxStyle}>
-                    <TableContainer component={Paper}>
-                        <Table>
-                            <TableHead>
-                                <TableRow key={'userhead'}>
-                                    <TableCell style={{width:5}}>Id</TableCell>
-                                    <TableCell style={{width:5}}>Prenom</TableCell>
-                                    <TableCell style={{width:5}}>Nom</TableCell>
-                                    <TableCell style={{width:5}}>E-mail</TableCell>
-                                    <TableCell style={{width:5}}>Mot de passe</TableCell>
-                                </TableRow>
-                            </TableHead>
-                            <TableBody>
-                                {userRows}
-                            </TableBody>
-                        </Table>
-                    </TableContainer>
+                    <div style={{ height: '75vh', width: '56vw', backgroundColor:"white", borderRadius:10}}>
+                        <DataGrid 
+                            style={{borderRadius:10}}
+                            rows={userRows}
+                            columns={columns}
+                            experimentalFeatures={{ newEditingApi: true }}
+                            onCellClick={handleCellClick}
+                            onRowClick={handleRowClick}/>
+                    </div>
                 </Box>
             </Paper>
-        </GridCentered>
+        </Grid>
     );
 }
