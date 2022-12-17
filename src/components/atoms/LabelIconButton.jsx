@@ -1,6 +1,6 @@
 import { Button, IconButton } from "@mui/material";
 
-export default function AskTutoratButton({icon, text, onClick, children, disabled = false}){
+export default function LabelIconButton({icon, text, onClick, children, disabled = false}){
     let Icon = icon;
 
     if(text){

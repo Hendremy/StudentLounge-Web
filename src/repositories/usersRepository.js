@@ -28,7 +28,18 @@ export default class UsersRepository extends SecuredApiService{
             body: data,
             headers: this.jsonHeaders
         })
-        .then(response => console.log(response));
+        .then(response => this._handleJsonResponse(response))
+        .then(jrequestArray => this._reviveRequestArray(jrequestArray));
+    }
+
+    async deleteUser(id){
+        const url = `${this.baseUrl}/delete/${id}`;
+
+        return fetch(url,{
+            method: 'DELETE',
+            mode: 'cors',
+            headers: this.bearerHeader
+        })
     }
 
     _reviveRequestArray(jrequestArray){

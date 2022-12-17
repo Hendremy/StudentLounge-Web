@@ -2,7 +2,7 @@ import roles from './roles';
 
 export default class AppUser{
 
-    constructor({id = 0, fullname = "", token = "", image = "", roles = [], firstname = "", lastname = "", username = "", password = ""}){
+    constructor({id = 0, fullname = "", token = "", image = "", roles = [], firstname = "", lastname = "", username = "", fromGoogle = false}){
         this.id = id;
         this.fullname = fullname;
         this.token = token;
@@ -11,7 +11,7 @@ export default class AppUser{
         this.firstname = firstname;
         this.lastname = lastname;
         this.username = username;
-        this.password = password
+        this.fromGoogle = fromGoogle;
     }
 
     get isAdmin(){

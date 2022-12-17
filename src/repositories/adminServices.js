@@ -1,3 +1,4 @@
+import AuthenticationRepository from "./authenticationRepository";
 import UsersRepository from "./usersRepository"
 
 export default class AdminServices {
@@ -14,5 +15,12 @@ export default class AdminServices {
                 controller: 'Users', 
                 token: this.token
             });
+    }
+
+    get authRepository(){
+        return new AuthenticationRepository({
+            apiUrl: this.apiUrl,
+            controller: 'Auth'
+        });
     }
 }

@@ -131,7 +131,7 @@ export default function RegisterForm({onAuthenticated, authRepository}){
                 fullWidth/>
             {message && (<Alert style={{marginTop:15}} severity="error">{message}</Alert>)}
             <Grid align={'center'}>
-                <SendFormButton text={"S'inscrire"}/>
+                <SendFormButton text={"Enregistrer"}/>
             </Grid>
         </form>
     );
