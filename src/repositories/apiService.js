@@ -50,7 +50,7 @@ export class SecuredApiService extends ApiService{
     get jsonHeaders(){
         return {
             'Content-Type' : 'application/json',
-            'Auhtorization' : this.tokenBearer
+            'Authorization' : this.tokenBearer
         }
     }
 }
