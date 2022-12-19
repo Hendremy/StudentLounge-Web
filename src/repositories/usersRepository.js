@@ -42,6 +42,16 @@ export default class UsersRepository extends SecuredApiService{
         })
     }
 
+    async lockoutUser(id){
+        const url = `${this.baseUrl}/block/${id}`;
+
+        return fetch(url,{
+            method: 'POST',
+            mode: 'cors',
+            headers: this.bearerHeader
+        })
+    }
+
     _reviveRequestArray(jrequestArray){
         return jrequestArray.map(jrequest => this._reviveRequest(jrequest));
     }
