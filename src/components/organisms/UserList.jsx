@@ -82,6 +82,7 @@ export default function UserList({usersRepository}) {
     if(users){
         userRows = users.map(user => {
             return {
+                user:user,
                 isLockout: user.isLockout,
                 fromGoogle: user.fromGoogle,
                 id: user.id, 

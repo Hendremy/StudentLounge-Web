@@ -8,7 +8,7 @@ export default class UsersRepository extends SecuredApiService{
     }
 
     async getUsers(){
-        const url = `${this.baseUrl}/all`;
+        const url = `${this.baseUrl}`;
         return fetch(url,{
             method: 'GET',
             mode: 'cors',
@@ -19,21 +19,20 @@ export default class UsersRepository extends SecuredApiService{
     }
 
     async updateUser(newUser){
-        const url = `${this.baseUrl}/update/${newUser.get('id')}`;
+        const url = `${this.baseUrl}/${newUser.get('id')}`;
         const data = JSON.stringify({Firstname: newUser.get('firstname'), Lastname: newUser.get('lastname'), Password: newUser.get('password'), Username: newUser.get('username')});
 
         return fetch(url,{
-            method: 'POST',
+            method: 'PUT',
             mode: 'cors',
             body: data,
             headers: this.jsonHeaders
         })
-        .then(response => this._handleJsonResponse(response))
-        .then(jrequestArray => this._reviveRequestArray(jrequestArray));
+        .then(response => this._handleSimpleResponse(response))
     }
 
     async deleteUser(id){
-        const url = `${this.baseUrl}/delete/${id}`;
+        const url = `${this.baseUrl}/${id}`;
 
         return fetch(url,{
             method: 'DELETE',
@@ -43,7 +42,7 @@ export default class UsersRepository extends SecuredApiService{
     }
 
     async lockoutUser(id){
-        const url = `${this.baseUrl}/block/${id}`;
+        const url = `${this.baseUrl}/${id}`;
 
         return fetch(url,{
             method: 'POST',
