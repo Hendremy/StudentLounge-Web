@@ -3,7 +3,7 @@ import { Box, List, Paper } from "@mui/material";
 import { useEffect, useState } from "react";
 import { useAtom } from "jotai";
 import {palette} from "../../AppTheme";
-import { tutoringsAtom } from "../../stores/userStore";
+import { appointmentsAtom, tutoringsAtom } from "../../stores/userStore";
 import ListHeader from '../molecules/ListHeader';
 import OpenModalButton from "../molecules/OpenModalButton";
 import MakeAppointmentModal from "./MakeAppointmenModal";
@@ -11,7 +11,7 @@ import AppointmentRow from "../molecules/AppointmentRow";
 
 export default function AppointmentList({appointmentRepository, tutoringRepository}){
     const [tutorings, setTutorings] = useAtom(tutoringsAtom);
-    const [appointments, setAppointments] = useState([]);
+    const [appointments, setAppointments] = useAtom(appointmentsAtom);
 
     const paperStyle = {
         padding: 20,
@@ -53,7 +53,7 @@ export default function AppointmentList({appointmentRepository, tutoringReposito
             <Box sx={boxStyle}>
                 <List>
                     {
-                        appointments.map(a => <AppointmentRow appointment={a}/>)
+                        appointments.map(a => <AppointmentRow key={a.id} appointment={a}/>)
                     }
                 </List>
             </Box>

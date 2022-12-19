@@ -1,13 +1,13 @@
-import { formatIsoTimeString } from '@fullcalendar/core/internal';
 import { formatDate, formatTime } from '../utils/dateFormatter';
 
 export default class Appointment{
 
-    constructor({id, tutoring, start, end}){
+    constructor({id, tutoring, start, end, location}){
         this.id = id;
         this.tutoring = tutoring;
         this.start = start;
         this.end = end;
+        this.location = location;
     }
 
     get tutor(){
@@ -36,5 +36,9 @@ export default class Appointment{
 
     get endHour(){
         return formatTime(this.end);
+    }
+
+    get endDate(){
+        return new Date(this.end);
     }
 }

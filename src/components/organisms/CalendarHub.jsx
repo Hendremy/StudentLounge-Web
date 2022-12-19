@@ -5,9 +5,14 @@ import { useState, useEffect } from "react";
 import ScheduleEvent from "../../models/scheduleEvent";
 import UploadCalendarButton from './UploadCalendarButton';
 import Schedule from "../molecules/Schedule";
-export default function CalendarHub({agendaRepository, appointmentRepository}){
+import { appointmentsAtom } from "../../stores/userStore";
+import { useAtom } from "jotai";
+import Agenda from "../../models/agenda";
+
+export default function CalendarHub({agendaRepository}){
     const [agendas, setAgendas] = useState([]);
     const [scheduleEvents, setScheduleEvents] = useState([]);
+    const [appointments] = useAtom(appointmentsAtom);
 
     const updateAgendas = (agendas) => setAgendas(agendas);
 
@@ -17,9 +22,10 @@ export default function CalendarHub({agendaRepository, appointmentRepository}){
     },[])
 
     useEffect(() => {
+        let allAgendas = [...agendas, Agenda.fromAppointments(appointments)];
         let agendaIndex = 0;
         let colors = ['purple','blue','primary','green'];
-        var allScheduleEvents = agendas.map(
+        var allScheduleEvents = allAgendas.map(
             agenda => {
                 let color = colors[agendaIndex % colors.length];
                 agendaIndex++;
@@ -28,9 +34,12 @@ export default function CalendarHub({agendaRepository, appointmentRepository}){
                 }));
             }
         );
-        var calendarEvents = allScheduleEvents.length > 0 ? allScheduleEvents.reduce((events = [], scheduleEvents) => events.push(...scheduleEvents)) : [];
+        var calendarEvents = allScheduleEvents.length > 0 ? allScheduleEvents.reduce((events = [], scheduleEvents) => {
+            events.push(...scheduleEvents);
+            return events;
+        }) : [];
         setScheduleEvents(calendarEvents);
-    },[agendas])
+    },[agendas, appointments])
 
     const paperStyle = {
         padding: 20,

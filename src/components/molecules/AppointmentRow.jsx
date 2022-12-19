@@ -13,6 +13,7 @@ export default function AppointmentRow({appointment}){
             <Stack direction={'column'}>
                 <Typography>RDV - {appointment.lesson} le {appointment.date}</Typography>
                 <Typography>de {appointment.startHour} à {appointment.endHour} </Typography>
+                <Typography> à {appointment.location} </Typography>
                 <Stack direction={'row'}>
                     <UserImage user={{fullname: appointment.tutor.name, image: appointment.tutor.image}} />
                     <UserImage user={{fullname: appointment.tutored.name, image: appointment.tutored.image}} />
