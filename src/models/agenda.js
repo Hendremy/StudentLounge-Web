@@ -8,10 +8,6 @@ export default class Agenda {
     }
 
     static fromAppointments(appointments){
-        let id = -1;
-        let name = 'Rendez-vous';
-        let apts = appointments.map(apt => AgendaEvent.fromAppointment(apt));
-
         return new Agenda({
             id: -1,
             name: 'RDV',
