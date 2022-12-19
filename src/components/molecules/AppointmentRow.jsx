@@ -1,9 +1,23 @@
-import { ListItem } from "@mui/material";
+import { ListItem, Stack, Typography, Container } from "@mui/material";
+import UserImage from "../atoms/UserImage";
 
 export default function AppointmentRow({appointment}){
+    const style = {
+        bgcolor: 'red',
+        color: 'primary',
+        marginBottom: 1
+    }
+
     return (
-        <ListItem>
-            <span>Rdv n°{appointment.id}</span>
+        <ListItem sx={style}>
+            <Stack direction={'column'}>
+                <Typography>RDV - {appointment.lesson} le {appointment.date}</Typography>
+                <Typography>de {appointment.startHour} à {appointment.endHour} </Typography>
+                <Stack direction={'row'}>
+                    <UserImage user={{fullname: appointment.tutor.name, image: appointment.tutor.image}} />
+                    <UserImage user={{fullname: appointment.tutored.name, image: appointment.tutored.image}} />
+                </Stack>
+            </Stack>
         </ListItem>
     );
 }

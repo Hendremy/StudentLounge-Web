@@ -1,6 +1,6 @@
 import { FormControl, InputLabel, Select, MenuItem } from "@mui/material"
 
-export default function SelectTutoringField({tutorings}){
+export default function SelectTutoringField({name, tutorings}){
 
     const style = {
         color: '#FFFFFF',
@@ -11,6 +11,7 @@ export default function SelectTutoringField({tutorings}){
         <FormControl fullWidth>
             <InputLabel sx={style} id="tutoring-label">Tutorat</InputLabel>
             <Select 
+                name={name}
                 sx={style}
                 labelId="tutoring-label"
                 id="tutoring"

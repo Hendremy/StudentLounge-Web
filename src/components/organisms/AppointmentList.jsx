@@ -36,7 +36,7 @@ export default function AppointmentList({appointmentRepository, tutoringReposito
         
         appointmentRepository.getAppointments()
             .then(
-                userAppointments => setAppointments(userAppointments)
+                userAppointments => setAppointments(userAppointments.sort((appA, appB) => appA.startDate - appB.startDate))
             );
     },[]);
 

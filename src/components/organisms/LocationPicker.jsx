@@ -4,42 +4,49 @@ import { Autocomplete, Marker, useLoadScript } from "@react-google-maps/api";
 import { useState, useMemo } from "react";
 import { GoogleMap } from "@react-google-maps/api";
 import usePlacesAutocomplete, { getGeocode, getLatLng } from "use-places-autocomplete";
+import { FormLabel, Stack } from "@mui/material";
 
-export default function LocationPicker(){
+export default function LocationPicker({name}){
     const { isLoaded } = useLoadScript({
         googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY,
         libraries: ["places"],
     });
 
     if(!isLoaded) return <div> Loading ...</div>;
-    return <Map />
+    return <Map name={name} />
 }
 
-function Map(){
-    const center = useMemo(() => ({ lat: 43.45, lng:-80.49}),[]);
+function Map({name}){
+    const center = useMemo(() => ({ lat: 50.621879, lng: 5.575796}),[]);
     const [selected, setSelected] = useState(center);
     const containerStyle = {
         width: '100%',
         height: '50vh'
     }
 
+    const selectPlace = (e) => {
+        setSelected(e.latLng);
+    }
+
     return(
-        <>
-            <PlacesAutocomplete setSelected={setSelected} />
+        <Stack direction={'column'}>
+            <FormLabel>Lieu</FormLabel>
+            <PlacesAutocomplete name={name} setSelected={setSelected} />
 
             <GoogleMap
                 zoom={13}
                 center={selected}
                 mapContainerStyle={containerStyle}
                 mapContainerClassName="map-container"
+                onClick={selectPlace}
             >
                 {selected && <Marker position={selected} />}
             </GoogleMap>
-        </>
+        </Stack>
     )
 }
 
-const PlacesAutocomplete = ({setSelected}) => {
+const PlacesAutocomplete = ({name, setSelected}) => {
     const {
         ready, 
         value, 
@@ -75,8 +82,9 @@ const PlacesAutocomplete = ({setSelected}) => {
     // )
 
     return(        
-        <Combobox onSelect={handleSelect}>
+        <Combobox name={name} onSelect={handleSelect}>
             <ComboboxInput
+                name={name ?? "trolol"}
                 style={inputStyle} 
                 value={value} onChange={(e) => setValue(e.target.value)} disabled={!ready}
                 className="combobox-input" placeholder="Chercher un lieu" />
