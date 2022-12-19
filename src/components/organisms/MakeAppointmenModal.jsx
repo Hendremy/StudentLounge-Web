@@ -11,7 +11,7 @@ import { Stack } from "@mui/system";
 import { TimePicker } from "@mui/x-date-pickers";
 import AppointmentRequest from "../../models/appointmentRequest";
 
-export default function MakeAppointmentModal({open, onClose, repository, data}){
+export default function MakeAppointmentModal({open, onClose, repository, data, callback}){
     const [message, setMessage] = useState(null);
     const [date, setDate] = useState();
     const [startHour, setStartHour] = useState();
@@ -39,6 +39,9 @@ export default function MakeAppointmentModal({open, onClose, repository, data}){
         repository.makeAppointment(request)
             .then(
                 appointment => {
+                    if(callback){
+                        callback(appointment);
+                    }
                     setMessage({error: false, text: "Rendez-vous confirmé !"})
                 }
             )

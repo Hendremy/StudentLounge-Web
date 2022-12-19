@@ -19,10 +19,10 @@ export default function ChatList({chatRepository, reloadList}){
     };
 
     const boxStyle = {
-        height: '100%',
+        height: '80vh',
         backgroundColor: palette.secondary,
-        minHeight:'73.5vh',
-        borderRadius: '5px'
+        borderRadius: '5px',
+        overflow: 'auto'
     };
 
     const loadChat = () => {

@@ -22,10 +22,16 @@ export default function AppointmentList({appointmentRepository, tutoringReposito
     };
 
     const boxStyle = {
-        height: '100%',
+        height: '80vh',
         backgroundColor: palette.secondary,
-        minHeight:'80vh',
-        borderRadius: '5px'
+        borderRadius: '5px',
+        overflow: 'auto'
+    };
+
+    const makeAptCallback = (appointment) => {
+        let aptsCopy = [...appointments];
+        aptsCopy.push(appointment);
+        setAppointments(aptsCopy);
     };
 
     useEffect(() => {
@@ -48,7 +54,9 @@ export default function AppointmentList({appointmentRepository, tutoringReposito
                     modal={MakeAppointmentModal}
                     onClose={() => {}}
                     data={tutorings}
-                    repository={appointmentRepository}/>
+                    repository={appointmentRepository}
+                    callback={makeAptCallback}
+                    />
             </ListHeader>
             <Box sx={boxStyle}>
                 <List>

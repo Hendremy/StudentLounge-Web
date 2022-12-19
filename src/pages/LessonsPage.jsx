@@ -19,7 +19,7 @@ export default function LessonsPage(){
 
     const gridStyle = {
         height: 'auto',
-        margin:"10vh auto",
+        margin:"5vh auto",
         minHeight:'80vh'
     }
 

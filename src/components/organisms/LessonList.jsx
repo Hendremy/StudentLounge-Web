@@ -22,10 +22,10 @@ export default function LessonList({lessonRepository, reloadList}){
     };
 
     const boxStyle = {
-        height: '100%',
+        height: '80vh',
         backgroundColor: palette.secondary,
-        minHeight:'80vh',
-        borderRadius: '5px'
+        borderRadius: '5px',
+        overflow: 'auto'
     };
 
     const loadUserLessons = () => {
