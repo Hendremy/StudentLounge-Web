@@ -2,7 +2,7 @@ import { UploadFile } from "@mui/icons-material";
 import { useRef } from 'react';
 import LabelIconButton from '../atoms/LabelIconButton';
 
-export default function UploadCalendarButton({agendaRepository, onCalendarUploaded}){
+export default function UploadCalendarButton({agendaRepository, onCalendarUpdated}){
     const fileInput = useRef(null);
 
     function handleCalendarUpload(event){
@@ -11,7 +11,7 @@ export default function UploadCalendarButton({agendaRepository, onCalendarUpload
         formData.append('calendarFile', icalFile);
         agendaRepository.uploadCalendarFile({formData: formData})
             .then(agendas => {
-                onCalendarUploaded(agendas);
+                onCalendarUpdated(agendas);
             });
     }
 

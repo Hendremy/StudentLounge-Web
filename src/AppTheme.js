@@ -10,7 +10,8 @@ const palette = {
   iconActive: "#8aeaff",
   blue: "#218aff",
   grey: "#808080",
-  white:'#FFFFFF'
+  white:'#FFFFFF',
+  calendars : ['purple','blue','primary','green']
 };
 
 const theme = createTheme({
