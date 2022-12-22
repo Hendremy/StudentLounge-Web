@@ -1,6 +1,6 @@
-import { Box, Paper, Grid, IconButton, Button} from "@mui/material";
+import { Box, Paper, Grid, IconButton, Alert} from "@mui/material";
 import {palette} from "../../AppTheme";
-import { useContext, useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import HubHeader from "../molecules/HubHeader";
 import { DataGrid } from "@mui/x-data-grid";
 import EditIcon from '@mui/icons-material/Edit';
@@ -12,6 +12,8 @@ import { Link } from "react-router-dom";
 
 export default function UserList({usersRepository}) {
     const [users, setUsers] = useState([]);
+    const [result, setResult] = useState();
+    const [error, setError] = useState()
 
     function onUpdate({user, id, firstname, lastname, password, username}){
         var newUser = new Map();
@@ -33,16 +35,39 @@ export default function UserList({usersRepository}) {
             newUser.set('username',username);
         }
 
-        usersRepository.updateUser(newUser);
+        const answer = usersRepository.updateUser(newUser);
+        if(answer){
+            setResult("l'utilisateur à été modifié !");
+        }else{
+            setError("La modification à échoué !")
+        }
+
     }
 
     function onDelete({id}){
-        usersRepository.deleteUser(id);
-        setUsers((current) => current.filter((current) => current.id !== id));
+        const answer = usersRepository.deleteUser(id);
+
+        if(answer){
+            setResult("l'utilisateur à été supprimé !");
+            setUsers((current) => current.filter((current) => current.id !== id));
+        }else{
+            setError("La suppression à échoué !")
+        }
     }
 
     function onLockout({id}){
-        usersRepository.lockoutUser(id);
+        const answer = usersRepository.lockoutUser(id);
+        if(answer){
+            setResult("l'utilisateur à été bloqué");
+            setUsers((current)=> current.map(user => {
+                if (user.id === id){
+                    user.isLockout = true; 
+                }
+                return user;
+            }));
+        }else{
+            setError("La bloquage à échoué !")
+        }
     }
 
     const paperStyle = {
@@ -153,7 +178,7 @@ export default function UserList({usersRepository}) {
             headerName: "Bloquer",
             editable: false, 
             renderCell: (params) => {
-                return (<IconButton color="primary" onClick={(event) => {onLockout(params.row)}} disabled={params.row.isLockout}>
+                return (<IconButton color="primary" onClick={(event) => {onLockout(params.row)}} disabled={params.row.isLockout }>
                             <BlockIcon/>
                         </IconButton>)
             }
@@ -171,6 +196,8 @@ export default function UserList({usersRepository}) {
                 </div>
                 <Box sx={boxStyle}>
                     <div style={{ height: '75vh', width: '61vw', backgroundColor:"white", borderRadius:10}}>
+                        {error && (<Alert style={{marginTop:15}} severity="error">{error}</Alert>)}
+                        {result && (<Alert style={{marginTop:15}} severity="success">{result}</Alert>)}
                         <DataGrid 
                             style={{borderRadius:10}}
                             rows={userRows}
