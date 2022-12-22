@@ -12,6 +12,7 @@ import AppointmentRow from "../molecules/AppointmentRow";
 export default function AppointmentList({appointmentRepository, tutoringRepository}){
     const [tutorings, setTutorings] = useAtom(tutoringsAtom);
     const [appointments, setAppointments] = useAtom(appointmentsAtom);
+    const now = new Date();
 
     const paperStyle = {
         padding: 20,
@@ -61,7 +62,9 @@ export default function AppointmentList({appointmentRepository, tutoringReposito
             <Box sx={boxStyle}>
                 <List>
                     {
-                        appointments.map(a => <AppointmentRow key={a.id} appointment={a}/>)
+                        appointments
+                            .filter(a => a.endDate >= now)
+                            .map(a => <AppointmentRow key={a.id} appointment={a}/>)
                     }
                 </List>
             </Box>
