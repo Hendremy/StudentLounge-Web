@@ -16,7 +16,7 @@ export default class StudentServices {
         return new LessonRepository(
             {
                 apiUrl: this.apiUrl, 
-                controller: 'Lesson', 
+                controller: 'Lessons', 
                 token: this.token
             });
     }
@@ -24,7 +24,7 @@ export default class StudentServices {
     get lessonFileRepository(){
         return new LessonFileRepository({
             apiUrl: this.apiUrl,
-            controller: 'LessonFile',
+            controller: 'LessonFiles',
             token: this.token
         });
     }
@@ -32,7 +32,7 @@ export default class StudentServices {
     get tutoringRepository(){
         return new TutoringRepository({
             apiUrl: this.apiUrl,
-            controller: 'Tutoring',
+            controller: 'Tutorings',
             token: this.token
         });
     }
@@ -48,7 +48,7 @@ export default class StudentServices {
     get agendaRepository(){
         return new AgendaRepository({
             apiUrl: this.apiUrl,
-            controller: 'Agenda',
+            controller: 'Agendas',
             token: this.token
         });
     }
