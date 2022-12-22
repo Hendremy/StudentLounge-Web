@@ -28,17 +28,7 @@ export default function FileRow({file, repository}){
                 document.body.removeChild(link);
             });
       };
-
-    // function downloadURI(uri, name) {
-    // var link = document.createElement("a");
-    // link.download = name;
-    // link.href = uri;
-    // link.target = "_blank";
-    // document.body.appendChild(link);
-    // link.click();
-    // document.body.removeChild(link);
-    // }
-
+      
     return(
         <TableRow>
             <TableCell>{<TypeIcon/>}</TableCell>

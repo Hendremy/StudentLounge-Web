@@ -2,7 +2,7 @@ import { Box, Paper, Grid, IconButton, Alert} from "@mui/material";
 import {palette} from "../../AppTheme";
 import { useState, useEffect } from "react";
 import HubHeader from "../molecules/HubHeader";
-import { DataGrid } from "@mui/x-data-grid";
+import { DataGrid, frFR } from "@mui/x-data-grid";
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
 import LabelIconButton from "../atoms/LabelIconButton";
@@ -198,7 +198,8 @@ export default function UserList({usersRepository}) {
                     <div style={{ height: '75vh', width: '61vw', backgroundColor:"white", borderRadius:10}}>
                         {error && (<Alert style={{marginTop:15}} severity="error">{error}</Alert>)}
                         {result && (<Alert style={{marginTop:15}} severity="success">{result}</Alert>)}
-                        <DataGrid 
+                        <DataGrid
+                            localeText={frFR.components.MuiDataGrid.defaultProps.localeText}
                             style={{borderRadius:10}}
                             rows={userRows}
                             columns={columns}
