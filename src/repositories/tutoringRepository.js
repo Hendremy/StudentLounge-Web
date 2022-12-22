@@ -33,7 +33,7 @@ export default class TutoringRepository extends SecuredApiService{
     async askTutoring({lessonId}){
         const url = `${this.baseUrl}/lesson/${lessonId}`;
         return fetch(url,{
-            method: 'PUT',
+            method: 'POST',
             mode: 'cors',
             headers: this.bearerHeader
         })
