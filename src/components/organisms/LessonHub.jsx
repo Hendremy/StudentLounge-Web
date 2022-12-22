@@ -1,4 +1,4 @@
-import { Box, Button, Grid, Paper } from "@mui/material";
+import { Box, Button, Grid, Paper, Container } from "@mui/material";
 import FileTable from "./FileTable";
 import {palette} from "../../AppTheme";
 import HubHeader from "../molecules/HubHeader";
@@ -59,17 +59,21 @@ export default function LessonHub({lesson, lessonFileRepository, tutoringReposit
                     onClose={onFileUploaded}
                     data={{lessonId: lesson.id}}
                     />
-                <AskTutoringButton
-                    lessonId={lesson.id}
-                    repository={tutoringRepository}
-                />
-                <OpenModalButton
-                    icon={Groups}
-                    text={'Voir les demandes de tutorat'}
-                    modal={TutoringRequestsModal}
-                    repository={tutoringRepository}
-                    data={{lessonId: lesson.id}}
-                />
+                <Container>
+                    <AskTutoringButton
+                        lesson={lesson}
+                        repository={tutoringRepository}
+                    />
+                    {
+                        lesson.tutoring === null && <OpenModalButton
+                            icon={Groups}
+                            text={'Voir les demandes de tutorat'}
+                            modal={TutoringRequestsModal}
+                            repository={tutoringRepository}
+                            data={{lessonId: lesson.id}}
+                        />
+                    }
+                </Container>
             </HubHeader>
             <Box sx={boxStyle}>
                 <FileTable files={lessonFiles} filesRepository={lessonFileRepository}/>

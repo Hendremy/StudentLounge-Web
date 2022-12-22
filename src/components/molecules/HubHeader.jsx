@@ -4,15 +4,11 @@ import Title from "../atoms/Title";
 export default function HubHeader(props){
 
     return(
-        <Grid>
-            <Grid item xs={4}>
+        <Stack direction={'column'} width={'auto'}>
                 <Title text={props.title}/>
-            </Grid>
-            <Grid item xs={8}>
-                <Stack direction="row" spacing={2}>
-                    {props.children}
-                </Stack>
-            </Grid>
-        </Grid>
+            <Stack width={'100%'} direction="row" justifyContent={'space-between'} spacing={2}>
+                {props.children}
+            </Stack>
+        </Stack>
     );
 }
