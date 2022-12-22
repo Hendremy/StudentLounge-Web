@@ -1,5 +1,4 @@
 import { Box, Alert, Paper, TextField } from "@mui/material";
-import { maxHeight, width } from "@mui/system";
 import React,{ useState, useRef } from "react";
 import {palette} from "../AppTheme";
 import Title from "../components/atoms/Title";
@@ -41,10 +40,11 @@ export default function ContactPage(){
         }
     }
 
-    const [message, setMessage] = useState();
-    const [sujet, setSujet] = useState();
-    const [mail, setMail] = useState();
+    const [message, setMessage] = useState('');
+    const [sujet, setSujet] = useState('');
+    const [mail, setMail] = useState('');
     const [error, setError] = useState();
+    const [result, setResult] = useState();
     const form = useRef();
 
     async function handleClick(event) {
@@ -55,8 +55,11 @@ export default function ContactPage(){
             emailjs.sendForm('service_lhmekvj', "template_eio0jl8", form.current, 'WVLgIiNQbs2mLhRwt')
             .then((result) => {
                 console.log(result.text);
+                setError(null);
+                setResult('Message envoyé ! Nous vous répondrons par mail dans les plus brefs délais.')
             }, (error) => {
                 console.log(error.text);
+                setError('Une erreur est survenue, veuillez réessayer plus tard.')
             });
         }
     }
@@ -105,6 +108,7 @@ export default function ContactPage(){
                         autoComplete='off'
                         fullWidth/>
                     {error && (<Alert style={{marginTop:15}} severity="error">{error}</Alert>)}
+                    {result && (<Alert style={{marginTop:15}} severity="success">{result}</Alert>)}
                     <SendFormButton text={"Envoyer"} />
                 </form>
             </Box>

@@ -39,6 +39,7 @@ export default class UsersRepository extends SecuredApiService{
             mode: 'cors',
             headers: this.bearerHeader
         })
+        .then(response => this._handleSimpleResponse(response))
     }
 
     async lockoutUser(id){
@@ -49,6 +50,7 @@ export default class UsersRepository extends SecuredApiService{
             mode: 'cors',
             headers: this.bearerHeader
         })
+        .then(response => this._handleSimpleResponse(response))
     }
 
     _reviveRequestArray(jrequestArray){
