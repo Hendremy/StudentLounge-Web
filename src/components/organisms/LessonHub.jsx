@@ -12,6 +12,7 @@ import TutoringRequestsModal from "./TutoringRequestsModal";
 
 export default function LessonHub({lesson, lessonFileRepository, tutoringRepository}){
     const [lessonFiles, setLessonFiles] = useState([]);
+    const [tutoringAsked, setTutoringAsked] = useState(lesson.tutoringIsAsked);
     const paperStyle = {
         padding: 20,
         height:'auto',
@@ -62,10 +63,11 @@ export default function LessonHub({lesson, lessonFileRepository, tutoringReposit
                 <Container>
                     <AskTutoringButton
                         lesson={lesson}
+                        callback={() => setTutoringAsked(true)}
                         repository={tutoringRepository}
                     />
                     {
-                        lesson.tutoring === null && <OpenModalButton
+                        tutoringAsked && <OpenModalButton
                             icon={Groups}
                             text={'Voir les demandes de tutorat'}
                             modal={TutoringRequestsModal}

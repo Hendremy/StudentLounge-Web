@@ -8,3 +8,6 @@ export const chatAtom = atom([]);
 export const tutoringsAtom = atom([]);
 export const appointmentsAtom = atom([]);
 export const agendasAtom = atom([]);
+export const selectedLessonAtom = atomWithStorage('selectedLesson',null);
+export const selectedChatAtom = atom('selectedChat',null);
+

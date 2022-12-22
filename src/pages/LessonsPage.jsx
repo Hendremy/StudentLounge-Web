@@ -3,15 +3,18 @@ import LessonList from "../components/organisms/LessonList";
 import LessonHub from "../components/organisms/LessonHub";
 import { useParams } from "react-router-dom";
 import { useAtom } from "jotai";
-import { lessonsAtom } from "../stores/userStore";
+import { lessonsAtom, selectedLessonAtom } from "../stores/userStore";
 import { useContext } from "react";
 import { ApiServicesContext } from "../App";
 import EmptyLessonHub from "../components/organisms/EmptyLessonHub";
 import roles from "../models/roles";
+import { useEffect, useState } from "react";
 
 export default function LessonsPage(){
     const { id } = useParams();
+    const [selectedLesson, setSelectedLesson] = useAtom(selectedLessonAtom);
     const [lessons,] = useAtom(lessonsAtom);
+    const [activeLesson, setActiveLesson] = useState();
     const studentApiServices = useContext(ApiServicesContext)[roles.student];
     const lessonRepository = studentApiServices.lessonRepository;
     const lessonFileRepository = studentApiServices.lessonFileRepository;
@@ -23,9 +26,18 @@ export default function LessonsPage(){
         minHeight:'80vh'
     }
 
-    let selectedLesson = lessons.find(lesson => lesson.id === id);
+    useEffect(() => {
+        if(id){
+            setSelectedLesson(id);
+        }
+    });
+
+    useEffect(()=>{
+        let lesson = lessons.find(lesson => lesson.id === selectedLesson);
+        setActiveLesson(lesson);
+    },[selectedLesson]);
     
-    if(selectedLesson){
+    if(activeLesson){
         return (
             <Grid container spacing={2} sx={gridStyle}>
                 <Grid item xs={2}>
@@ -33,8 +45,8 @@ export default function LessonsPage(){
                 </Grid>
                 <Grid item xs={10}>
                     <LessonHub 
-                        key={selectedLesson.id} 
-                        lesson={selectedLesson} 
+                        key={activeLesson.id} 
+                        lesson={activeLesson} 
                         lessonFileRepository={lessonFileRepository}
                         tutoringRepository={tutoringRepository}
                         />

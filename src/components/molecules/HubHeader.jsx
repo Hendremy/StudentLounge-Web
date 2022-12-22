@@ -6,7 +6,7 @@ export default function HubHeader(props){
     return(
         <Stack direction={'column'} width={'auto'}>
                 <Title text={props.title}/>
-            <Stack width={'100%'} direction="row" justifyContent={'space-between'} spacing={2}>
+            <Stack width={'100%'} direction="row" justifyContent={'space-between'}>
                 {props.children}
             </Stack>
         </Stack>
