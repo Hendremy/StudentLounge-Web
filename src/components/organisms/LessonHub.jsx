@@ -67,7 +67,7 @@ export default function LessonHub({lesson, lessonFileRepository, tutoringReposit
                         repository={tutoringRepository}
                     />
                     {
-                        tutoringAsked && <OpenModalButton
+                        !tutoringAsked && <OpenModalButton
                             icon={Groups}
                             text={'Voir les demandes de tutorat'}
                             modal={TutoringRequestsModal}

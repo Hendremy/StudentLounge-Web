@@ -40,7 +40,7 @@ export default class StudentServices {
     get chatRepository(){
         return new ChatRepository({
             apiUrl: this.apiUrl,
-            controller: 'Chat',
+            controller: 'Chats',
             token: this.token
         });
     }

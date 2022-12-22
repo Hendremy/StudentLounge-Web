@@ -8,7 +8,7 @@ export default class ChatRepository extends SecuredApiService {
     }
 
     async getChat(){
-        return fetch(this.apiUrl + '/Tutoring/chat', {
+        return fetch(this.baseUrl, {
             method: "GET",
             mode: "cors",
             headers: this.bearerHeader
