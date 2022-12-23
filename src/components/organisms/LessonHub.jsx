@@ -24,7 +24,7 @@ export default function LessonHub({lesson, lessonFileRepository, tutoringReposit
     const boxStyle = {
         height: '100%',
         backgroundColor: palette.primary,
-        minHeight:'80vh',
+        minHeight:'75vh',
         padding: '1%'
     };
 
@@ -48,11 +48,12 @@ export default function LessonHub({lesson, lessonFileRepository, tutoringReposit
         loadFiles();
     };
 
-    //Backend pourrait renvoyer si l'user a déjà un tutorat pour ce compte qd il le charge
     return(
         <Paper elevation ={10} style={paperStyle}>
-            <HubHeader title={lesson.name}>
-                <OpenModalButton 
+            <div style={{display:"flex", flexDirection:"row", justifyContent:"space-between"}}>
+                <HubHeader title={lesson.name}/>
+                <Container>
+                    <OpenModalButton 
                     icon={UploadFile} 
                     text={'Importer un fichier'}
                     modal={FileUploadModal}
@@ -60,7 +61,6 @@ export default function LessonHub({lesson, lessonFileRepository, tutoringReposit
                     onClose={onFileUploaded}
                     data={{lessonId: lesson.id}}
                     />
-                <Container>
                     <AskTutoringButton
                         lesson={lesson}
                         callback={() => setTutoringAsked(true)}
@@ -76,7 +76,7 @@ export default function LessonHub({lesson, lessonFileRepository, tutoringReposit
                         />
                     }
                 </Container>
-            </HubHeader>
+            </div>
             <Box sx={boxStyle}>
                 <FileTable files={lessonFiles} filesRepository={lessonFileRepository}/>
             </Box>

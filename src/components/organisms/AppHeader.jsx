@@ -31,7 +31,7 @@ export default function AppHeader(){
         <Toolbar variant={"dense"}>
           <Box sx={style}>
             <NavLink key={'home'} to={homePath} >
-              <Typography variant={'h1'} component={'h1'} sx={{fontSize: 30}}>
+              <Typography variant={'h1'} component={'h1'} sx={{fontSize: 30, fontFamily: 'Gugi'}}>
                 Student Lounge
               </Typography>
             </NavLink>

@@ -7,12 +7,12 @@ export default function LessonRow(props){
     let lesson = props.lesson;
 
     const style= {
-        backgroundColor: palette.primary,
-        color: "white"
+        backgroundColor: palette.secondary,
+        color: "white",
+        borderRadius: 3
     };
 
     const activeStyle = {
-        backgroundColor: palette.secondary,
         color: palette.iconActive
     }
 

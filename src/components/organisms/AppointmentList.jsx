@@ -23,8 +23,8 @@ export default function AppointmentList({appointmentRepository, tutoringReposito
     };
 
     const boxStyle = {
-        height: '80vh',
-        backgroundColor: palette.secondary,
+        height: '74vh',
+        backgroundColor: palette.primary,
         borderRadius: '5px',
         overflow: 'auto'
     };

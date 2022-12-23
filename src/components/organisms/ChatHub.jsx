@@ -115,7 +115,8 @@ export default function ChatHub({chat, chatRepository, appointmentRepository, tu
 
     return (
         <Paper elevation ={10} style={paperStyle}>
-            <HubHeader title={chat.name}>
+            <div style={{display:"flex", flexDirection:"row", justifyContent:"space-between"}}>
+                <HubHeader title={chat.name}/>
                 <OpenModalButton 
                     text={'Prendre rendez-vous'}
                     icon={AddLocationAlt}
@@ -125,7 +126,7 @@ export default function ChatHub({chat, chatRepository, appointmentRepository, tu
                     repository={appointmentRepository}
                     callback={() => {}}
                 />
-            </HubHeader>
+            </div>
             <Box sx={boxStyle}>
                 <Grid direction={"column"}>
                     {messages && messages.map(msg => <ChatMessage key={msg.id} message={msg}/>)}

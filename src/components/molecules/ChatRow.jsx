@@ -1,4 +1,4 @@
-import { ListItemText, ListItemButton } from "@mui/material";
+import { ListItemText, ListItemButton, Box } from "@mui/material";
 import { messagesPath } from "../../routes/StudentRoutes";
 import {palette} from '../../AppTheme';
 import { NavLink } from "react-router-dom";
@@ -7,12 +7,12 @@ export default function ChatRow(props){
     let chat = props.chat;
 
     const style= {
-        backgroundColor: palette.primary,
-        color: "white"
+        backgroundColor: palette.secondary,
+        color: "white",
+        borderRadius: 3
     };
 
     const activeStyle = {
-        backgroundColor: palette.secondary,
         color: palette.iconActive
     }
 

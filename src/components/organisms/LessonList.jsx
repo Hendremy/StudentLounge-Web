@@ -8,6 +8,7 @@ import { useState, useEffect } from "react";
 import LessonJoinModal from "./LessonJoinModal";
 import { useAtom } from "jotai";
 import { lessonsAtom } from "../../stores/userStore";
+import { color, style } from "@mui/system";
 
 export default function LessonList({lessonRepository, reloadList}){
     const [userLessons, setUserLessons] = useAtom(lessonsAtom);
@@ -22,8 +23,8 @@ export default function LessonList({lessonRepository, reloadList}){
     };
 
     const boxStyle = {
-        height: '80vh',
-        backgroundColor: palette.secondary,
+        height: '77vh',
+        backgroundColor: palette.primary,
         borderRadius: '5px',
         overflow: 'auto'
     };

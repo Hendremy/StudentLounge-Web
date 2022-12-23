@@ -1,17 +1,20 @@
 import { ListItem, Stack, Typography, Container } from "@mui/material";
 import UserImage from "../atoms/UserImage";
+import {palette} from "../../AppTheme";
 
 export default function AppointmentRow({appointment}){
     const style = {
-        bgcolor: 'red',
+        bgcolor: palette.secondary,
         color: 'primary',
-        marginBottom: 1
+        marginBottom: 1,
+        borderRadius: 3
     }
 
     return (
         <ListItem sx={style}>
             <Stack direction={'column'}>
-                <Typography>RDV - {appointment.lesson} le {appointment.date}</Typography>
+            <Typography>{appointment.lesson}</Typography>
+            <Typography>{appointment.date}</Typography>
                 <Typography>de {appointment.startHour} à {appointment.endHour} </Typography>
                 <Typography> à {appointment.location} </Typography>
                 <Stack direction={'row'}>

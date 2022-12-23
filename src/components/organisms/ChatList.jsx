@@ -1,5 +1,5 @@
 import { Box, List, Paper } from "@mui/material";
-import {palette} from "../../AppTheme";
+import {palette, theme} from "../../AppTheme";
 import { useAtom } from "jotai";
 import { chatAtom } from "../../stores/userStore";
 import { useEffect, useState } from "react";
@@ -19,8 +19,8 @@ export default function ChatList({chatRepository, reloadList}){
     };
 
     const boxStyle = {
-        height: '80vh',
-        backgroundColor: palette.secondary,
+        height: '77vh',
+        backgroundColor: palette.primary,
         borderRadius: '5px',
         overflow: 'auto'
     };
@@ -56,6 +56,7 @@ export default function ChatList({chatRepository, reloadList}){
     return(
         <Paper elevation ={10} style={paperStyle}>
             <ListHeader title='Messages'/>
+            <Box height={10}/>
             <Box sx={boxStyle}>
                 <List>
                     {chatRows}
