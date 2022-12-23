@@ -71,7 +71,7 @@ export default function FileTable({files, filesRepository}){
 
 
     return (
-        <div style={{ height: '75vh', minWidth: '61vw', backgroundColor:"white", borderRadius:10}}>
+        <div style={{ height: '70vh', minWidth: '61vw', backgroundColor:"white", borderRadius:10}}>
             <DataGrid 
                 localeText={frFR.components.MuiDataGrid.defaultProps.localeText}
                 style={{borderRadius:10}}

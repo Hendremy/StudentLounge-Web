@@ -2,17 +2,14 @@ import { Box, Button, Grid, Paper, Container } from "@mui/material";
 import FileTable from "./FileTable";
 import {palette} from "../../AppTheme";
 import HubHeader from "../molecules/HubHeader";
-import AskTutoringButton from "./AskTutoringButton";
-import TutorRequestsButton from "../molecules/ShowTutorRequestButton";
 import { useState, useEffect } from "react";
 import OpenModalButton from "../molecules/OpenModalButton";
-import { Groups, UploadFile } from "@mui/icons-material";
+import { UploadFile } from "@mui/icons-material";
 import FileUploadModal from "./FileUploadModal";
-import TutoringRequestsModal from "./TutoringRequestsModal";
+import TutoringActions from "./TutoringActions";
 
 export default function LessonHub({lesson, lessonFileRepository, tutoringRepository}){
     const [lessonFiles, setLessonFiles] = useState([]);
-    const [tutoringAsked, setTutoringAsked] = useState(lesson.tutoringIsAsked);
     const paperStyle = {
         padding: 20,
         height:'auto',
@@ -24,7 +21,7 @@ export default function LessonHub({lesson, lessonFileRepository, tutoringReposit
     const boxStyle = {
         height: '100%',
         backgroundColor: palette.primary,
-        minHeight:'75vh',
+        minHeight:'72vh',
         padding: '1%'
     };
 
@@ -48,34 +45,25 @@ export default function LessonHub({lesson, lessonFileRepository, tutoringReposit
         loadFiles();
     };
 
+    //Backend pourrait renvoyer si l'user a déjà un tutorat pour ce compte qd il le charge
     return(
         <Paper elevation ={10} style={paperStyle}>
             <div style={{display:"flex", flexDirection:"row", justifyContent:"space-between"}}>
                 <HubHeader title={lesson.name}/>
-                <Container>
+                <div style={{display:"flex", flexDirection:"row"}}>
                     <OpenModalButton 
-                    icon={UploadFile} 
-                    text={'Importer un fichier'}
-                    modal={FileUploadModal}
-                    repository={lessonFileRepository}
-                    onClose={onFileUploaded}
-                    data={{lessonId: lesson.id}}
-                    />
-                    <AskTutoringButton
+                            icon={UploadFile} 
+                            text={'Importer un fichier'}
+                            modal={FileUploadModal}
+                            repository={lessonFileRepository}
+                            onClose={onFileUploaded}
+                            data={lesson}
+                            />
+                    <TutoringActions 
+                        tutoringRepository={tutoringRepository}
                         lesson={lesson}
-                        callback={() => setTutoringAsked(true)}
-                        repository={tutoringRepository}
                     />
-                    {
-                        !tutoringAsked && <OpenModalButton
-                            icon={Groups}
-                            text={'Voir les demandes de tutorat'}
-                            modal={TutoringRequestsModal}
-                            repository={tutoringRepository}
-                            data={{lessonId: lesson.id}}
-                        />
-                    }
-                </Container>
+                </div>
             </div>
             <Box sx={boxStyle}>
                 <FileTable files={lessonFiles} filesRepository={lessonFileRepository}/>
