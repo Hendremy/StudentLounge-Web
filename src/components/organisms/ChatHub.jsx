@@ -114,7 +114,7 @@ export default function ChatHub({chat, chatRepository}){
                                     value={formValue}
                                     name={"input"}
                                     onChange={(event) => setFormValue(event.target.value)}
-                                    placeholder={'Entrez votre messages ici...'}
+                                    placeholder={'Entrez votre message ici...'}
                                     style={fieldStyle}
                                     InputLabelProps={whiteColor}
                                     InputProps={whiteColor}
