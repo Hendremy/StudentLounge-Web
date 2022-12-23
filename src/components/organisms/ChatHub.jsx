@@ -1,4 +1,4 @@
-import { Box, IconButton, Grid, Icon, Paper, TextField, Text, Typography } from "@mui/material";
+import { Box, IconButton, Grid, Paper, TextField, Typography } from "@mui/material";
 import { useEffect, useState } from "react";
 import { userAtom } from "../../stores/userStore";
 import { useAtom } from "jotai";
@@ -7,9 +7,21 @@ import {getFirestore, collection, addDoc, orderBy, limit, onSnapshot, query, ser
 import {palette} from "../../AppTheme";
 import SendRoundedIcon from '@mui/icons-material/SendRounded';
 import GridCentered from "../atoms/GridCentered";
-import { margin } from "@mui/system";
+import HubHeader from '../molecules/HubHeader';
+import OpenModalButton from "../molecules/OpenModalButton";
+import MakeAppointmentModal from "./MakeAppointmenModal";
+import { AddLocation } from "@mui/icons-material";
 
-export default function ChatHub({chat, chatRepository}){
+export default function ChatHub({chat, chatRepository, appointmentRepository, tutoringRepository}){
+    const [tutorings, setTutorings] = useState([]);
+
+    useEffect(() => {
+        tutoringRepository.getUserValidatedTutorings()
+            .then(
+                validatedTutorings => setTutorings(validatedTutorings)
+            );
+    },[]);
+
     const app = initializeApp({
         apiKey: "AIzaSyCoHRpA9fPbBXPP17q_Ud1oiG3mBk0qGtY",
         authDomain: "studentlounge-android.firebaseapp.com",
@@ -35,6 +47,7 @@ export default function ChatHub({chat, chatRepository}){
         padding: '1%',
     };
 
+    //Firebase
     const firestore = getFirestore(app);
     const messagesRef = collection(firestore, `messages${chat.id}`);
     const q = query(messagesRef, orderBy("time"), limit(25));
@@ -102,6 +115,17 @@ export default function ChatHub({chat, chatRepository}){
 
     return (
         <Paper elevation ={10} style={paperStyle}>
+            <HubHeader title={chat.name}>
+                <OpenModalButton 
+                    text={'Prendre rendez-vous'}
+                    icon={AddLocation}
+                    modal={MakeAppointmentModal}
+                    onClose={() => {}}
+                    data={tutorings}
+                    repository={appointmentRepository}
+                    callback={() => {}}
+                />
+            </HubHeader>
             <Box sx={boxStyle}>
                 <Grid direction={"column"}>
                     {messages && messages.map(msg => <ChatMessage key={msg.id} message={msg}/>)}

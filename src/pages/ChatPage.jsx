@@ -15,6 +15,7 @@ export default function ChatPage(){
     const studentApiServices = useContext(ApiServicesContext)[roles.student];
     const chatRepository = studentApiServices.chatRepository;
     const tutoringRepository = studentApiServices.tutoringRepository;
+    const appointmentRepository = studentApiServices.appointmentRepository;
 
     const gridStyle = {
         height: 'auto',
@@ -29,13 +30,18 @@ export default function ChatPage(){
         return (
             <Grid container spacing={2} sx={gridStyle}>
                 <Grid item xs={2}>
-                    <ChatList chat={chats} chatRepository={chatRepository}></ChatList>
+                    <ChatList 
+                        chat={chats} 
+                        chatRepository={chatRepository}
+                        ></ChatList>
                 </Grid>
                 <Grid item xs={10}>
                     <ChatHub 
                         key={selectedchat.id} 
                         chat={selectedchat} 
                         chatRepository={chatRepository}
+                        appointmentRepository={appointmentRepository}
+                        tutoringRepository={tutoringRepository}
                         />
                 </Grid>
             </Grid>
