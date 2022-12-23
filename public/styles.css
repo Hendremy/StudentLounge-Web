@@ -1,0 +1,46 @@
+@font-face {
+    font-family: Gugi;
+    src: url(./fonts/Gugi-Regular.ttf);
+    font-display: block;
+}
+
+@font-face {
+    font-family: Exo2;
+    src: url(./fonts/Exo2-Regular.otf);
+    font-display: block;
+}
+
+html{
+    height: 100%;
+}
+
+body{
+    margin: 0;
+    height: 100%;
+    background-image: url("images/background-home.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+#root{
+    height: 100%;
+}
+
+main{
+    height: 100%;
+    padding-left: 10%;
+    padding-right: 10%;
+}
+
+a{
+    color: #FFFFFF;
+    text-decoration: none;
+}
+
+a:hover{
+    color: #8aeaff;
+}
+
+/*input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 30px #FFFFFF inset;
+}*/
