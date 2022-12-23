@@ -10,7 +10,7 @@ import GridCentered from "../atoms/GridCentered";
 import HubHeader from '../molecules/HubHeader';
 import OpenModalButton from "../molecules/OpenModalButton";
 import MakeAppointmentModal from "./MakeAppointmenModal";
-import { AddLocation } from "@mui/icons-material";
+import { AddLocation, AddLocationAlt } from "@mui/icons-material";
 
 export default function ChatHub({chat, chatRepository, appointmentRepository, tutoringRepository}){
     const [tutorings, setTutorings] = useState([]);
@@ -118,7 +118,7 @@ export default function ChatHub({chat, chatRepository, appointmentRepository, tu
             <HubHeader title={chat.name}>
                 <OpenModalButton 
                     text={'Prendre rendez-vous'}
-                    icon={AddLocation}
+                    icon={AddLocationAlt}
                     modal={MakeAppointmentModal}
                     onClose={() => {}}
                     data={tutorings}

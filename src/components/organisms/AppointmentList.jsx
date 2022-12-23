@@ -1,4 +1,4 @@
-import { AddLocation, MoreTime } from "@mui/icons-material";
+import { AddLocation, AddLocationAlt, MoreTime } from "@mui/icons-material";
 import { Box, List, Paper } from "@mui/material";
 import { useEffect, useState } from "react";
 import { useAtom } from "jotai";
@@ -51,7 +51,7 @@ export default function AppointmentList({appointmentRepository, tutoringReposito
         <Paper elevation ={10} style={paperStyle}>
             <ListHeader title='Rendez-vous'>
             <OpenModalButton 
-                    icon={AddLocation}
+                    icon={AddLocationAlt}
                     modal={MakeAppointmentModal}
                     onClose={() => {}}
                     data={tutorings}
