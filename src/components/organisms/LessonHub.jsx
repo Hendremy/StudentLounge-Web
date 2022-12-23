@@ -56,7 +56,6 @@ export default function LessonHub({lesson, lessonFileRepository, tutoringReposit
                 <HubHeader title={lesson.name}/>
                 <div style={{display:"flex", flexDirection:"row"}}>
                     <OpenModalButton 
-<<<<<<< HEAD
                             icon={UploadFile} 
                             text={'Importer un fichier'}
                             modal={FileUploadModal}
@@ -66,16 +65,6 @@ export default function LessonHub({lesson, lessonFileRepository, tutoringReposit
                             />
                     <TutoringActions 
                         tutoringRepository={tutoringRepository}
-=======
-                    icon={UploadFile} 
-                    text={'Importer un fichier'}
-                    modal={FileUploadModal}
-                    repository={lessonFileRepository}
-                    onClose={onFileUploaded}
-                    data={{lessonId: lesson.id}}
-                    />
-                    <AskTutoringButton
->>>>>>> 7eac241 (fix lessonhub)
                         lesson={lesson}
                     />
                 </div>
