@@ -5,16 +5,20 @@ import {homePath} from "../../routes/SharedRoutes";
 import {NavLink, useNavigate} from "react-router-dom";
 import { AppUserContext } from '../../App';
 import { useContext } from 'react';
-import { userAtom } from '../../stores/userStore';
+import { selectedChatAtom, selectedLessonAtom, userAtom } from '../../stores/userStore';
 import { useAtom } from 'jotai';
 
 export default function AppHeader(){
   const user = useContext(AppUserContext);
   const [,setUser] = useAtom(userAtom);
+  const [,setSelectedLesson] = useAtom(selectedLessonAtom);
+  const [,setSelectedChat] = useAtom(selectedChatAtom);
   const navigate = useNavigate();
   
   const logout = () => {
     setUser(null);
+    setSelectedLesson(null);
+    setSelectedChat(null);
     navigate(homePath);
   };
 

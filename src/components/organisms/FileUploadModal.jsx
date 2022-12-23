@@ -9,6 +9,7 @@ export default function FileUploadModal({open, onClose, repository, data}){
     const [success, setSuccess] = useState(false);
     const [message, setMessage] = useState(null);
     const [error, setError] = useState(false);
+    const lesson = data;
 
     const handleSubmit = (event) => {
         setSuccess(false);
@@ -21,7 +22,7 @@ export default function FileUploadModal({open, onClose, repository, data}){
         const formData = new FormData();
         formData.append('file', file);
         formData.append('type', type);
-        formData.append('lessonId', data.lessonId);
+        formData.append('lessonId', lesson.id);
 
         repository.uploadFile({formData: formData})
             .then(

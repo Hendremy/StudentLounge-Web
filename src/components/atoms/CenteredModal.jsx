@@ -11,6 +11,7 @@ export default function CenteredModal({children, open, onClose}){
         bgcolor: palette.primary,
         borderRadius: '25px',
         boxShadow: 24,
+        minWidth: '20vw',
         p: 4,
       };
 

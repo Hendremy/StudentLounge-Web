@@ -6,7 +6,7 @@ export default function LessonRow({lesson, isJoined, repository}){
     const [joined, setJoined] = useState(isJoined);
     const [error, setError] = useState(null);
     const style = {
-        color: 'white'
+        color: 'white',
     }
     const ActionIcon = error ? WarningAmberRounded
                              : joined ? Remove 

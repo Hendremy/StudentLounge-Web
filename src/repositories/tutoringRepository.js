@@ -1,11 +1,23 @@
 import Tutoring from "../models/tutoring";
 import ValidatedTutoring from "../models/validatedTutoring";
 import { SecuredApiService } from "./apiService";
+import TutoringRequest from "../models/tutoringRequest";
 
 
 export default class TutoringRepository extends SecuredApiService{
     constructor({apiUrl, controller, token}){
         super({apiUrl: apiUrl, controller: controller, token: token});
+    }
+
+    async getTutoringRequestStatus({lessonId}){
+        const url = `${this.baseUrl}/lesson/${lessonId}`;
+        return fetch(url,{
+            method: 'GET',
+            mode: 'cors',
+            headers: this.bearerHeader
+        })
+        .then(response => this._handleJsonResponse(response))
+        .then(jtutoringArray => this._reviveTutoringRequest(jtutoringArray));
     }
 
     async getUserValidatedTutorings(){
@@ -20,7 +32,7 @@ export default class TutoringRepository extends SecuredApiService{
     }
 
     async getAllRequestsOfLesson({lessonId}){
-        const url = `${this.baseUrl}/lesson/${lessonId}`;
+        const url = `${this.baseUrl}/lesson/${lessonId}/all`;
         return fetch(url,{
             method: 'GET',
             mode: 'cors',
@@ -64,5 +76,9 @@ export default class TutoringRepository extends SecuredApiService{
 
     _reviveValidatedTutoring(jtutoring){
         return new ValidatedTutoring(jtutoring);
+    }
+
+    _reviveTutoringRequest(jrequest){
+        return jrequest == null ? null : new TutoringRequest(jrequest);
     }
 }
