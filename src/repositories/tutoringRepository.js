@@ -17,6 +17,7 @@ export default class TutoringRepository extends SecuredApiService{
             headers: this.bearerHeader
         })
         .then(response => this._handleJsonResponse(response))
+        .catch(error => null)
         .then(jtutoringArray => this._reviveTutoringRequest(jtutoringArray));
     }
 
@@ -79,6 +80,6 @@ export default class TutoringRepository extends SecuredApiService{
     }
 
     _reviveTutoringRequest(jrequest){
-        return jrequest == null ? null : new TutoringRequest(jrequest);
+        return !jrequest ? null : new TutoringRequest(jrequest);
     }
 }

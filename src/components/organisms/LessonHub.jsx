@@ -6,7 +6,8 @@ import { useState, useEffect } from "react";
 import OpenModalButton from "../molecules/OpenModalButton";
 import { UploadFile } from "@mui/icons-material";
 import FileUploadModal from "./FileUploadModal";
-import TutoringActions from "./TutoringActions";
+import TutoringRequestsModal from "./TutoringRequestsModal";
+import TutoringActions from './TutoringActions';
 
 export default function LessonHub({lesson, lessonFileRepository, tutoringRepository}){
     const [lessonFiles, setLessonFiles] = useState([]);
