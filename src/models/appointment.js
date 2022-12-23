@@ -1,4 +1,4 @@
-import { formatDate, formatTime } from '../utils/dateFormatter';
+import { formatDate, formatTime } from '../utils/myDateFormatter';
 
 export default class Appointment{
 

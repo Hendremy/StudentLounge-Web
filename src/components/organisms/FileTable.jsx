@@ -3,7 +3,7 @@ import { IconButton } from '@mui/material';
 import FileRow from '../molecules/FileRow';
 import { DataGrid, frFR, GridEditModes } from "@mui/x-data-grid";
 import { Download, InsertDriveFile, TextFields } from '@mui/icons-material';
-import { formatDate } from "../../utils/dateFormatter";
+import { formatDate } from "../../utils/myDateFormatter";
 
 
 export default function FileTable({files, filesRepository}){

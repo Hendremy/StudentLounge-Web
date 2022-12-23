@@ -1,6 +1,6 @@
 import { Download, InsertDriveFile, TextFields } from "@mui/icons-material";
 import { TableRow, TableCell, IconButton } from "@mui/material";
-import { formatDate } from "../../utils/dateFormatter";
+import { formatDate } from "../../utils/myDateFormatter";
 
 export default function FileRow({file, repository}){
     let TypeIcon; 

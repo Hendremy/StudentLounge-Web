@@ -1,4 +1,4 @@
-import { concatDateAndTime } from "../utils/dateFormatter";
+import { concatDateAndTime } from "../utils/myDateFormatter";
 
 export default class AppointmentRequest{
     constructor({tutoringId, start, end, date, location}){

@@ -1,4 +1,5 @@
 import AppUser from "../models/appUser";
+import { hashString } from "../utils/myHasher";
 import {ApiService} from "./apiService";
 
 export default class AuthenticationRepository extends ApiService{
@@ -9,6 +10,8 @@ export default class AuthenticationRepository extends ApiService{
 
     async register({email, password, firstname, lastname, confirmPassword}) {
         const url = `${this.baseUrl}/Register`;
+        password = this._hashPassword(password);
+        confirmPassword = this._hashPassword(confirmPassword);
         const data = JSON.stringify({email: email, password: password, firstname:firstname, lastname:lastname, passwordRep:confirmPassword});
     
         return fetch(url, {
@@ -48,6 +51,7 @@ export default class AuthenticationRepository extends ApiService{
     
     async login({email, password}) {
         const url = `${this.baseUrl}/Login`;
+        password = this._hashPassword(password);
         const data = JSON.stringify({username: email, password: password});
     
         return fetch(url, {
@@ -68,5 +72,9 @@ export default class AuthenticationRepository extends ApiService{
 
     _reviveAppUser(juser){
         return new AppUser(juser);
+    }
+
+    _hashPassword(passwd){
+        return hashString(passwd);
     }
 }
