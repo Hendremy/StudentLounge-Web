@@ -7,7 +7,6 @@ import { agendasAtom, appointmentsAtom } from "../../stores/userStore";
 import { useAtom } from "jotai";
 import Schedule from '../molecules/Schedule';
 import Calendar from "../../models/calendar";
-import HubProgress from "../atoms/HubProgress";
 
 export default function CalendarHub({agendaRepository}){
     const [appointments] = useAtom(appointmentsAtom);
@@ -50,15 +49,17 @@ export default function CalendarHub({agendaRepository}){
     const boxStyle = {
         height: '100%',
         backgroundColor: palette.primary,
-        minHeight:'80vh',
+        minHeight:'75vh',
+        maxHeight:'75vh',
         padding: '1%'
     };
 
     return(
         <Paper elevation ={10} style={paperStyle}>
-            <HubHeader title={"Horaire"}>
+            <div style={{display:"flex", flexDirection:"row", justifyContent:"space-between"}}>
+                <HubHeader title={"Horaire"}/>
                 <UploadCalendarButton agendaRepository={agendaRepository} onCalendarUpdated={updateAgendas} />
-            </HubHeader>
+            </div>
             <Box sx={boxStyle}>
                 <Schedule scheduleEvents={Calendar.allEvents(calendar)}/>
             </Box>
