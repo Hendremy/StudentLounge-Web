@@ -19,7 +19,7 @@ export default function Schedule({scheduleEvents}){
         locale={frLocale}
         plugins={[timeGridPlugin]}
         initialView='timeGridWeek'
-        weekends={false}
+        weekends={true}
         events={scheduleEvents}
         eventContent={renderEventContent}
     />
